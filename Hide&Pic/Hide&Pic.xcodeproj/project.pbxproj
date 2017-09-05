@@ -15,6 +15,7 @@
 		9325703D1F4D16F300EFFBA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9325703B1F4D16F300EFFBA5 /* LaunchScreen.storyboard */; };
 		932570481F4D16F400EFFBA5 /* Hide_PicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932570471F4D16F400EFFBA5 /* Hide_PicTests.swift */; };
 		932570531F4D16F400EFFBA5 /* Hide_PicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932570521F4D16F400EFFBA5 /* Hide_PicUITests.swift */; };
+		93C3A5D91F5D16580037A138 /* SampleCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C3A5D81F5D16580037A138 /* SampleCoordinates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9325704E1F4D16F400EFFBA5 /* Hide&PicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hide&PicUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		932570521F4D16F400EFFBA5 /* Hide_PicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hide_PicUITests.swift; sourceTree = "<group>"; };
 		932570541F4D16F400EFFBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93C3A5D81F5D16580037A138 /* SampleCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCoordinates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				932570301F4D16F300EFFBA5 /* AppDelegate.swift */,
+				93C3A5D81F5D16580037A138 /* SampleCoordinates.swift */,
 				932570321F4D16F300EFFBA5 /* art.scnassets */,
 				932570341F4D16F300EFFBA5 /* ViewController.swift */,
 				932570361F4D16F300EFFBA5 /* Main.storyboard */,
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C3A5D91F5D16580037A138 /* SampleCoordinates.swift in Sources */,
 				932570351F4D16F300EFFBA5 /* ViewController.swift in Sources */,
 				932570311F4D16F300EFFBA5 /* AppDelegate.swift in Sources */,
 			);
