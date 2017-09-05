@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Hide&Pic
 //
-//  Created by Leonard Zou on 23/8/17.
+//  Created by Leonard Zou on 5/9/17.
 //  Copyright © 2017 VanillaThunder. All rights reserved.
 //
 
