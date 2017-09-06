@@ -9,8 +9,10 @@
 import Foundation
 
 struct SampleCoordinates {
+/*
     static let places = [
         "Unimelb Sports Centre": location(37.411, 141.572),
         "another place": location(39.00, 142.00)
     ]
+ */
 }
