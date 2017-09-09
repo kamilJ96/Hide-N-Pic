@@ -22,7 +22,6 @@ class ContactsVC: UIViewController {
     }
     
     @IBAction func logout(_ sender: Any) {
-        dismiss.(animated: true, completion: nil)
     }
     
     /*

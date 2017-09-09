@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361AEC391F62B59600836FF2 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AEC381F62B59600836FF2 /* AuthProvider.swift */; };
+		361AEC3C1F62CC0300836FF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 361AEC3B1F62CC0300836FF2 /* GoogleService-Info.plist */; };
 		3697F9D21F5D6C2100486CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3697F9D11F5D6C2100486CFF /* AppDelegate.swift */; };
 		3697F9D41F5D6C2100486CFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3697F9D31F5D6C2100486CFF /* ViewController.swift */; };
 		3697F9D71F5D6C2100486CFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3697F9D51F5D6C2100486CFF /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		224D61B6E3421B50EBD3BF62 /* Pods-ChatFunctionalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatFunctionalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatFunctionalityUITests/Pods-ChatFunctionalityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		267BB426946640A6B48B235A /* Pods-ChatFunctionalityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatFunctionalityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatFunctionalityUITests/Pods-ChatFunctionalityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		26B2A54D659BC9032DC02937 /* Pods-ChatFunctionality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatFunctionality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatFunctionality/Pods-ChatFunctionality.debug.xcconfig"; sourceTree = "<group>"; };
+		361AEC381F62B59600836FF2 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		361AEC3B1F62CC0300836FF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3697F9CE1F5D6C2100486CFF /* ChatFunctionality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatFunctionality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3697F9D11F5D6C2100486CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3697F9D31F5D6C2100486CFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +63,6 @@
 		3697F9F31F5D6C2100486CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3697FA041F5D74F100486CFF /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		3697FA061F5D7DCC00486CFF /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
-		3697FA081F5D95D900486CFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C4CAB2A96BA479F41971A11 /* Pods-ChatFunctionality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatFunctionality.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatFunctionality/Pods-ChatFunctionality.release.xcconfig"; sourceTree = "<group>"; };
 		8FEF2365A31146F3853D7F84 /* Pods-ChatFunctionalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatFunctionalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatFunctionalityTests/Pods-ChatFunctionalityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C8B992EB6B344A483ED5458F /* Pods-ChatFunctionalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatFunctionalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatFunctionalityTests/Pods-ChatFunctionalityTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361AEC371F62B4D300836FF2 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				361AEC381F62B59600836FF2 /* AuthProvider.swift */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
 		3697F9C51F5D6C2100486CFF = {
 			isa = PBXGroup;
 			children = (
@@ -119,16 +130,15 @@
 		3697F9D01F5D6C2100486CFF /* ChatFunctionality */ = {
 			isa = PBXGroup;
 			children = (
-				3697FA031F5D745400486CFF /* View */,
-				3697FA021F5D744D00486CFF /* Model */,
+				361AEC3B1F62CC0300836FF2 /* GoogleService-Info.plist */,
+				3697F9D81F5D6C2100486CFF /* Assets.xcassets */,
+				3697F9DA1F5D6C2100486CFF /* LaunchScreen.storyboard */,
+				361AEC371F62B4D300836FF2 /* Plugins */,
 				3697FA011F5D744700486CFF /* Controller */,
+				3697F9DD1F5D6C2100486CFF /* Info.plist */,
 				3697F9D11F5D6C2100486CFF /* AppDelegate.swift */,
 				3697F9D31F5D6C2100486CFF /* ViewController.swift */,
 				3697F9D51F5D6C2100486CFF /* Main.storyboard */,
-				3697F9D81F5D6C2100486CFF /* Assets.xcassets */,
-				3697F9DA1F5D6C2100486CFF /* LaunchScreen.storyboard */,
-				3697F9DD1F5D6C2100486CFF /* Info.plist */,
-				3697FA081F5D95D900486CFF /* GoogleService-Info.plist */,
 			);
 			path = ChatFunctionality;
 			sourceTree = "<group>";
@@ -158,20 +168,6 @@
 				3697FA061F5D7DCC00486CFF /* ContactsVC.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		3697FA021F5D744D00486CFF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3697FA031F5D745400486CFF /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		67F2C1C62296B68516B07A03 /* Frameworks */ = {
@@ -311,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3697F9DC1F5D6C2100486CFF /* LaunchScreen.storyboard in Resources */,
+				361AEC3C1F62CC0300836FF2 /* GoogleService-Info.plist in Resources */,
 				3697F9D91F5D6C2100486CFF /* Assets.xcassets in Resources */,
 				3697F9D71F5D6C2100486CFF /* Main.storyboard in Resources */,
 			);
@@ -433,6 +430,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ChatFunctionality/Pods-ChatFunctionality-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -440,6 +441,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -495,6 +500,7 @@
 			files = (
 				3697F9D41F5D6C2100486CFF /* ViewController.swift in Sources */,
 				3697F9D21F5D6C2100486CFF /* AppDelegate.swift in Sources */,
+				361AEC391F62B59600836FF2 /* AuthProvider.swift in Sources */,
 				3697FA051F5D74F100486CFF /* SignInVC.swift in Sources */,
 				3697FA071F5D7DCC00486CFF /* ContactsVC.swift in Sources */,
 			);
