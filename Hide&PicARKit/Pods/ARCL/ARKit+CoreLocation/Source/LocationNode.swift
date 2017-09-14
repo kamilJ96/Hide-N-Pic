@@ -71,7 +71,9 @@ open class LocationAnnotationNode: LocationNode {
     public init(location: CLLocation?, image: UIImage) {
         self.image = image
         
-        let plane = SCNPlane(width: image.size.width / 100, height: image.size.height / 100)
+        let scaleFactor = CGFloat(3) // added by Leonard to make the size of the pin bigger
+        
+        let plane = SCNPlane(width: scaleFactor*image.size.width / 100, height: scaleFactor*image.size.height / 100)
         plane.firstMaterial!.diffuse.contents = image
         plane.firstMaterial!.lightingModel = .constant
         

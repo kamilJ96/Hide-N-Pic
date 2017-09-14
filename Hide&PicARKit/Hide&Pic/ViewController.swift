@@ -28,21 +28,39 @@ class ViewController: UIViewController {
         
         //==============================================================
         // remove this code later, only for getting start purposes
-        let image = UIImage(named: "pin")!
         
-        let universityOval = CLLocationCoordinate2D(latitude: -37.794472, longitude: 144.961393)
-        let universityOvalLocation = CLLocation(coordinate: universityOval, altitude: 300)
-        let annotationNode1 = LocationAnnotationNode(location: universityOvalLocation, image: image)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode1)
+        // UniversityOval
+        addNewLocationAnnotationNodeToScene(latitude: -37.794472, longitude: 144.961393, scaleRelativeToDistance: false)
+        // the Spot commerce building
+        addNewLocationAnnotationNodeToScene(latitude: -37.801625, longitude: 144.958838, scaleRelativeToDistance: false)
         
-        
-        let theSpot = CLLocationCoordinate2D(latitude: -37.801625, longitude: 144.958838)
-        let theSpotLocation = CLLocation(coordinate: theSpot, altitude: 300)
-        let annotationNode2 = LocationAnnotationNode(location: theSpotLocation, image: image)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode2)
-        
-        // TODO: add third location from Twist app
 /*
+        // places around Alice Hoy and SMAC and ERC
+        // 1
+        addNewLocationAnnotationNodeToScene(latitude: -37.799288, longitude: 144.963672)
+        // 2
+        addNewLocationAnnotationNodeToScene(latitude: -37.799284, longitude: 144.963570)
+        // 3
+        addNewLocationAnnotationNodeToScene(latitude: -37.799396, longitude: 144.963460)
+        // 4
+        addNewLocationAnnotationNodeToScene(latitude: -37.799485, longitude: 144.963441)
+        // 5
+        addNewLocationAnnotationNodeToScene(latitude: -37.799549, longitude: 144.963350)
+        // 6
+        addNewLocationAnnotationNodeToScene(latitude: -37.799508, longitude: 144.963114)
+        // 7
+        addNewLocationAnnotationNodeToScene(latitude: -37.799286, longitude: 144.963130)
+        // 8
+        addNewLocationAnnotationNodeToScene(latitude: -37.799061, longitude: 144.963205)
+        // 9
+        addNewLocationAnnotationNodeToScene(latitude: -37.798828, longitude: 144.963208)
+        // 10
+        addNewLocationAnnotationNodeToScene(latitude: -37.798688, longitude: 144.963355)
+        // 11
+        addNewLocationAnnotationNodeToScene(latitude: -37.798633, longitude: 144.963540)
+ */
+        
+/*      // Example code copied from AR+CL Xcode project
         let tempNode = LocationAnnotationNode(location: location, image: image)
         sceneLocationView.addLocationNodeForCurrentPosition(locationNode: tempNode)
  */
@@ -81,6 +99,24 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    // MARK: - code added by Leonard
+    
+    func addNewLocationAnnotationNodeToScene(
+        latitude: CLLocationDegrees, longitude: CLLocationDegrees,
+        altitude: CLLocationDistance = 30,
+        scaleRelativeToDistance: Bool = true)
+    {
+        let image = UIImage(named: "pin")!
+        
+        let locationCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let tempAltitude = altitude
+        let location = CLLocation(coordinate: locationCoordinate, altitude: tempAltitude)
+        
+        let annotationNode = LocationAnnotationNode(location: location, image: image)
+        annotationNode.scaleRelativeToDistance = scaleRelativeToDistance
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
     }
 
 }
