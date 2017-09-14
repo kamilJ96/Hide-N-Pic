@@ -7,14 +7,33 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import Firebase
 
 class ContactsVC: UIViewController {
+    
+    private let SIGNIN_SEGUE = "backToSignIn"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id, name, email"]).start {
+            (connection, result, err) in
+            
+            
+            if err != nil {
+                print("failed to start graph request:", err)
+                return
+            }
+            
+            print(result)
+        }
+
 
         // Do any additional setup after loading the view.
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -22,6 +41,11 @@ class ContactsVC: UIViewController {
     }
     
     @IBAction func logout(_ sender: Any) {
+        // signs user out of firebase
+        try! Auth.auth().signOut()
+        //sign the user out of facebook too
+        FBSDKAccessToken.setCurrent(nil)
+        self.performSegue(withIdentifier: self.SIGNIN_SEGUE, sender: nil)
     }
     
     /*

@@ -17,21 +17,35 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var EmailTF: UITextField!
     @IBOutlet weak var PasswordTF: UITextField!
-    
+    let loginButton = FBSDKLoginButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loginButton.isHidden = true
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+                // User is still signed in
+
+                print("user is still signed in")
+                self.performSegue(withIdentifier: self.CONTACTS_SEGUE, sender: nil)
+            } else {
+                // no one is signed in mate
+                self.loginButton.frame = CGRect(x: 16, y:50, width: self.view.frame.width - 32, height: 50)
+                self.loginButton.readPermissions = ["email", "public_profile"]
+                self.loginButton.delegate = self
+                self.view.addSubview(self.loginButton)
+
+                self.loginButton.isHidden = false
+            }
+        }
         
-        let loginButton = FBSDKLoginButton()
-        view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y:50, width: view.frame.width - 32, height: 50)
         
-        loginButton.delegate = self
-        loginButton.readPermissions = ["name","email", "public_profile"]
         // Do any additional setup after loading the view.
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
         print("did log out of facebook")
     }
     
@@ -41,7 +55,7 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         print("You good homie")
-        
+        loginButton.isHidden = true
         let accessToken = FBSDKAccessToken.current()
         
         guard let accessTokenString = accessToken?.tokenString else
@@ -56,48 +70,13 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
             }
             
             print("user logged into firebase ", user)
+            
         })
         
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start {
-            (connection, result, err) in
-            
-            
-            if err != nil {
-                print("failed to start graph request:", err)
-                return
-            }
-            
-            print(result)
-        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-    @IBAction func register(_ sender: Any) {
-    }
-    @IBAction func login(_ sender: Any) {
-        
-        if EmailTF.text != "" && PasswordTF.text != "" {
-            AuthProvider.Instance.login(withEmail: EmailTF.text!, password: PasswordTF.text!, loginHandler: { (message) in
-                if message != nil {
-                    self.alertTheUser(title: "Problem With Authentication", message: message!);
-                } else {
-                    print("login success")
-                }
-                
-            })
-        }
-    }
-    
-    private func alertTheUser(title:String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert);
-        let ok = UIAlertAction(title: "OK", style: .default, handler:nil);
-        alert.addAction(ok);
-        present(alert, animated:true, completion:nil);
     }
 }
