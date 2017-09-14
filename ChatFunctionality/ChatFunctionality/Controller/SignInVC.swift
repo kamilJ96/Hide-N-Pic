@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 import Firebase
+import FirebaseDatabase
+import FirebaseStorage
 
 class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -64,14 +66,34 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
         let credentials = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
         Auth.auth().signIn(with: credentials, completion: { (user, error) in
             
+            // when the user logs in for the first time, we'll store the users name and the users email on their profile page
+            // also store the small version of their profile pic in the datbaase in the storage
+            
+            
+            
             if error != nil {
                 print("something went wrong with our fb user: ", error)
+                
                 return
+            } else {
+                let storage = Storage.storage()
+                let storageRef = storage.reference(forURL: "gs://vanillathunder-ac0df.appspot.com/")
+                let profilePicRef = storageRef.child(user!.uid+"/profile_pic_small.jpg")
+                
+                // store the userID
+                let userID = user?.uid
+                
+                let databaseRef = Database.database().reference()
+                databaseRef.child("user_profile").child(userID!).child("profile_pic_small").observeSingleEvent(of: .value, with: { (snapshot) in
+                       databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
+                       databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
+                } )
             }
             
             print("user logged into firebase ", user)
             
         })
+        
         
     }
 
