@@ -34,7 +34,7 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
             } else {
                 // no one is signed in mate
                 self.loginButton.frame = CGRect(x: 16, y:50, width: self.view.frame.width - 32, height: 50)
-                self.loginButton.readPermissions = ["email", "public_profile"]
+                self.loginButton.readPermissions = ["email", "public_profile", "user_friends"]
                 self.loginButton.delegate = self
                 self.view.addSubview(self.loginButton)
 
@@ -69,11 +69,8 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
             // when the user logs in for the first time, we'll store the users name and the users email on their profile page
             // also store the small version of their profile pic in the datbaase in the storage
             
-            
-            
             if error != nil {
                 print("something went wrong with our fb user: ", error)
-                
                 return
             } else {
                 let storage = Storage.storage()
@@ -85,9 +82,28 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
                 
                 let databaseRef = Database.database().reference()
                 databaseRef.child("user_profile").child(userID!).child("profile_pic_small").observeSingleEvent(of: .value, with: { (snapshot) in
-                       databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
-                       databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
-                } )
+                    let profile_pic = snapshot.value as? String?
+                    
+                    if(profile_pic == nil) {
+                        if let imageData = NSData(contentsOf: user!.photoURL!) {
+                            let uploadTask = profilePicRef.putData(imageData as Data, metadata:nil) {
+                                metadata, error in
+                                if(error == nil) {
+                                    let downloadURL = metadata?.downloadURL
+                                    
+                                    databaseRef.child("user_profile").child("\(user!.uid)/profile_pic_small").setValue(downloadURL!()?.absoluteString)
+                                } else {
+                                    print("error downloading image")
+                                }
+                            }
+                        }
+                        databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
+                        databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
+                    } else {
+                        print("user has logged in earlier ")
+                    }
+                    
+                })
             }
             
             print("user logged into firebase ", user)
