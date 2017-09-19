@@ -21,6 +21,7 @@ class ChatViewController: JSQMessagesViewController {
     var receiverName = String()
     var receiverId = String()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,6 +104,10 @@ class ChatViewController: JSQMessagesViewController {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
         }
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        return
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
