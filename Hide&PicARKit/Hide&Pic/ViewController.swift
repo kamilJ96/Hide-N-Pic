@@ -28,13 +28,14 @@ class ViewController: UIViewController {
         
         //==============================================================
         // remove this code later, only for getting start purposes
-        
+/*
         // UniversityOval
         addNewLocationAnnotationNodeToScene(latitude: -37.794472, longitude: 144.961393, scaleRelativeToDistance: false)
         // the Spot commerce building
         addNewLocationAnnotationNodeToScene(latitude: -37.801625, longitude: 144.958838, scaleRelativeToDistance: false)
+ */
         
-/*
+
         // places around Alice Hoy and SMAC and ERC
         // 1
         addNewLocationAnnotationNodeToScene(latitude: -37.799288, longitude: 144.963672)
@@ -58,7 +59,6 @@ class ViewController: UIViewController {
         addNewLocationAnnotationNodeToScene(latitude: -37.798688, longitude: 144.963355)
         // 11
         addNewLocationAnnotationNodeToScene(latitude: -37.798633, longitude: 144.963540)
- */
         
 /*      // Example code copied from AR+CL Xcode project
         let tempNode = LocationAnnotationNode(location: location, image: image)
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
     
     func addNewLocationAnnotationNodeToScene(
         latitude: CLLocationDegrees, longitude: CLLocationDegrees,
-        altitude: CLLocationDistance = 30,
+        altitude: CLLocationDistance = 50,
         scaleRelativeToDistance: Bool = true)
     {
         let image = UIImage(named: "pin")!
