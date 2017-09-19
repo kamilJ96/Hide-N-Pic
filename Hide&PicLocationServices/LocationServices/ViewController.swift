@@ -12,13 +12,14 @@ import MapKit
 import CoreGraphics
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-
     
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var expandMap: UIButton!
+    let mapViewHeight = 128 // pixels
+    @IBOutlet weak var mapViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var expandMapButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 100
     var locationManager: CLLocationManager!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation
         print("user latitude = \(userLocation.coordinate.latitude)")
         print("user longitude = \(userLocation.coordinate.longitude)")
@@ -60,21 +61,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func expandMaps(_ sender: Any) {
-        if (!self.expandMap.isSelected) {
-            self.heightConstraint.constant = 0
-            expandMap.frame.origin = CGPoint(x: 20, y: 30)
-            expandMap.frame.size = CGSize(width: 46, height: 30)
-            expandMap.setTitle(_:"Return", for: UIControlState.normal)
-            self.expandMap.isSelected = true
+        if (!self.expandMapButton.isSelected) {
+            self.mapViewTopConstraint.constant = 0
+            expandMapButton.frame.origin = CGPoint(x: 20, y: 30)
+            expandMapButton.frame.size = CGSize(width: 46, height: 30)
+            expandMapButton.setTitle(_:"Return", for: UIControlState.normal)
+            self.expandMapButton.isSelected = true
         } else {
-            self.heightConstraint.constant = 576
-            expandMap.frame.origin = CGPoint(x: 0, y: 567)
-            expandMap.frame.size = CGSize(width: 375, height: 100)
-            expandMap.setTitle(_:"", for: UIControlState.normal)
-            self.expandMap.isSelected = false
+//            let screenSize = UIScreen.main.bounds
+//            let screenHeight = screenSize.height
+            
+            self.mapViewTopConstraint.constant = 352
+            expandMapButton.frame.origin = CGPoint(x: 0, y: 567)
+            expandMapButton.frame.size = CGSize(width: 375, height: 100)
+            expandMapButton.setTitle(_:"", for: UIControlState.normal)
+            self.expandMapButton.isSelected = false
         }
         
-        view.bringSubview(toFront: expandMap)
+        view.bringSubview(toFront: expandMapButton)
     }
 
 }
