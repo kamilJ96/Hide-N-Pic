@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 
+// Delegate function that implements the CoreLocationManager, allows you to
+// use CoreLocation services
 class GetLocation: CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     
