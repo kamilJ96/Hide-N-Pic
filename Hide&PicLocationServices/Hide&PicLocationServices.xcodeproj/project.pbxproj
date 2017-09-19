@@ -15,6 +15,7 @@
 		3A854A541F5EF4AF009BDDF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A854A521F5EF4AF009BDDF3 /* LaunchScreen.storyboard */; };
 		3A854A5F1F5EF4AF009BDDF3 /* LocationServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A854A5E1F5EF4AF009BDDF3 /* LocationServicesTests.swift */; };
 		3A854A6A1F5EF4AF009BDDF3 /* LocationServicesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A854A691F5EF4AF009BDDF3 /* LocationServicesUITests.swift */; };
+		3AD9D64E1F71586E00DEA281 /* ExpandedMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9D64D1F71586E00DEA281 /* ExpandedMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3A854A651F5EF4AF009BDDF3 /* Hide&PicLocationServicesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hide&PicLocationServicesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A854A691F5EF4AF009BDDF3 /* LocationServicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicesUITests.swift; sourceTree = "<group>"; };
 		3A854A6B1F5EF4AF009BDDF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AD9D64D1F71586E00DEA281 /* ExpandedMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				3A854A521F5EF4AF009BDDF3 /* LaunchScreen.storyboard */,
 				3A854A551F5EF4AF009BDDF3 /* Info.plist */,
 				3A1ED8481F6A5D4D00FC87EC /* LocationObject.swift */,
+				3AD9D64D1F71586E00DEA281 /* ExpandedMapViewController.swift */,
 			);
 			path = LocationServices;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD9D64E1F71586E00DEA281 /* ExpandedMapViewController.swift in Sources */,
 				3A854A4C1F5EF4AF009BDDF3 /* ViewController.swift in Sources */,
 				3A1ED8491F6A5D4D00FC87EC /* LocationObject.swift in Sources */,
 				3A854A4A1F5EF4AF009BDDF3 /* AppDelegate.swift in Sources */,
