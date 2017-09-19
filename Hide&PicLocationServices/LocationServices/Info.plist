@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Allow use of your location continuously?</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Allow use of your location?</string>
 	<key>CFBundleDisplayName</key>
 	<string>Hide&amp;PicLocationServices</string>
 	<key>CFBundleExecutable</key>
