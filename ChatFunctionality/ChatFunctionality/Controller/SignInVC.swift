@@ -99,6 +99,7 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
                         }
                         databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
                         databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
+                        
                     } else {
                         print("user has logged in earlier ")
                     }

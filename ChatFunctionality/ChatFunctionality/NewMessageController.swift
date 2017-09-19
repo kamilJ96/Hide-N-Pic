@@ -14,6 +14,11 @@ class NewMessageController: UITableViewController {
     let cellId = "cellId"
     
     var users = [User]()
+    
+    var current_user = Auth.auth().currentUser
+    
+    var receiver_name = String()
+    var receiver_id = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +42,13 @@ class NewMessageController: UITableViewController {
                 let user = User()
                 //if you use this setter, app will crash if properties dont match with firebase
                 user.name = dictionary["name"] as! String
-                
-                self.users.append(user)
+                user.id = Snapshot.key
+                // if current user's name equals a database user
+                if self.current_user?.displayName == user.name {
+                    // do nothing
+                } else {
+                    self.users.append(user)
+                }
                 
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
@@ -77,13 +87,18 @@ class NewMessageController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.receiver_name = self.users[indexPath.row].name!
+        self.receiver_id = self.users[indexPath.row].id!
         self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       // let navVc = segue.destination as! UINavigationController
-       // let chatVc = navVc.viewControllers.first as! ChatViewController
-       // chatVc.receiverData = sender
-        
+        super.prepare(for: segue, sender: sender)
+        let navVc = segue.destination as! UINavigationController
+        let chatVc = navVc.viewControllers.first as! ChatViewController
+        chatVc.senderId = current_user?.uid
+        chatVc.senderDisplayName = self.current_user?.displayName
+        chatVc.receiverId = self.receiver_id
+        chatVc.receiverName = self.receiver_name
     }
 
 }
