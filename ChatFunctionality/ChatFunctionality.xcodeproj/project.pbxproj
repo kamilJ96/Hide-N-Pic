@@ -681,8 +681,9 @@
 			baseConfigurationReference = 26B2A54D659BC9032DC02937 /* Pods-ChatFunctionality.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GGZ9WQLB24;
+				DEVELOPMENT_TEAM = 3CCGR6GPV9;
 				INFOPLIST_FILE = ChatFunctionality/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VanillaThunder.ChatFunctionality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -696,8 +697,9 @@
 			baseConfigurationReference = 3C4CAB2A96BA479F41971A11 /* Pods-ChatFunctionality.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GGZ9WQLB24;
+				DEVELOPMENT_TEAM = 3CCGR6GPV9;
 				INFOPLIST_FILE = ChatFunctionality/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VanillaThunder.ChatFunctionality;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -80,9 +80,9 @@ class NewMessageController: UITableViewController {
         self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navVc = segue.destination as! UINavigationController
-        let chatVc = navVc.viewControllers.first as! ChatViewController
-        chatVc.receiverData = sender
+       // let navVc = segue.destination as! UINavigationController
+       // let chatVc = navVc.viewControllers.first as! ChatViewController
+       // chatVc.receiverData = sender
         
     }
 
