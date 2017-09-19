@@ -17,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTI-08-HAu" userLabel="Expand Map Button">
-                                <rect key="frame" x="0.0" y="352" width="320" height="128"/>
-                                <connections>
-                                    <action selector="expandMaps:" destination="BYZ-38-t0r" eventType="touchDown" id="OV5-Zp-TmB"/>
-                                </connections>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UMD-6h-xbp">
                                 <rect key="frame" x="0.0" y="352" width="320" height="128"/>
                                 <constraints>
@@ -30,6 +24,12 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="acF-Sz-Vpd"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTI-08-HAu" userLabel="Expand Map Button">
+                                <rect key="frame" x="0.0" y="352" width="320" height="128"/>
+                                <connections>
+                                    <action selector="expandMaps:" destination="BYZ-38-t0r" eventType="touchDown" id="OV5-Zp-TmB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

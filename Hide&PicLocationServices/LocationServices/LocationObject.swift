@@ -20,6 +20,9 @@ class LocationObject: NSObject, MKAnnotation {
         self.coordinate = coordinate
     }
     
+}
+
+extension LocationObject {
     var subtitle: NSString {
         return "locationName"
     }
