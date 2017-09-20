@@ -10,7 +10,7 @@
         <!--Kit View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ARKitViewController" sceneMemberID="viewController"/>
+                <viewController id="BV1-FR-VrT" customClass="ARKitViewController" customModule="Hide_Pic" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>

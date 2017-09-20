@@ -14,8 +14,8 @@ import CoreLocation
 import MapKit
 
 
-class ViewController: UIViewController {
-    // This is the main class we will use from ARCL pod
+class ARKitViewController: UIViewController {
+    
     var sceneLocationView = SceneLocationView()
     
     
@@ -111,8 +111,7 @@ class ViewController: UIViewController {
         let image = UIImage(named: "pin")!
         
         let locationCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let tempAltitude = altitude
-        let location = CLLocation(coordinate: locationCoordinate, altitude: tempAltitude)
+        let location = CLLocation(coordinate: locationCoordinate, altitude: altitude)
         
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         annotationNode.scaleRelativeToDistance = scaleRelativeToDistance

@@ -73,7 +73,6 @@
 		9338C30C1F5E6ECC00D6C1A3 /* Hide&Pic */ = {
 			isa = PBXGroup;
 			children = (
-				936A012C1F71DBA9001CC6E2 /* MapFeature */,
 				9338C3211F5E6EF500D6C1A3 /* SampleCoordinates.swift */,
 				9338C30D1F5E6ECC00D6C1A3 /* AppDelegate.swift */,
 				9338C30F1F5E6ECC00D6C1A3 /* art.scnassets */,
@@ -84,13 +83,6 @@
 				9338C31B1F5E6ECC00D6C1A3 /* Info.plist */,
 			);
 			path = "Hide&Pic";
-			sourceTree = "<group>";
-		};
-		936A012C1F71DBA9001CC6E2 /* MapFeature */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MapFeature;
 			sourceTree = "<group>";
 		};
 		A28D7871DE53773D18CB5CCD /* Pods */ = {
