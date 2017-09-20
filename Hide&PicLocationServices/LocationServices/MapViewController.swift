@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 import CoreGraphics
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 100
