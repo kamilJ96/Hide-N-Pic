@@ -23,6 +23,7 @@ class ARKitViewController: UIViewController {
         super.viewDidLoad()
         
         // Code from ARCL readme file under Quick Start Guide heading
+        // TODO check this init, to see what's happening with the CGRect frame
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
         
