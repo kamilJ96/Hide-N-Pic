@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		895FEE8ADBDB9ABA7FC601B5 /* Pods_Combined_Maps_ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A803F1B0F66F0A4CCBB22BB /* Pods_Combined_Maps_ARKit.framework */; };
+		933CFE621F8474BB00552D1F /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CFE611F8474BA00552D1F /* ARKitViewController.swift */; };
 		936A013D1F71F482001CC6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A013C1F71F482001CC6E2 /* AppDelegate.swift */; };
 		936A013F1F71F482001CC6E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A013E1F71F482001CC6E2 /* ViewController.swift */; };
 		936A01421F71F482001CC6E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936A01401F71F482001CC6E2 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		02E1AC2082EAD10DF9D551B8 /* Pods-Combined-Maps-ARKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Combined-Maps-ARKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Combined-Maps-ARKit/Pods-Combined-Maps-ARKit.release.xcconfig"; sourceTree = "<group>"; };
 		4A803F1B0F66F0A4CCBB22BB /* Pods_Combined_Maps_ARKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Combined_Maps_ARKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		933CFE611F8474BA00552D1F /* ARKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		936A01391F71F482001CC6E2 /* Combined-Maps-ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Combined-Maps-ARKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A013C1F71F482001CC6E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936A013E1F71F482001CC6E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				936A01501F71F52D001CC6E2 /* LocationObject.swift */,
 				936A01511F71F531001CC6E2 /* ExpandedMapViewController.swift */,
 				936A013C1F71F482001CC6E2 /* AppDelegate.swift */,
+				933CFE611F8474BA00552D1F /* ARKitViewController.swift */,
 				936A013E1F71F482001CC6E2 /* ViewController.swift */,
 				936A01401F71F482001CC6E2 /* Main.storyboard */,
 				936A01431F71F482001CC6E2 /* Assets.xcassets */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A013F1F71F482001CC6E2 /* ViewController.swift in Sources */,
+				933CFE621F8474BB00552D1F /* ARKitViewController.swift in Sources */,
 				936A013D1F71F482001CC6E2 /* AppDelegate.swift in Sources */,
 				936A01531F71F683001CC6E2 /* LocationObject.swift in Sources */,
 				936A01541F71F684001CC6E2 /* ExpandedMapViewController.swift in Sources */,

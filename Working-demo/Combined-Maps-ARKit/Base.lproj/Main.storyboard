@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,9 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0C-l0-BjR" customClass="SceneLocationView" customModule="ARCL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
-                            </arscnView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Bh-gi-bcP">
                                 <rect key="frame" x="0.0" y="592" width="375" height="75"/>
                                 <constraints>
@@ -33,26 +30,31 @@
                                     <segue destination="hga-14-CCO" kind="show" id="PxF-bJ-EzT"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ky6-bM-67h">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                                <connections>
+                                    <segue destination="b5K-zy-pQb" kind="embed" id="MlS-Me-P4N"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="h0C-l0-BjR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0eh-1X-Ehq"/>
-                            <constraint firstItem="h0C-l0-BjR" firstAttribute="trailing" secondItem="8Bh-gi-bcP" secondAttribute="trailing" id="7qg-gs-U2f"/>
+                            <constraint firstItem="ky6-bM-67h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5Uf-dv-Gn1"/>
+                            <constraint firstItem="ky6-bM-67h" firstAttribute="trailing" secondItem="i7d-Hb-Mgn" secondAttribute="trailing" id="9Ed-gH-gZ7"/>
                             <constraint firstItem="i7d-Hb-Mgn" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="9tA-NO-FHF"/>
                             <constraint firstItem="i7d-Hb-Mgn" firstAttribute="leading" secondItem="8Bh-gi-bcP" secondAttribute="leading" id="Eyz-uv-IW9"/>
-                            <constraint firstItem="h0C-l0-BjR" firstAttribute="leading" secondItem="8Bh-gi-bcP" secondAttribute="leading" id="GQw-ZI-AFm"/>
+                            <constraint firstAttribute="trailing" secondItem="ky6-bM-67h" secondAttribute="trailing" id="QzS-EN-9UB"/>
+                            <constraint firstItem="ky6-bM-67h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RJA-xu-SbR"/>
+                            <constraint firstItem="ky6-bM-67h" firstAttribute="leading" secondItem="8Bh-gi-bcP" secondAttribute="leading" id="S9g-MJ-3ag"/>
                             <constraint firstItem="i7d-Hb-Mgn" firstAttribute="trailing" secondItem="8Bh-gi-bcP" secondAttribute="trailing" id="aHs-1u-ZO1"/>
                             <constraint firstItem="i7d-Hb-Mgn" firstAttribute="top" secondItem="8Bh-gi-bcP" secondAttribute="top" id="dNu-dN-h6p"/>
-                            <constraint firstItem="h0C-l0-BjR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jOb-CR-IP1"/>
-                            <constraint firstItem="8Bh-gi-bcP" firstAttribute="top" secondItem="h0C-l0-BjR" secondAttribute="bottom" constant="8" symbolic="YES" id="n12-tr-MtS"/>
                             <constraint firstItem="8Bh-gi-bcP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="nVi-nW-IcY"/>
-                            <constraint firstAttribute="trailing" secondItem="h0C-l0-BjR" secondAttribute="trailing" id="r9w-9T-GeV"/>
+                            <constraint firstItem="i7d-Hb-Mgn" firstAttribute="top" secondItem="ky6-bM-67h" secondAttribute="bottom" constant="8" symbolic="YES" id="xkE-hv-42v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="8Bh-gi-bcP" id="3Jw-4M-HOY"/>
-                        <outlet property="sceneLocationView" destination="h0C-l0-BjR" id="PuF-UO-hoF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,19 +99,10 @@
                         <viewLayoutGuide key="safeArea" id="35N-jr-f6o"/>
                     </view>
                     <navigationItem key="navigationItem" id="c1L-op-DB3">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="69p-ku-iFX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lnZ-Xo-rED">
-                                <rect key="frame" x="16" y="7" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="Yi9-Cs-qdj"/>
-                                    <constraint firstAttribute="width" constant="59" id="nqm-W9-ebO"/>
-                                </constraints>
-                                <state key="normal" title="Return"/>
-                                <connections>
-                                    <segue destination="gQr-wZ-1ZM" kind="unwind" unwindAction="unexpandMapSegueWithUnwindSegue:" id="G3T-ZY-tkR"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Return" id="yqg-h8-xxH">
+                            <connections>
+                                <segue destination="gQr-wZ-1ZM" kind="unwind" unwindAction="unexpandMapSegueWithUnwindSegue:" id="qgH-2d-fAK"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -119,7 +112,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJo-u8-k09" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gQr-wZ-1ZM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1794.4000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1585" y="414"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W0W-Dh-FuM">
@@ -137,7 +130,21 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvq-0c-4Oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="-583"/>
+            <point key="canvasLocation" x="642" y="415"/>
+        </scene>
+        <!--Kit View Controller-->
+        <scene sceneID="PMQ-fp-ALu">
+            <objects>
+                <viewController id="b5K-zy-pQb" customClass="ARKitViewController" customModule="Combined_Maps_ARKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Rg-qw-rI5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yd8-8j-Qks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530" y="-404"/>
         </scene>
     </scenes>
 </document>
