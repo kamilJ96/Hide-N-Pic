@@ -21,12 +21,10 @@ class ChatViewController: JSQMessagesViewController {
     var receiverName = String()
     var receiverId = String()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = receiverName
-        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
