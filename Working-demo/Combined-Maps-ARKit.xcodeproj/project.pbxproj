@@ -16,6 +16,7 @@
 		936A01471F71F482001CC6E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936A01451F71F482001CC6E2 /* LaunchScreen.storyboard */; };
 		936A01531F71F683001CC6E2 /* LocationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A01501F71F52D001CC6E2 /* LocationObject.swift */; };
 		936A01541F71F684001CC6E2 /* ExpandedMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A01511F71F531001CC6E2 /* ExpandedMapViewController.swift */; };
+		938838E51F85CC6100AAD184 /* TimeLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938838E41F85CC6100AAD184 /* TimeLengths.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		936A01481F71F482001CC6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		936A01501F71F52D001CC6E2 /* LocationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationObject.swift; sourceTree = "<group>"; };
 		936A01511F71F531001CC6E2 /* ExpandedMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedMapViewController.swift; sourceTree = "<group>"; };
+		938838E41F85CC6100AAD184 /* TimeLengths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLengths.swift; sourceTree = "<group>"; };
 		CAA6DA8B6DE1407C0CF76CA5 /* Pods-Combined-Maps-ARKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Combined-Maps-ARKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Combined-Maps-ARKit/Pods-Combined-Maps-ARKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				933CFE611F8474BA00552D1F /* ARKitViewController.swift */,
 				936A013E1F71F482001CC6E2 /* ViewController.swift */,
 				936A01401F71F482001CC6E2 /* Main.storyboard */,
+				938838E41F85CC6100AAD184 /* TimeLengths.swift */,
 				936A01431F71F482001CC6E2 /* Assets.xcassets */,
 				936A01451F71F482001CC6E2 /* LaunchScreen.storyboard */,
 				936A01481F71F482001CC6E2 /* Info.plist */,
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938838E51F85CC6100AAD184 /* TimeLengths.swift in Sources */,
 				936A013F1F71F482001CC6E2 /* ViewController.swift in Sources */,
 				933CFE621F8474BB00552D1F /* ARKitViewController.swift in Sources */,
 				936A013D1F71F482001CC6E2 /* AppDelegate.swift in Sources */,
