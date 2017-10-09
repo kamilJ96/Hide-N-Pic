@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36BEA1D71F8B216900776038 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BEA1D61F8B216900776038 /* SignInViewController.swift */; };
+		36BEA1DB1F8B5B0D00776038 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BEA1DA1F8B5B0D00776038 /* ChatViewController.swift */; };
 		895FEE8ADBDB9ABA7FC601B5 /* Pods_Combined_Maps_ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A803F1B0F66F0A4CCBB22BB /* Pods_Combined_Maps_ARKit.framework */; };
 		933CFE621F8474BB00552D1F /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CFE611F8474BA00552D1F /* ARKitViewController.swift */; };
 		936A013D1F71F482001CC6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A013C1F71F482001CC6E2 /* AppDelegate.swift */; };
@@ -21,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		02E1AC2082EAD10DF9D551B8 /* Pods-Combined-Maps-ARKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Combined-Maps-ARKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Combined-Maps-ARKit/Pods-Combined-Maps-ARKit.release.xcconfig"; sourceTree = "<group>"; };
+		36BEA1D61F8B216900776038 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		36BEA1DA1F8B5B0D00776038 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		36BEA1DC1F8B8B6E00776038 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A803F1B0F66F0A4CCBB22BB /* Pods_Combined_Maps_ARKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Combined_Maps_ARKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		933CFE611F8474BA00552D1F /* ARKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		936A01391F71F482001CC6E2 /* Combined-Maps-ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Combined-Maps-ARKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +83,7 @@
 		936A013B1F71F482001CC6E2 /* Combined-Maps-ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				36BEA1DC1F8B8B6E00776038 /* GoogleService-Info.plist */,
 				936A01501F71F52D001CC6E2 /* LocationObject.swift */,
 				936A01511F71F531001CC6E2 /* ExpandedMapViewController.swift */,
 				936A013C1F71F482001CC6E2 /* AppDelegate.swift */,
@@ -88,6 +94,8 @@
 				936A01431F71F482001CC6E2 /* Assets.xcassets */,
 				936A01451F71F482001CC6E2 /* LaunchScreen.storyboard */,
 				936A01481F71F482001CC6E2 /* Info.plist */,
+				36BEA1D61F8B216900776038 /* SignInViewController.swift */,
+				36BEA1DA1F8B5B0D00776038 /* ChatViewController.swift */,
 			);
 			path = "Combined-Maps-ARKit";
 			sourceTree = "<group>";
@@ -249,7 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36BEA1D71F8B216900776038 /* SignInViewController.swift in Sources */,
 				938838E51F85CC6100AAD184 /* TimeLengths.swift in Sources */,
+				36BEA1DB1F8B5B0D00776038 /* ChatViewController.swift in Sources */,
 				936A013F1F71F482001CC6E2 /* ViewController.swift in Sources */,
 				933CFE621F8474BB00552D1F /* ARKitViewController.swift in Sources */,
 				936A013D1F71F482001CC6E2 /* AppDelegate.swift in Sources */,
@@ -393,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3CCGR6GPV9;
+				DEVELOPMENT_TEAM = GGZ9WQLB24;
 				INFOPLIST_FILE = "Combined-Maps-ARKit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VanillaThunder.Combined-Maps-ARKit";
@@ -409,7 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3CCGR6GPV9;
+				DEVELOPMENT_TEAM = GGZ9WQLB24;
 				INFOPLIST_FILE = "Combined-Maps-ARKit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VanillaThunder.Combined-Maps-ARKit";
