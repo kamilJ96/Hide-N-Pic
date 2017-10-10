@@ -24,14 +24,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
     var user = Auth.auth().currentUser
     // store device's id
     let deviceID = UIDevice.current.identifierForVendor?.uuidString
+    // current user id
+    let uid = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // user has logged in, update online status
         if let user = Auth.auth().currentUser {
-            let uid = user.uid
-            manageConnections(userId: uid)
+            manageConnections(userId: self.uid!)
         }
         
         // for the bottom map view
@@ -61,6 +62,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // For use when the app is open
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -78,6 +81,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
         // Add location pin for enemy player, currently just uses user's location lul
         let locationPin = LocationObject(title: "Enemy", locationName: "enemy", coordinate: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude-0.0005, longitude: userLocation.coordinate.longitude-0.0005))
         mapView.addAnnotation(locationPin)
+        
+        // Karan - Storing current lat and long into database
+       let myConnectionsRef = Database.database().reference(withPath:"user_profile/\(self.uid)/connections/")
+       myConnectionsRef.child("latitude").setValue(userLocation.coordinate.latitude)
+       myConnectionsRef.child("longitude").setValue(userLocation.coordinate.longitude)
     }
     
     /* Send player and enemy data to the ExpandedViewController */
