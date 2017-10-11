@@ -14,7 +14,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     private let HOME_SEGUE = "ToHome"
     
