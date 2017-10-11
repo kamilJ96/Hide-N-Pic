@@ -19,6 +19,7 @@
 		936A01531F71F683001CC6E2 /* LocationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A01501F71F52D001CC6E2 /* LocationObject.swift */; };
 		936A01541F71F684001CC6E2 /* ExpandedMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A01511F71F531001CC6E2 /* ExpandedMapViewController.swift */; };
 		938838E51F85CC6100AAD184 /* TimeLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938838E41F85CC6100AAD184 /* TimeLengths.swift */; };
+		93FDC5941F8DBDB300E4E2C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36BEA1DD1F8DAEAC00776038 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A01471F71F482001CC6E2 /* LaunchScreen.storyboard in Resources */,
+				93FDC5941F8DBDB300E4E2C7 /* GoogleService-Info.plist in Resources */,
 				936A01441F71F482001CC6E2 /* Assets.xcassets in Resources */,
 				936A01421F71F482001CC6E2 /* Main.storyboard in Resources */,
 			);
@@ -403,7 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GGZ9WQLB24;
+				DEVELOPMENT_TEAM = 3CCGR6GPV9;
 				INFOPLIST_FILE = "Combined-Maps-ARKit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VanillaThunder.Combined-Maps-ARKit";
@@ -419,7 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GGZ9WQLB24;
+				DEVELOPMENT_TEAM = 3CCGR6GPV9;
 				INFOPLIST_FILE = "Combined-Maps-ARKit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VanillaThunder.Combined-Maps-ARKit";
