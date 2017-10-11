@@ -1,0 +1,30 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+
+target 'Hide&PicFromScratch' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Hide&PicFromScratch
+
+  pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
+
+
+  target 'Hide&PicFromScratchTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Hide&PicFromScratchUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

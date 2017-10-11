@@ -1,0 +1,6 @@
+framework module Pods_Hide_PicFromScratch {
+  umbrella header "Pods-Hide&PicFromScratch-umbrella.h"
+
+  export *
+  module * { export * }
+}
