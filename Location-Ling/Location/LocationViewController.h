@@ -11,4 +11,7 @@
 @property LocationTracker * locationTracker;
 @property (nonatomic) NSTimer* locationUpdateTimer;
 
+- (void)setUpLocationTraker
+- (void)updateLocation
+  
 @end
