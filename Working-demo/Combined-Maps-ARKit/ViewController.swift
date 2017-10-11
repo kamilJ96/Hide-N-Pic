@@ -61,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
     func checkLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
         // For use when the app is open
         locationManager.requestWhenInUseAuthorization()
