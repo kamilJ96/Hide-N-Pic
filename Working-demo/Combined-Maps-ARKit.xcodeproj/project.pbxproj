@@ -25,7 +25,7 @@
 		02E1AC2082EAD10DF9D551B8 /* Pods-Combined-Maps-ARKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Combined-Maps-ARKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Combined-Maps-ARKit/Pods-Combined-Maps-ARKit.release.xcconfig"; sourceTree = "<group>"; };
 		36BEA1D61F8B216900776038 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		36BEA1DA1F8B5B0D00776038 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		36BEA1DC1F8B8B6E00776038 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36BEA1DD1F8DAEAC00776038 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A803F1B0F66F0A4CCBB22BB /* Pods_Combined_Maps_ARKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Combined_Maps_ARKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		933CFE611F8474BA00552D1F /* ARKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		936A01391F71F482001CC6E2 /* Combined-Maps-ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Combined-Maps-ARKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +83,7 @@
 		936A013B1F71F482001CC6E2 /* Combined-Maps-ARKit */ = {
 			isa = PBXGroup;
 			children = (
-				36BEA1DC1F8B8B6E00776038 /* GoogleService-Info.plist */,
+				36BEA1DD1F8DAEAC00776038 /* GoogleService-Info.plist */,
 				936A01501F71F52D001CC6E2 /* LocationObject.swift */,
 				936A01511F71F531001CC6E2 /* ExpandedMapViewController.swift */,
 				936A013C1F71F482001CC6E2 /* AppDelegate.swift */,

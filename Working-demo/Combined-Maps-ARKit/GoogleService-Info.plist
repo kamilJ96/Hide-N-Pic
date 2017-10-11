@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1016795528150-h0b8jose5bar81kc1f54e6oatd9fj8d1.apps.googleusercontent.com</string>
+	<string>1016795528150-mihuke535m9vakrgcsh5mcahf8ggbkde.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1016795528150-h0b8jose5bar81kc1f54e6oatd9fj8d1</string>
+	<string>com.googleusercontent.apps.1016795528150-mihuke535m9vakrgcsh5mcahf8ggbkde</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD7UOsDySuNQeS21CIWx47jDbk5jT8YFJo</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +17,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.VanillaThunder.Combined-Maps-ARKit</string>
+	<string>VanillaThunder.Combined-Maps-ARKit</string>
 	<key>PROJECT_ID</key>
 	<string>vanillathunder-ac0df</string>
 	<key>STORAGE_BUCKET</key>
 	<string>vanillathunder-ac0df.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1016795528150:ios:a16ccae95d206e96</string>
+	<string>1:1016795528150:ios:dd8da7a002d62099</string>
 	<key>DATABASE_URL</key>
 	<string>https://vanillathunder-ac0df.firebaseio.com</string>
 </dict>
