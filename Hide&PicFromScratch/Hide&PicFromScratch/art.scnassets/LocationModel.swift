@@ -28,7 +28,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     // TODO: make this an if else statement to change your string, depending on whether you initiated the game or accepted an invite to a game
     lazy var myPlayerString = initiatingPlayerString
-    lazy var opponentPlayerString = invitedPlayerString
+    // TODO: change back to invitedPlayerString. temporarily use our own string to test retrieiving data
+    lazy var opponentPlayerString = initiatingPlayerString
     
     // Firebase database references
     let ref: DatabaseReference! = Database.database().reference()
@@ -41,17 +42,13 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         return locationManager.location!
     }
     
-//    var myLocations: Array<CLLocation> {
-//        didSet {
-//
-//        }
-//    }
-//
-//    var opponentsLocations: Array<CLLocation> {
-//        didSet {
-//
-//        }
-//    }
+    // TODO: these two variables may need to be used for updating map and AR views
+    var opponentsLocations: Array<CLLocation> = [] {
+        didSet {
+            // TODO: notify listeners
+            print("opponentsLocations = \(opponentsLocations)")
+        }
+    }
     
     public override init() {
         super.init()
@@ -63,14 +60,46 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         
         // Create new game session in Firebase Database
         gameSessionID = ref.child(gameSessionsString).childByAutoId()
+        
+        
+        startGame()
+        
+    }
+    
+    public func startGame() {
         myLocationsID = gameSessionID.child(myPlayerString)
         opponentsLocationsID = gameSessionID.child(opponentPlayerString)
         
-        
+        // start continuously sending location to server
         Timer.scheduledTimer(withTimeInterval: locationUpdateFrequency, repeats: true) { [weak self] timer in
             self?.recordLocationAndSendToServer()
         }
-        // TODO: Timer.scheduledTimer() retrieveOpponentsLocationFromServer()
+        
+        // listen for when new locations are added to opponent's location list on server
+        let _ = opponentsLocationsID.observe(DataEventType.childAdded, with: { (snapshot) in
+            if let locationDict = snapshot.value as? NSDictionary {
+                
+                if let latitude = locationDict["latitude"] as? CLLocationDegrees,
+                    let longitude = locationDict["longitude"] as? CLLocationDegrees,
+                    let timestampString = locationDict["timestamp"] as? String
+                {
+                    // try convert timestampString to a Date
+                    let dateFormatter = DateFormatter()
+                    // timestapString comes formated as "2017-10-11 08:32:36 +0000";
+                    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+                    let timestamp = dateFormatter.date(from: timestampString)
+                    if timestamp != nil {
+                        // successfully converted timestamp string into Date type
+                        // create new CLLocation, add it to user array
+                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        self.opponentsLocations.append(CLLocation(coordinate: coordinate, altitude: 50, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: timestamp!))
+                    }
+                }
+                
+                
+            }
+        })
+
     }
     
     
@@ -80,8 +109,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         let latitude = currentLocation.coordinate.latitude
         let longitude = currentLocation.coordinate.longitude
         let timestamp = currentLocation.timestamp
-        
-        print("record new current location: \(currentLocation)")
         
         // add to Firebase Database
         myLocationsID.childByAutoId().setValue(
@@ -98,6 +125,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     deinit {
         // delete data from server for recorded locations for game session
         gameSessionID.removeValue()
+        // remove listeners
+        opponentsLocationsID.removeAllObservers()
     }
     
     
