@@ -82,7 +82,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
         let locationPin = LocationObject(title: "Enemy", locationName: "enemy", coordinate: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude-0.0005, longitude: userLocation.coordinate.longitude-0.0005))
         mapView.addAnnotation(locationPin)
         
-        // Karan - Storing current lat and long into database
+      // Karan - Storing current lat and long into database
       // let myConnectionsRef = Database.database().reference(withPath:"user_profile/\(self.uid)/location/")
         
        let databaseRef = Database.database().reference()
