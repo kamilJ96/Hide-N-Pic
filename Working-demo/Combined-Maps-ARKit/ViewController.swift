@@ -31,9 +31,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
         super.viewDidLoad()
         
         // user has logged in, update online status
-        if let user = Auth.auth().currentUser {
-            manageConnections(userId: self.uid!)
-        }
+       // if let user = Auth.auth().currentUser {
+         //   manageConnections(userId: self.uid!)
+       // }
         
         // for the bottom map view
         checkLocation()
@@ -83,9 +83,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
         mapView.addAnnotation(locationPin)
         
         // Karan - Storing current lat and long into database
-       let myConnectionsRef = Database.database().reference(withPath:"user_profile/\(self.uid)/connections/")
-       myConnectionsRef.child("latitude").setValue(userLocation.coordinate.latitude)
-       myConnectionsRef.child("longitude").setValue(userLocation.coordinate.longitude)
+      // let myConnectionsRef = Database.database().reference(withPath:"user_profile/\(self.uid)/location/")
+        
+       let databaseRef = Database.database().reference()
+       databaseRef.child("location").child("\(user!.uid)/latitude").setValue(userLocation.coordinate.latitude)
+       databaseRef.child("location").child("\(user!.uid)/longitude").setValue(userLocation.coordinate.longitude)
+        
+      // myConnectionsRef.child("latitude").setValue(userLocation.coordinate.latitude)
+      // myConnectionsRef.child("longitude").setValue(userLocation.coordinate.longitude)
     }
     
     /* Send player and enemy data to the ExpandedViewController */
@@ -106,10 +111,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate   {
         //sign the user out of facebook too
         FBSDKAccessToken.setCurrent(nil)
         
-        let myConnectionsRef = Database.database().reference(withPath: "user_profile/\(self.user!.uid)/connections/\(self.deviceID!)")
-        myConnectionsRef.child("online").setValue(false)
         
-        myConnectionsRef.child("last_online").setValue(NSDate().timeIntervalSince1970)
+     //   let myConnectionsRef = Database.database().reference(withPath: "user_profile/\(self.user!.uid)/connections/\(self.deviceID!)")
+        
+        // myConnectionsRef.child("online").setValue(false)
+        
+        // myConnectionsRef.child("last_online").setValue(NSDate().timeIntervalSince1970)
+        
+        // updated firebase DB structure
+        let databaseRef = Database.database().reference()
+        databaseRef.child("user_profile").child("\(user!.uid)/online").setValue(false)
+       
         
         self.performSegue(withIdentifier: self.SIGNIN_SEGUE, sender: nil)
     }

@@ -99,6 +99,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                         // creating name and email references for user in DB from facebook
                         databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
                         databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
+                        databaseRef.child("user_profile").child("\(user!.uid)/online").setValue(true)
                         
                     } else {
                         print("user has logged in earlier ")
