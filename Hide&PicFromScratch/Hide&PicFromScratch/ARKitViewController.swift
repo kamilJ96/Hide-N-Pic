@@ -14,10 +14,10 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelDel
 
     @IBOutlet var sceneView: ARSCNView!
     
-    var model: LocationModel?
+    var locationModel: LocationModel?
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
-    func modelListener() {
+    func locationModelDidUpdate() {
         // check to see if this ARView is visible on screen before doing any UI stuff
     }
     

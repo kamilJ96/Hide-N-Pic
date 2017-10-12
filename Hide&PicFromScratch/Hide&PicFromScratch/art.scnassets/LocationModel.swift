@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  LocationModel.swift
 //  Hide&PicFromScratch
 //
 //  Created by Leonard Zou on 11/10/17.
@@ -67,6 +67,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     }
     
     public func startGame() {
+        // DatabaseReference objects for accessing server
         myLocationsID = gameSessionID.child(myPlayerString)
         opponentsLocationsID = gameSessionID.child(opponentPlayerString)
         
@@ -158,5 +159,5 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
 }
 
 protocol LocationModelDelegate {
-    func modelListener()
+    func locationModelDidUpdate()
 }

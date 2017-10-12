@@ -11,7 +11,7 @@ import MapKit
 
 class MainGameViewController: UIViewController {
 
-    let model = LocationModel()
+    let locationModel = LocationModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +29,11 @@ class MainGameViewController: UIViewController {
     @IBAction func goBack(segue: UIStoryboardSegue) { }
     
     
-    /* Send model to MapViewController */
+    /* Send locationModel to MapViewController */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // works for both MapViewController that is embedded in a NavigationController, and not embedded
         if let mapVC = segue.destination.contents as? MapViewController {
-                mapVC.model = model
+                mapVC.locationModel = locationModel
         }
     }
     

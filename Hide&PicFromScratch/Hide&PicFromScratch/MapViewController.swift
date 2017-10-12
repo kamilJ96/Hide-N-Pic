@@ -15,11 +15,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, LocationMo
     
     let regionRadius: CLLocationDistance = 100
 
-    var model: LocationModel?
+    var locationModel: LocationModel?
     
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
-    func modelListener() {
+    func locationModelDidUpdate() {
         // check to see if this MapView is visible on screen before doing any UI stuff
     }
     
@@ -33,7 +33,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, LocationMo
     
     override func viewWillAppear(_ animated: Bool) {
         // reframe region around player
-        let region = MKCoordinateRegionMakeWithDistance((model?.playerLocation!.coordinate)!, regionRadius * 2.0, regionRadius * 2.0)
+        let region = MKCoordinateRegionMakeWithDistance((locationModel?.playerLocation!.coordinate)!, regionRadius * 2.0, regionRadius * 2.0)
         mapView?.setRegion(region, animated: true)
     }
 
