@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelDelegate {
+class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObserver {
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -18,7 +18,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelDel
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
-        // check to see if this ARView is visible on screen before doing any UI stuff
+        // TODO: check to see if this ARView is visible on screen before doing any UI stuff
     }
     
     
@@ -28,6 +28,9 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelDel
         
         // Set the view's delegate
         sceneView.delegate = self
+        
+        // register as locationModel observer
+        locationModel?.addObserver(self)
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true

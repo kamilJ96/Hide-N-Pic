@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, LocationModelDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObserver {
 
     @IBOutlet weak var mapView: MKMapView?
     
@@ -17,10 +17,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, LocationMo
 
     var locationModel: LocationModel?
     
+    var prevLocationPin: CLLocation! = nil
+    
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
-        // check to see if this MapView is visible on screen before doing any UI stuff
+        // TODO: check to see if this MapView is visible on screen before doing any UI stuff
+        // check if latest location is the same as the previous one
+        let latestLocationPin = locationModel?.opponentsLocations.last
+        if latestLocationPin == prevLocationPin { return }
+        
+        // create new location pin and display in map
+        prevLocationPin = latestLocationPin
+        if latestLocationPin != nil {
+            mapView?.addAnnotation(latestLocationPin!)
+        }
+    }
+    
+    
+    // returns a standard pin view to use to display the annotation, and also animatesDrop
+    // MKMapViewDelegate function
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let annotationView = MKPinAnnotationView()
+        annotationView.animatesDrop = true
+        return annotationView
     }
     
     
@@ -28,6 +52,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, LocationMo
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        mapView?.delegate = self
+        locationModel?.addObserver(self)
     }
     
     
@@ -53,4 +79,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, LocationMo
     }
     */
 
+}
+
+
+// extension to allow us to use the CLLocation class as our annotation class
+extension CLLocation: MKAnnotation {
+    // since we do not need to display any titles or text for our map pins, return nil
+    public var title: String? {
+        return nil
+    }
+    public var subtitle: String? {
+        return nil
+    }
 }

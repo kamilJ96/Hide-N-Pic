@@ -18,6 +18,8 @@ import FirebaseDatabase
 // initiating player is responsible for creating game session on server and deleting it afterwards
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
+    private var observers: Array<LocationModelObserver> = []
+    
     let locationUpdateFrequency: TimeInterval = 5 // seconds
     let locationHintFadeTime: TimeInterval = 15 // seconds
     
@@ -47,7 +49,14 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         didSet {
             // TODO: notify listeners
             print("opponentsLocations = \(opponentsLocations)")
+            for observer in observers {
+                observer.locationModelDidUpdate()
+            }
         }
+    }
+    
+    func addObserver(_ newObserver: LocationModelObserver) {
+        observers.append(newObserver)
     }
     
     public override init() {
@@ -158,6 +167,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
 }
 
-protocol LocationModelDelegate {
+protocol LocationModelObserver {
     func locationModelDidUpdate()
 }
