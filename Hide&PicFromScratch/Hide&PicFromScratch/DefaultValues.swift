@@ -15,7 +15,7 @@ public struct DefaultValues {
     static let locationHintFadeTime: TimeInterval = 15 // seconds
     
     // for creating new CLLocation objects to be displayed in mapViews
-    static let altitude: CLLocationDistance = 50
-    static let horizontalAccuracy: CLLocationAccuracy = 0
-    static let verticalAccuracy: CLLocationAccuracy = 0
+    static let altitude: CLLocationDistance = 50 // metres
+    static let horizontalAccuracy: CLLocationAccuracy = 0 // metres
+    static let verticalAccuracy: CLLocationAccuracy = 0 // metres
 }

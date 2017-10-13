@@ -13,7 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
 
     @IBOutlet weak var mapView: MKMapView!
     
-    let regionRadius: CLLocationDistance = 100
+    let regionRadius: CLLocationDistance = 100 // the frame of the map view
 
     var locationModel: LocationModel?
     
@@ -43,7 +43,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
         
         let annotationView = MKPinAnnotationView()
         annotationView.animatesDrop = true
-        annotationView.alpha = 1
+        
+        // automatically fade new pin views according to how old they are
+        var alpha: CGFloat = 1
+        if let annotation = annotation as? CLLocation {
+            alpha = CGFloat(1 - (abs(annotation.timestamp.timeIntervalSinceNow) / DefaultValues.locationHintFadeTime))
+        }
+        
+        annotationView.alpha = alpha
         
         return annotationView
     }
@@ -57,19 +64,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
             
             // create animator to animate pin fade out over 15 seconds
             UIViewPropertyAnimator.runningPropertyAnimator(
-                // TODO: change magic nums
-                withDuration: DefaultValues.locationHintFadeTime,
+                withDuration: DefaultValues.locationHintFadeTime * Double(annotationView.alpha), // if pin has already started fading, fade out faster
                 delay: 0,
                 options: .curveLinear,
                 animations: { annotationView.alpha = 0.0 },
-                completion: nil//{ animatingPosition in
-//                    self.mapView.removeAnnotation()
-//                }
+                completion: { animatingPosition in
+                    self.removeExpiredAnnotations()
+                }
             )
         }
         
     }
     
+    // when a map view is loaded for the first time, add all annotation pins that are younger than locationHintFadeTime
+    func displayUnexpiredLocations() {
+        for location in (locationModel?.opponentsLocations)! {
+            if abs(location.timestamp.timeIntervalSinceNow) < DefaultValues.locationHintFadeTime {
+                mapView.addAnnotation(location)
+            }
+        }
+    }
+    
+    func removeExpiredAnnotations() {
+        for annotation in mapView.annotations {
+            if let annotation = annotation as? CLLocation {
+                // if annotation pin is older than hint fade time then remove from mapView
+                if abs(annotation.timestamp.timeIntervalSinceNow) > DefaultValues.locationHintFadeTime {
+                    mapView.removeAnnotation(annotation)
+                }
+            }
+        }
+    }
     
     // MARK: - View Controller Lifecycle
     
@@ -78,28 +103,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
 
         // Do any additional setup after loading the view.
         mapView.delegate = self
-        locationModel?.addObserver(self)
         
-        print("MapViewController view did load; existing annotations in this map:") // DEBUG
-        print(mapView.annotations) // DEBUG
+        locationModel?.addObserver(self)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: change this code to reframe around all annotations using func showAnnotations(_:animated:)
         // reframe region around player
+//        mapView.showAnnotations(mapView.annotations, animated: false)
         let region = MKCoordinateRegionMakeWithDistance((locationModel?.playerLocation!.coordinate)!, regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: false)
+        
+        // add all unexpired pins again (i.e. pins that are younger than DefaultValues.locationHintFadeTime
+        displayUnexpiredLocations()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        mapView.delegate = nil // for some reason adding this line of code messes up the original bottom small mapView when returning from the big mapView
     }

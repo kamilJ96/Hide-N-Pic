@@ -18,12 +18,7 @@ import FirebaseDatabase
 // initiating player is responsible for creating game session on server and deleting it afterwards
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
-    private var observers: Array<LocationModelObserver?> = [] {
-        didSet {
-            print("observers didSet: \(observers)") // DEBUG
-        }
-    }
-    
+    private var observers: Array<LocationModelObserver?> = []    
     
     // strings for accessing file path in database
     let gameSessionsString = "gameSessions"
@@ -46,10 +41,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         return locationManager.location!
     }
     
-    // TODO: these two variables may need to be used for updating map and AR views
     var opponentsLocations: Array<CLLocation> = [] {
         didSet {
-            print("opponentsLocations = \(opponentsLocations)")
             for observer in observers {
                 observer?.locationModelDidUpdate()
             }
