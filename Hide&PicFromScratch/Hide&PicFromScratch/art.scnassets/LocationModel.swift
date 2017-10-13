@@ -18,11 +18,12 @@ import FirebaseDatabase
 // initiating player is responsible for creating game session on server and deleting it afterwards
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
-    private var observers: Array<LocationModelObserver?> = []
+    private var observers: Array<LocationModelObserver?> = [] {
+        didSet {
+            print("observers didSet: \(observers)") // DEBUG
+        }
+    }
     
-    // TODO: replace these vals with vals from DefaultValues struct
-    let locationUpdateFrequency: TimeInterval = 5 // seconds
-    let locationHintFadeTime: TimeInterval = 15 // seconds
     
     // strings for accessing file path in database
     let gameSessionsString = "gameSessions"
@@ -48,7 +49,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     // TODO: these two variables may need to be used for updating map and AR views
     var opponentsLocations: Array<CLLocation> = [] {
         didSet {
-            // TODO: notify listeners
             print("opponentsLocations = \(opponentsLocations)")
             for observer in observers {
                 observer?.locationModelDidUpdate()
@@ -83,7 +83,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         opponentsLocationsID = gameSessionID.child(opponentPlayerString)
         
         // start continuously sending location to server
-        Timer.scheduledTimer(withTimeInterval: locationUpdateFrequency, repeats: true) { [weak self] timer in
+        Timer.scheduledTimer(withTimeInterval: DefaultValues.locationUpdateFrequency, repeats: true) { [weak self] timer in
             self?.recordLocationAndSendToServer()
         }
         
@@ -104,7 +104,14 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
                         // successfully converted timestamp string into Date type
                         // create new CLLocation, add it to user array
                         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        self.opponentsLocations.append(CLLocation(coordinate: coordinate, altitude: 50, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: timestamp!))
+                        self.opponentsLocations.append(
+                            CLLocation(coordinate: coordinate,
+                                       altitude: DefaultValues.altitude,
+                                       horizontalAccuracy: DefaultValues.horizontalAccuracy,
+                                       verticalAccuracy: DefaultValues.verticalAccuracy,
+                                       timestamp: timestamp!
+                            )
+                        )
                     }
                 }
                 

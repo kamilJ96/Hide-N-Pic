@@ -58,7 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
             // create animator to animate pin fade out over 15 seconds
             UIViewPropertyAnimator.runningPropertyAnimator(
                 // TODO: change magic nums
-                withDuration: 7, // seconds
+                withDuration: DefaultValues.locationHintFadeTime,
                 delay: 0,
                 options: .curveLinear,
                 animations: { annotationView.alpha = 0.0 },
@@ -79,11 +79,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
         // Do any additional setup after loading the view.
         mapView.delegate = self
         locationModel?.addObserver(self)
+        
+        print("MapViewController view did load; existing annotations in this map:") // DEBUG
+        print(mapView.annotations) // DEBUG
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // TODO: change this code to reframe around all annotations using func showAnnotations(_:animated:)
         // reframe region around player
         let region = MKCoordinateRegionMakeWithDistance((locationModel?.playerLocation!.coordinate)!, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(region, animated: true)

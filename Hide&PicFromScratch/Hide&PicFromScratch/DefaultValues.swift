@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import CoreLocation
 
 public struct DefaultValues {
     // for pins
-    let locationUpdateFrequency: TimeInterval = 5 // seconds
-    let locationHintFadeTime: TimeInterval = 15 // seconds
+    static let locationUpdateFrequency: TimeInterval = 5 // seconds
+    static let locationHintFadeTime: TimeInterval = 15 // seconds
     
     // for creating new CLLocation objects to be displayed in mapViews
-    // TODO: add altitude and horiz vert accuracy etc
+    static let altitude: CLLocationDistance = 50
+    static let horizontalAccuracy: CLLocationAccuracy = 0
+    static let verticalAccuracy: CLLocationAccuracy = 0
 }
