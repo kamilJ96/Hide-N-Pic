@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q2S-Sy-CqC">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q2S-Sy-CqC">
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for your friend to accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s50-I5-3ts">
@@ -57,7 +57,7 @@
                         <viewLayoutGuide key="safeArea" id="sut-2b-OxI"/>
                     </view>
                     <connections>
-                        <segue destination="Aaw-ZZ-gNr" kind="show" id="YET-P8-gId"/>
+                        <segue destination="Aaw-ZZ-gNr" kind="show" identifier="FriendAcceptedGoToGame" id="YET-P8-gId"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2L-bG-3mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,16 +240,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LeG-jJ-WaE">
-                                                    <rect key="frame" x="100" y="23" width="174" height="56.5"/>
+                                                    <rect key="frame" x="88" y="21.5" width="198.5" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InitiatingPlayer's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JaD-ta-6xX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="174" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="198.5" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ryz-QJ-Hew">
-                                                            <rect key="frame" x="17" y="20.5" width="140" height="36"/>
+                                                            <rect key="frame" x="29.5" y="24" width="140" height="36"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trS-nh-F5Y">
                                                                     <rect key="frame" x="0.0" y="0.0" width="66" height="36"/>
@@ -260,7 +260,7 @@
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                     <connections>
-                                                                        <segue destination="Aaw-ZZ-gNr" kind="show" id="moY-Ls-MPC"/>
+                                                                        <segue destination="Aaw-ZZ-gNr" kind="show" identifier="AcceptInviteGoToGame" id="moY-Ls-MPC"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiN-rB-mtV">
@@ -407,6 +407,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="moY-Ls-MPC"/>
+        <segue reference="YET-P8-gId"/>
     </inferredMetricsTieBreakers>
 </document>
