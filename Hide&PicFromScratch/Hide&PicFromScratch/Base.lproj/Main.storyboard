@@ -166,7 +166,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bigMapView" destination="EYh-FL-r7n" id="EWx-HF-J0v"/>
+                        <outlet property="mapView" destination="EYh-FL-r7n" id="FqO-iC-Svc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u4M-ae-uoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

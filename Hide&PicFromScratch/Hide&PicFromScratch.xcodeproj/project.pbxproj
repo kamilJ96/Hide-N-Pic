@@ -10,6 +10,7 @@
 		81BB0091F2750FF21B66C138 /* Pods_Hide_PicFromScratchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718A1342F89C8EB0E480DED1 /* Pods_Hide_PicFromScratchTests.framework */; };
 		8B4E11FF87A8A54AEAE10BDF /* Pods_Hide_PicFromScratch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C11BA2B45550EA11125B19 /* Pods_Hide_PicFromScratch.framework */; };
 		9314A35B1F8DA2EA003133C1 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314A35A1F8DA2EA003133C1 /* LocationModel.swift */; };
+		93176E9C1F905A77005F8755 /* DefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93176E9B1F905A77005F8755 /* DefaultValues.swift */; };
 		933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC28C1F8CAC1800F6023F /* AppDelegate.swift */; };
 		933BC28F1F8CAC1800F6023F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 933BC28E1F8CAC1800F6023F /* art.scnassets */; };
 		933BC2911F8CAC1800F6023F /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC2901F8CAC1800F6023F /* ARKitViewController.swift */; };
@@ -51,6 +52,7 @@
 		4EF2E7EFAA505D2186943111 /* Pods_Hide_PicFromScratchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		718A1342F89C8EB0E480DED1 /* Pods_Hide_PicFromScratchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9314A35A1F8DA2EA003133C1 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = art.scnassets/LocationModel.swift; sourceTree = "<group>"; };
+		93176E9B1F905A77005F8755 /* DefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValues.swift; sourceTree = "<group>"; };
 		933BC2891F8CAC1800F6023F /* Hide&PicFromScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hide&PicFromScratch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		933BC28C1F8CAC1800F6023F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		933BC28E1F8CAC1800F6023F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				933BC28C1F8CAC1800F6023F /* AppDelegate.swift */,
+				93176E9B1F905A77005F8755 /* DefaultValues.swift */,
 				933BC28E1F8CAC1800F6023F /* art.scnassets */,
 				933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */,
 				933BC2901F8CAC1800F6023F /* ARKitViewController.swift */,
@@ -495,6 +498,7 @@
 				9314A35B1F8DA2EA003133C1 /* LocationModel.swift in Sources */,
 				933BC2BD1F8CAC6A00F6023F /* MainGameViewController.swift in Sources */,
 				93E391C31F8DD7A700A87874 /* SignInViewController.swift in Sources */,
+				93176E9C1F905A77005F8755 /* DefaultValues.swift in Sources */,
 				933BC2911F8CAC1800F6023F /* ARKitViewController.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,
 				935E64671F8D940B001F5631 /* MapViewController.swift in Sources */,

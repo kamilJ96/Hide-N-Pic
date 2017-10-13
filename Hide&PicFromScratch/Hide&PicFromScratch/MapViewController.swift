@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObserver {
 
-    @IBOutlet weak var mapView: MKMapView?
+    @IBOutlet weak var mapView: MKMapView!
     
     let regionRadius: CLLocationDistance = 100
 
@@ -30,37 +30,63 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
         // create new location pin and display in map
         prevLocationPin = latestLocationPin
         if latestLocationPin != nil {
-            mapView?.addAnnotation(latestLocationPin!)
+            mapView.addAnnotation(latestLocationPin!)
         }
     }
     
     
+    // MARK: - MKMapViewDelegate functions
+    
     // returns a standard pin view to use to display the annotation, and also animatesDrop
-    // MKMapViewDelegate function
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
+        if annotation is MKUserLocation { return nil }
         
         let annotationView = MKPinAnnotationView()
         annotationView.animatesDrop = true
+        annotationView.alpha = 1
+        
         return annotationView
     }
     
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        for annotationView in views {
+            if annotationView == mapView.view(for: mapView.userLocation)  {
+                continue
+            }
+            
+            // create animator to animate pin fade out over 15 seconds
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                // TODO: change magic nums
+                withDuration: 7, // seconds
+                delay: 0,
+                options: .curveLinear,
+                animations: { annotationView.alpha = 0.0 },
+                completion: nil//{ animatingPosition in
+//                    self.mapView.removeAnnotation()
+//                }
+            )
+        }
+        
+    }
+    
+    
+    // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mapView?.delegate = self
+        mapView.delegate = self
         locationModel?.addObserver(self)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // reframe region around player
         let region = MKCoordinateRegionMakeWithDistance((locationModel?.playerLocation!.coordinate)!, regionRadius * 2.0, regionRadius * 2.0)
-        mapView?.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +94,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        mapView.delegate = nil // for some reason adding this line of code messes up the original bottom small mapView when returning from the big mapView
+    }
 
     /*
     // MARK: - Navigation
