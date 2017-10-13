@@ -170,11 +170,11 @@
 			isa = PBXGroup;
 			children = (
 				933BC28C1F8CAC1800F6023F /* AppDelegate.swift */,
-				933BC28E1F8CAC1800F6023F /* art.scnassets */,
-				93217D171F90F001001DBDA4 /* PreGame */,
 				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
+				93217D171F90F001001DBDA4 /* PreGame */,
 				93217D181F90F01F001DBDA4 /* PlayingGame */,
 				933BC2921F8CAC1800F6023F /* Main.storyboard */,
+				933BC28E1F8CAC1800F6023F /* art.scnassets */,
 				933BC2951F8CAC1800F6023F /* Assets.xcassets */,
 				933BC2971F8CAC1800F6023F /* LaunchScreen.storyboard */,
 				933BC29A1F8CAC1800F6023F /* Info.plist */,
