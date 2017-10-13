@@ -75,7 +75,7 @@
 		9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
 		9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequestsTableViewController.swift; sourceTree = "<group>"; };
 		935E64661F8D940B001F5631 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		93E391C21F8DD7A700A87874 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = art.scnassets/SignInViewController.swift; sourceTree = "<group>"; };
+		93E391C21F8DD7A700A87874 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4C11BA2B45550EA11125B19 /* Pods_Hide_PicFromScratch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E995B60D2D631A5E2A54269E /* Pods-Hide&PicFromScratchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hide&PicFromScratchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hide&PicFromScratchTests/Pods-Hide&PicFromScratchTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 			children = (
 				933BC28C1F8CAC1800F6023F /* AppDelegate.swift */,
 				933BC28E1F8CAC1800F6023F /* art.scnassets */,
-				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
 				93217D171F90F001001DBDA4 /* PreGame */,
+				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
 				93217D181F90F01F001DBDA4 /* PlayingGame */,
 				933BC2921F8CAC1800F6023F /* Main.storyboard */,
 				933BC2951F8CAC1800F6023F /* Assets.xcassets */,
