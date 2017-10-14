@@ -16,19 +16,17 @@ class FriendsListTableViewController: UITableViewController {
     
     var current_user = Auth.auth().currentUser
     
-    let cellId = "cellId"
-    var users = [User]()
+    let onlineFriendCellID = "OnlineFriendTableCell"
+    let offlineFriendCellID = "OfflineFriendTableCell"
+    var users: Array<User> = []
     var receiver_name = String()
     var receiver_id = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\ncurrent_user = \(String(describing: current_user))\n") // DEBUG
-        print() // DEBUG
-        
-        tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
-        fetchUser()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: offlineFriendCellID)
+        fetchUsersFromServer()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,16 +35,18 @@ class FriendsListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    
     // Retrieving the current users of the app (however its every single user atm)
-    func fetchUser() {
+    func fetchUsersFromServer() {
         Database.database().reference().child("user_profile").observe(.childAdded, with: {
             (Snapshot) in
             
             if let dictionary = Snapshot.value as? [String: AnyObject] {
                 let user = User()
                 // If you use this setter, app will crash if properties dont match with firebase
-                user.name = dictionary["name"] as! String
+                user.name = dictionary["name"] as? String
                 user.id = Snapshot.key
+                
                 // If current user's name equals a database user
                 if self.current_user?.displayName == user.name {
                     // Do nothing
@@ -69,7 +69,7 @@ class FriendsListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +79,7 @@ class FriendsListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: offlineFriendCellID, for: indexPath)
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name
         return cell
@@ -89,39 +89,20 @@ class FriendsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.receiver_name = self.users[indexPath.row].name!
         self.receiver_id = self.users[indexPath.row].id!
-        self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
+        //self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        let navVc = segue.destination as! UINavigationController
-        let chatVc = navVc.viewControllers.first as! ChatViewController
-        chatVc.senderId = current_user?.uid
-        chatVc.senderDisplayName = self.current_user?.displayName
-        chatVc.receiverId = self.receiver_id
-        chatVc.receiverName = self.receiver_name
+//        let navVc = segue.destination as! UINavigationController
+//        let chatVc = navVc.viewControllers.first as! ChatViewController
+//        chatVc.senderId = current_user?.uid
+//        chatVc.senderDisplayName = self.current_user?.displayName
+//        chatVc.receiverId = self.receiver_id
+//        chatVc.receiverName = self.receiver_name
     }
+
     
-    class UserCell: UITableViewCell {
-        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-            super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("has not been implemented correctly")
-        }
-        
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.

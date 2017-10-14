@@ -26,9 +26,9 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     let invitedPlayerString = "invitedPlayer"
     
     // TODO: make this an if else statement to change your string, depending on whether you initiated the game or accepted an invite to a game
-    lazy var myPlayerString = initiatingPlayerString
+    var myPlayerString: String
     // TODO: change back to invitedPlayerString. temporarily use our own string to test retrieiving data
-    lazy var opponentPlayerString = initiatingPlayerString
+    var opponentPlayerString: String
     
     // Firebase database references
     let ref: DatabaseReference! = Database.database().reference()
@@ -36,6 +36,35 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     var myLocationsID: DatabaseReference!
     var opponentsLocationsID: DatabaseReference!
     
+    
+    public init(myPlayerString: String) {
+        switch myPlayerString {
+        case initiatingPlayerString:
+            self.myPlayerString = initiatingPlayerString
+            opponentPlayerString = invitedPlayerString
+            
+        case invitedPlayerString:
+            self.myPlayerString = invitedPlayerString
+            opponentPlayerString = initiatingPlayerString
+        default:
+            // make default as I am the initiating player
+            self.myPlayerString = initiatingPlayerString
+            opponentPlayerString = invitedPlayerString
+        }
+        
+        super.init()
+        checkLocation()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+        
+        // Create new game session in Firebase Database
+        gameSessionID = ref.child(gameSessionsString).childByAutoId()
+        
+        
+        startGame()        
+    }
     
     var playerLocation: CLLocation? {
         return locationManager.location!
@@ -53,22 +82,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         observers.append(newObserver)
     }
 
-    
-    public override init() {
-        super.init()
-        checkLocation()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
-        
-        // Create new game session in Firebase Database
-        gameSessionID = ref.child(gameSessionsString).childByAutoId()
-        
-        
-        startGame()
-        
-    }
     
     public func startGame() {
         // DatabaseReference objects for accessing server

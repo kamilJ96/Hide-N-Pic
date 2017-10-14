@@ -8,15 +8,20 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
 
 class MainGameViewController: UIViewController {
 
-    let locationModel = LocationModel()
+    var locationModel: LocationModel!
+    var myPlayerString: String = ""
+    var gameSessionID: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        locationModel = LocationModel(myPlayerString: myPlayerString)
+        locationModel.gameSessionID = gameSessionID
     }
 
     override func didReceiveMemoryWarning() {

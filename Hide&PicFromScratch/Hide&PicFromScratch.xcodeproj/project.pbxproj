@@ -24,6 +24,9 @@
 		9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */; };
 		9351D1601F90EBC700BD367F /* GameRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */; };
 		935E64671F8D940B001F5631 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E64661F8D940B001F5631 /* MapViewController.swift */; };
+		937ADD461F91BA68004D47A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937ADD451F91BA68004D47A1 /* User.swift */; };
+		937ADD4C1F91C113004D47A1 /* GameRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937ADD4B1F91C113004D47A1 /* GameRequestTableViewCell.swift */; };
+		937ADD4E1F91C27D004D47A1 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937ADD4D1F91C27D004D47A1 /* GameRequest.swift */; };
 		93E391C31F8DD7A700A87874 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E391C21F8DD7A700A87874 /* SignInViewController.swift */; };
 		93FDC5961F8DC24500E4E2C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */; };
 		C620A653AB1ED22D283F1F8E /* Pods_Hide_PicFromScratchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2E7EFAA505D2186943111 /* Pods_Hide_PicFromScratchUITests.framework */; };
@@ -75,6 +78,9 @@
 		9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
 		9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequestsTableViewController.swift; sourceTree = "<group>"; };
 		935E64661F8D940B001F5631 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		937ADD451F91BA68004D47A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		937ADD4B1F91C113004D47A1 /* GameRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequestTableViewCell.swift; sourceTree = "<group>"; };
+		937ADD4D1F91C27D004D47A1 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		93E391C21F8DD7A700A87874 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4C11BA2B45550EA11125B19 /* Pods_Hide_PicFromScratch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,9 +131,12 @@
 		93217D171F90F001001DBDA4 /* PreGame */ = {
 			isa = PBXGroup;
 			children = (
+				937ADD451F91BA68004D47A1 /* User.swift */,
+				937ADD4D1F91C27D004D47A1 /* GameRequest.swift */,
 				9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */,
 				9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */,
 				93217D151F90EF06001DBDA4 /* PendingRequestViewController.swift */,
+				937ADD4B1F91C113004D47A1 /* GameRequestTableViewCell.swift */,
 			);
 			path = PreGame;
 			sourceTree = "<group>";
@@ -523,13 +532,16 @@
 				9314A35B1F8DA2EA003133C1 /* LocationModel.swift in Sources */,
 				933BC2BD1F8CAC6A00F6023F /* MainGameViewController.swift in Sources */,
 				9351D1601F90EBC700BD367F /* GameRequestsTableViewController.swift in Sources */,
+				937ADD4C1F91C113004D47A1 /* GameRequestTableViewCell.swift in Sources */,
 				93E391C31F8DD7A700A87874 /* SignInViewController.swift in Sources */,
 				93176E9C1F905A77005F8755 /* DefaultValues.swift in Sources */,
+				937ADD4E1F91C27D004D47A1 /* GameRequest.swift in Sources */,
 				933BC2911F8CAC1800F6023F /* ARKitViewController.swift in Sources */,
 				9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,
 				93217D161F90EF06001DBDA4 /* PendingRequestViewController.swift in Sources */,
 				935E64671F8D940B001F5631 /* MapViewController.swift in Sources */,
+				937ADD461F91BA68004D47A1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
