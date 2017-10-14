@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class GameRequestsTableViewController: UITableViewController {
-
+    
     // TODO: in this class, contantly listen to ref.child("myUserID").child("requests")
     // add new table cells when new requests pop up in the database
     
@@ -85,14 +87,15 @@ class GameRequestsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let gameVC = segue.destination.contents as? MainGameViewController {
+            // TODO: pass in invitedPlayerString to MainGameViewController
+        }
     }
-    */
+    
 
 }

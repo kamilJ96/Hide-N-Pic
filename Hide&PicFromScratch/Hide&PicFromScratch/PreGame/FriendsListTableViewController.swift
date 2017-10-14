@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class FriendsListTableViewController: UITableViewController {
 
     // TODO: in this class, have the logic for initiating a new game, when tapping on a friend's name
     
+    var current_user = Auth.auth().currentUser.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("\ncurrent_user = \(String(describing: current_user))\n") // DEBUG
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
