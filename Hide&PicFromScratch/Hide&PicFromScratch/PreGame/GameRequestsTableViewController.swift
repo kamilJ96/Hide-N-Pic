@@ -28,6 +28,18 @@ class GameRequestsTableViewController: UITableViewController {
             (snapshot) in
             // TODO: add all game requests to gameRequests array
             
+            if let dictionary = Snapshot.value as? [String: AnyObject] {
+                let gameRequest = GameRequest()
+                // If you use this setter, app will crash if properties dont match with firebase
+                gameRequest.invitingPlayerName = dictionary["initiatingPlayerName"] as? String
+                gameRequest.gameSessionID = Snapshot.key
+                
+                self.gameRequests.append(gameRequest)
+                
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                });
+            }
         })
     }
     
