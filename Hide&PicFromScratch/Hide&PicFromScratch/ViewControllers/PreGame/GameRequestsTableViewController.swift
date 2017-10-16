@@ -12,8 +12,8 @@ import FirebaseAuth
 
 class GameRequestsTableViewController: UITableViewController {
     
+    var gameStateModel: GameStateModel?
     // TODO: in this class, contantly listen to ref.child("myUserID").child("requests")
-    // add new table cells when new requests pop up in the database
     
     var gameRequestCellID = "gameRequestTableCell"
     var gameRequests: Array<GameRequest> = []
@@ -25,14 +25,14 @@ class GameRequestsTableViewController: UITableViewController {
         let requestsDBref = Database.database().reference().child("user_profile").child(myUserID!).child("requests")
         
         let _ = requestsDBref.observe(.childAdded, with: {
-            (snapshot) in
+            (Snapshot) in
             // TODO: add all game requests to gameRequests array
             
             if let dictionary = Snapshot.value as? [String: AnyObject] {
-                let gameRequest = GameRequest()
+                var gameRequest = GameRequest()
                 // If you use this setter, app will crash if properties dont match with firebase
                 gameRequest.invitingPlayerName = dictionary["initiatingPlayerName"] as? String
-                gameRequest.gameSessionID = Snapshot.key
+                //TODO: fix this line //gameRequest.gameSessionID = Snapshot.key
                 
                 self.gameRequests.append(gameRequest)
                 

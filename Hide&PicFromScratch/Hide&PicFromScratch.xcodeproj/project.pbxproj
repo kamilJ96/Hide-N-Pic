@@ -21,6 +21,7 @@
 		933BC2A41F8CAC1900F6023F /* Hide_PicFromScratchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC2A31F8CAC1900F6023F /* Hide_PicFromScratchTests.swift */; };
 		933BC2AF1F8CAC1900F6023F /* Hide_PicFromScratchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC2AE1F8CAC1900F6023F /* Hide_PicFromScratchUITests.swift */; };
 		933BC2BD1F8CAC6A00F6023F /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */; };
+		933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E10491F94466A00C716EC /* GameStateModel.swift */; };
 		9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */; };
 		9351D1601F90EBC700BD367F /* GameRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */; };
 		935E64671F8D940B001F5631 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E64661F8D940B001F5631 /* MapViewController.swift */; };
@@ -75,6 +76,7 @@
 		933BC2AE1F8CAC1900F6023F /* Hide_PicFromScratchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hide_PicFromScratchUITests.swift; sourceTree = "<group>"; };
 		933BC2B01F8CAC1900F6023F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
+		933E10491F94466A00C716EC /* GameStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateModel.swift; sourceTree = "<group>"; };
 		9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
 		9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequestsTableViewController.swift; sourceTree = "<group>"; };
 		935E64661F8D940B001F5631 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		93217D171F90F001001DBDA4 /* PreGame */ = {
 			isa = PBXGroup;
 			children = (
+				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
 				937ADD451F91BA68004D47A1 /* User.swift */,
 				937ADD4D1F91C27D004D47A1 /* GameRequest.swift */,
 				9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */,
@@ -148,7 +151,6 @@
 				933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */,
 				933BC2901F8CAC1800F6023F /* ARKitViewController.swift */,
 				935E64661F8D940B001F5631 /* MapViewController.swift */,
-				9314A35A1F8DA2EA003133C1 /* LocationModel.swift */,
 			);
 			path = PlayingGame;
 			sourceTree = "<group>";
@@ -178,16 +180,12 @@
 		933BC28B1F8CAC1800F6023F /* Hide&PicFromScratch */ = {
 			isa = PBXGroup;
 			children = (
-				933BC28C1F8CAC1800F6023F /* AppDelegate.swift */,
-				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
-				93217D171F90F001001DBDA4 /* PreGame */,
-				93217D181F90F01F001DBDA4 /* PlayingGame */,
+				933E104B1F94467200C716EC /* Models */,
+				933E104C1F94471400C716EC /* ViewControllers */,
+				933E104D1F94475D00C716EC /* SupportingFiles */,
 				933BC2921F8CAC1800F6023F /* Main.storyboard */,
 				933BC28E1F8CAC1800F6023F /* art.scnassets */,
 				933BC2951F8CAC1800F6023F /* Assets.xcassets */,
-				933BC2971F8CAC1800F6023F /* LaunchScreen.storyboard */,
-				933BC29A1F8CAC1800F6023F /* Info.plist */,
-				93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */,
 			);
 			path = "Hide&PicFromScratch";
 			sourceTree = "<group>";
@@ -208,6 +206,35 @@
 				933BC2B01F8CAC1900F6023F /* Info.plist */,
 			);
 			path = "Hide&PicFromScratchUITests";
+			sourceTree = "<group>";
+		};
+		933E104B1F94467200C716EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				933E10491F94466A00C716EC /* GameStateModel.swift */,
+				9314A35A1F8DA2EA003133C1 /* LocationModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		933E104C1F94471400C716EC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				93217D171F90F001001DBDA4 /* PreGame */,
+				93217D181F90F01F001DBDA4 /* PlayingGame */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		933E104D1F94475D00C716EC /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				933BC2971F8CAC1800F6023F /* LaunchScreen.storyboard */,
+				933BC28C1F8CAC1800F6023F /* AppDelegate.swift */,
+				933BC29A1F8CAC1800F6023F /* Info.plist */,
+				93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		D3A47C93E80905567A04F9CC /* Frameworks */ = {
@@ -538,6 +565,7 @@
 				937ADD4E1F91C27D004D47A1 /* GameRequest.swift in Sources */,
 				933BC2911F8CAC1800F6023F /* ARKitViewController.swift in Sources */,
 				9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */,
+				933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,
 				93217D161F90EF06001DBDA4 /* PendingRequestViewController.swift in Sources */,
 				935E64671F8D940B001F5631 /* MapViewController.swift in Sources */,

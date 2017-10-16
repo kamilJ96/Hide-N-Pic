@@ -13,4 +13,5 @@ import FirebaseDatabase
 struct GameRequest {
     var invitingPlayerName: String!
     var gameSessionID: DatabaseReference!
+    var invitingPlayerUserID: String!
 }
