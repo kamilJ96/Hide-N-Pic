@@ -16,7 +16,6 @@ class GameRequestsTableViewController: UITableViewController {
     // TODO: in this class, contantly listen to ref.child("myUserID").child("requests")
     
     var gameRequestCellID = "gameRequestTableCell"
-    var gameRequests: Array<GameRequest> = []
     var gameSessionID: DatabaseReference!
     
     
@@ -25,13 +24,6 @@ class GameRequestsTableViewController: UITableViewController {
 //        if let cell = sender.superview?.superview as? CellView {
 //            let indexPath = itemTable.indexPath(for: cell)
 //        }
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.gameSessionID = self.gameRequests[indexPath.row].gameSessionID!
-        // perform segue to 
-        //self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
     }
     
     
@@ -59,18 +51,18 @@ class GameRequestsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return gameRequests.count
+        return gameStateModel?.gameRequests.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: gameRequestCellID, for: indexPath)
 
-        let gameRequest: GameRequest = gameRequests[indexPath.row]
-        
-        // Configure the cell...
-        if let gameRequestCell = cell as? GameRequestTableViewCell {
-            gameRequestCell.gameRequest = gameRequest
+        if let gameRequest: GameRequest = gameStateModel?.gameRequests[indexPath.row] {
+            // Configure the cell...
+            if let gameRequestTableCell = cell as? GameRequestTableViewCell {
+                gameRequestTableCell.gameRequest = gameRequest
+            }
         }
         
         return cell
@@ -114,14 +106,12 @@ class GameRequestsTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        if let gameVC = segue.destination.contents as? MainGameViewController {
-            gameVC.myPlayerString = "invitedPlayer"
-        }
+        
     }
-    
+    */
 
 }

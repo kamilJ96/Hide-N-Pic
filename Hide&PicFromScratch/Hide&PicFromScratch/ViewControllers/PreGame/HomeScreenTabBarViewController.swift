@@ -29,11 +29,15 @@ class HomeScreenTabBarViewController: UITabBarController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        // TODO: pass reference to gameStateModel to sub views
-        // to friends list table view controller
-        //segue.destination.contents
-        // to game requests table view controller
+        // pass reference to gameStateModel to sub views
+        if let friendsVC = segue.destination.contents as? FriendsListTableViewController {
+            friendsVC.gameStateModel = gameStateModel
+            return
+        }
         
+        if let gameRequestsVC = segue.destination.contents as? GameRequestsTableViewController {
+            gameRequestsVC.gameStateModel = gameStateModel
+        }
     }
     
 

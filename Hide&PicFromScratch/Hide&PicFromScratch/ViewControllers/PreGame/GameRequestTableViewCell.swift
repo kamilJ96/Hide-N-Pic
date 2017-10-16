@@ -14,7 +14,7 @@ class GameRequestTableViewCell: UITableViewCell {
     
     var gameRequest: GameRequest? {
         didSet {
-            initiatingPlayerNameLabel?.text = gameRequest!.invitingPlayerName
+            initiatingPlayerNameLabel?.text = gameRequest!.initiatingPlayerName
         }
     }
     

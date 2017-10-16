@@ -11,8 +11,8 @@ import FirebaseDatabase
 
 // Class for storing game requests that we have received from another user
 struct GameRequest {
-    var invitingPlayerName: String!
+    var initiatingPlayerName: String!
     var gameSessionID: DatabaseReference!
-    var invitingPlayerUserID: String!
+    var initiatingPlayerUserID: String!
     var dbRef: DatabaseReference! // the autoID of this game request
 }

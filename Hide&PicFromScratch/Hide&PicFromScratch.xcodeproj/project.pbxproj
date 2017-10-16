@@ -186,6 +186,8 @@
 				933BC2921F8CAC1800F6023F /* Main.storyboard */,
 				933BC28E1F8CAC1800F6023F /* art.scnassets */,
 				933BC2951F8CAC1800F6023F /* Assets.xcassets */,
+				933BC29A1F8CAC1800F6023F /* Info.plist */,
+				93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */,
 			);
 			path = "Hide&PicFromScratch";
 			sourceTree = "<group>";
@@ -234,8 +236,6 @@
 			children = (
 				933BC2971F8CAC1800F6023F /* LaunchScreen.storyboard */,
 				933BC28C1F8CAC1800F6023F /* AppDelegate.swift */,
-				933BC29A1F8CAC1800F6023F /* Info.plist */,
-				93FDC5951F8DC24500E4E2C7 /* GoogleService-Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";

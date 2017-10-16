@@ -17,13 +17,17 @@ import FirebaseAuth
 
 class GameStateModel: NSObject {
 
+    // the gameSessionID of the game that we will be/are playing
     private(set) var gameSessionID: DatabaseReference!
     
-    var gameRequests: Array<GameRequest> = []
+    var gameRequests: Array<GameRequest> = [] {
+        didSet {
+            print("gameRequests didSet: \n\(gameRequests)")
+        }
+    }
     
     var myUserID: String! = Auth.auth().currentUser?.uid
     lazy var gameRequestsDBRef: DatabaseReference! = Database.database().reference().child("user_profile").child(myUserID).child("requests")
-    var gameRequestsObserverID: UInt?
     
     public enum GameState {
         case noGameExists
@@ -49,6 +53,10 @@ class GameStateModel: NSObject {
     override init() {
         super.init()
         fetchGameRequestsFromServer()
+    }
+    
+    deinit {
+        gameRequestsDBRef.removeAllObservers()
     }
     
     
@@ -84,26 +92,30 @@ class GameStateModel: NSObject {
     }
     
     func fetchGameRequestsFromServer() {
-        let myUserID = Auth.auth().currentUser?.uid
-        let requestsDBref = Database.database().reference().child("user_profile").child(myUserID!).child("requests")
+        let myUserID = (Auth.auth().currentUser?.uid)!
+        let requestsDBref = Database.database().reference().child("user_profile").child(myUserID).child("requests")
         
         let _ = requestsDBref.observe(.childAdded, with: {
             (Snapshot) in
-            // TODO: add all game requests to gameRequests array
             
-            if let dictionary = Snapshot.value as? [String: AnyObject] {
-                var gameRequest = GameRequest()
-                // If you use this setter, app will crash if properties dont match with firebase
-                gameRequest.invitingPlayerName = dictionary["initiatingPlayerName"] as? String
-                //TODO: fix this line //gameRequest.gameSessionID = Snapshot.key
+            if let dictionary = Snapshot.value as? NSDictionary {
                 
-                self.gameRequests.append(gameRequest)
-                
-//                DispatchQueue.main.async(execute: {
-//                    self.tableView.reloadData()
-//                });
+                if let gameSessionIdString = dictionary["gameSessionID"] as? String,
+                    let initiatingPlayerName = dictionary["initiatingPlayerName"] as? String,
+                    let initiatingPlayerUserID = dictionary["userID"] as? String
+                {
+                    var gameRequest = GameRequest()
+                    gameRequest.initiatingPlayerName = initiatingPlayerName
+                    gameRequest.gameSessionID = Database.database().reference().child("gameSessions").child(gameSessionIdString)
+                    gameRequest.initiatingPlayerUserID = initiatingPlayerUserID
+                    gameRequest.dbRef = Database.database().reference().child(myUserID).child("requests").child(Snapshot.key)
+                    
+                    self.gameRequests.append(gameRequest)
+                }
             }
         })
+        
+        
         // TODO: fetch gameRequests on the server and keep listening for additions
         
         // TODO: keep listening to deletions from the server, and update local gameRequests array
