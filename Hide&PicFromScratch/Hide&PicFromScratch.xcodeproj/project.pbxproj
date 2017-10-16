@@ -136,11 +136,11 @@
 			isa = PBXGroup;
 			children = (
 				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
+				933E104E1F945FD400C716EC /* HomeScreenTabBarViewController.swift */,
 				9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */,
 				9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */,
-				93217D151F90EF06001DBDA4 /* PendingRequestViewController.swift */,
 				937ADD4B1F91C113004D47A1 /* GameRequestTableViewCell.swift */,
-				933E104E1F945FD400C716EC /* HomeScreenTabBarViewController.swift */,
+				93217D151F90EF06001DBDA4 /* PendingRequestViewController.swift */,
 			);
 			path = PreGame;
 			sourceTree = "<group>";
@@ -211,11 +211,11 @@
 		933E104B1F94467200C716EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				93176E9B1F905A77005F8755 /* DefaultValues.swift */,
-				937ADD451F91BA68004D47A1 /* User.swift */,
-				937ADD4D1F91C27D004D47A1 /* GameRequest.swift */,
 				933E10491F94466A00C716EC /* GameStateModel.swift */,
 				9314A35A1F8DA2EA003133C1 /* LocationModel.swift */,
+				937ADD4D1F91C27D004D47A1 /* GameRequest.swift */,
+				93176E9B1F905A77005F8755 /* DefaultValues.swift */,
+				937ADD451F91BA68004D47A1 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

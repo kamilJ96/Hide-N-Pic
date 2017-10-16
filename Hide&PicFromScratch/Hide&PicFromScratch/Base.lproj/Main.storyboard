@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -89,20 +90,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gt5-p2-0rE">
-                                            <rect key="frame" x="88" y="18" width="198.5" height="60"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gt5-p2-0rE" userLabel="Vert Stack View">
+                                            <rect key="frame" x="16" y="11" width="343" height="74"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InitiatingPlayer's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BMP-rS-Dcp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="198.5" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="efU-SR-09n">
-                                                    <rect key="frame" x="29.5" y="24" width="140" height="36"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="efU-SR-09n" userLabel="Buttons Horiz Stack View">
+                                                    <rect key="frame" x="0.0" y="37" width="343" height="37"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1f-Oh-Xjm">
-                                                            <rect key="frame" x="0.0" y="0.0" width="66" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="37"/>
                                                             <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <viewLayoutGuide key="safeArea" id="TWI-vI-D4j"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -114,7 +115,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2X-MN-3l8">
-                                                            <rect key="frame" x="74" y="0.0" width="66" height="36"/>
+                                                            <rect key="frame" x="175.5" y="0.0" width="167.5" height="37"/>
                                                             <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <viewLayoutGuide key="safeArea" id="NmG-TO-kVo"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -123,13 +124,31 @@
                                                             </state>
                                                         </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="g2X-MN-3l8" firstAttribute="bottom" secondItem="efU-SR-09n" secondAttribute="bottom" id="1hH-9I-0Bo"/>
+                                                        <constraint firstItem="y1f-Oh-Xjm" firstAttribute="leading" secondItem="efU-SR-09n" secondAttribute="leading" id="4kM-zs-kFl"/>
+                                                        <constraint firstItem="g2X-MN-3l8" firstAttribute="trailing" secondItem="efU-SR-09n" secondAttribute="trailing" id="AmD-kw-BS4"/>
+                                                        <constraint firstItem="y1f-Oh-Xjm" firstAttribute="bottom" secondItem="efU-SR-09n" secondAttribute="bottom" id="NOW-i5-uDT"/>
+                                                        <constraint firstItem="y1f-Oh-Xjm" firstAttribute="top" secondItem="efU-SR-09n" secondAttribute="top" id="qUF-9i-gaA"/>
+                                                        <constraint firstItem="g2X-MN-3l8" firstAttribute="top" secondItem="efU-SR-09n" secondAttribute="top" id="xXE-zs-inm"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BMP-rS-Dcp" firstAttribute="top" secondItem="gt5-p2-0rE" secondAttribute="top" id="Ni2-va-P2J"/>
+                                                <constraint firstItem="BMP-rS-Dcp" firstAttribute="leading" secondItem="gt5-p2-0rE" secondAttribute="leading" id="RXp-db-6FE"/>
+                                                <constraint firstItem="efU-SR-09n" firstAttribute="bottom" secondItem="gt5-p2-0rE" secondAttribute="bottom" id="YFR-jQ-iaz"/>
+                                                <constraint firstItem="efU-SR-09n" firstAttribute="leading" secondItem="gt5-p2-0rE" secondAttribute="leading" id="ZlK-cx-GPc"/>
+                                                <constraint firstItem="BMP-rS-Dcp" firstAttribute="trailing" secondItem="gt5-p2-0rE" secondAttribute="trailing" id="c23-hI-7gI"/>
+                                                <constraint firstItem="efU-SR-09n" firstAttribute="trailing" secondItem="gt5-p2-0rE" secondAttribute="trailing" id="pcM-yD-CXQ"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="gt5-p2-0rE" firstAttribute="centerY" secondItem="Gjp-7t-72Q" secondAttribute="centerY" id="KuF-8V-S5U"/>
-                                        <constraint firstItem="gt5-p2-0rE" firstAttribute="centerX" secondItem="Gjp-7t-72Q" secondAttribute="centerX" id="nRz-ks-ybA"/>
+                                        <constraint firstItem="gt5-p2-0rE" firstAttribute="leading" secondItem="Gjp-7t-72Q" secondAttribute="leadingMargin" id="7Qm-GZ-i4i"/>
+                                        <constraint firstItem="gt5-p2-0rE" firstAttribute="trailing" secondItem="Gjp-7t-72Q" secondAttribute="trailingMargin" id="NIO-Fg-5C4"/>
+                                        <constraint firstItem="gt5-p2-0rE" firstAttribute="bottom" secondItem="Gjp-7t-72Q" secondAttribute="bottomMargin" id="RT6-dJ-7Dh"/>
+                                        <constraint firstItem="gt5-p2-0rE" firstAttribute="top" secondItem="Gjp-7t-72Q" secondAttribute="topMargin" id="dIh-EA-lkM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
