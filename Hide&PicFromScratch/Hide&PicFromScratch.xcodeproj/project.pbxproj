@@ -134,8 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				93E391C21F8DD7A700A87874 /* SignInViewController.swift */,
-				937ADD451F91BA68004D47A1 /* User.swift */,
-				937ADD4D1F91C27D004D47A1 /* GameRequest.swift */,
 				9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */,
 				9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */,
 				93217D151F90EF06001DBDA4 /* PendingRequestViewController.swift */,
@@ -147,7 +145,6 @@
 		93217D181F90F01F001DBDA4 /* PlayingGame */ = {
 			isa = PBXGroup;
 			children = (
-				93176E9B1F905A77005F8755 /* DefaultValues.swift */,
 				933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */,
 				933BC2901F8CAC1800F6023F /* ARKitViewController.swift */,
 				935E64661F8D940B001F5631 /* MapViewController.swift */,
@@ -211,6 +208,9 @@
 		933E104B1F94467200C716EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93176E9B1F905A77005F8755 /* DefaultValues.swift */,
+				937ADD451F91BA68004D47A1 /* User.swift */,
+				937ADD4D1F91C27D004D47A1 /* GameRequest.swift */,
 				933E10491F94466A00C716EC /* GameStateModel.swift */,
 				9314A35A1F8DA2EA003133C1 /* LocationModel.swift */,
 			);

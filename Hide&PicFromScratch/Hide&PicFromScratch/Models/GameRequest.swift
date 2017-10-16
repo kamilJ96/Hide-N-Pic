@@ -14,4 +14,5 @@ struct GameRequest {
     var invitingPlayerName: String!
     var gameSessionID: DatabaseReference!
     var invitingPlayerUserID: String!
+    var dbRef: DatabaseReference! // the autoID of this game request
 }

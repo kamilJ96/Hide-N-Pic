@@ -53,6 +53,11 @@ class MainGameViewController: UIViewController, GameStateModelDelegate {
     }
     */
 
+    // MARK: - GameStateModel Delegate functions
+    
+    func gameDidEnd() {
+        // TODO:
+    }
 }
 
 extension UIViewController
