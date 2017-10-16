@@ -21,6 +21,21 @@ class GameStateModel: NSObject {
     
     var gameRequests: Array<GameRequest> = []
     
+    var myUserID: String! = Auth.auth().currentUser?.uid
+    lazy var gameRequestsDBRef: DatabaseReference! = Database.database().reference().child("user_profile").child(myUserID).child("requests")
+    var gameRequestsObserverID: UInt?
+    
+    public enum GameState {
+        case noGameExists
+        case pendingRequestResponse
+        case inTheMiddleOfPlaying
+        case gameEnded
+    }
+    
+    
+    // TODO: go through all scenarios and make sure you're updating this var correctly
+    var gameState: GameState = .noGameExists
+    
     public enum PlayerID {
         case initiatingPlayer
         case invitedPlayer
@@ -29,7 +44,7 @@ class GameStateModel: NSObject {
     var myPlayerID: PlayerID?
     var opponentPlayerID: PlayerID?
     
-    var opponentPlayerUserID: String! // TODO: check chat view controller see how receiving_ID works etc. is it a string as well?
+    var opponentPlayerUserID: String!
     
     override init() {
         super.init()
@@ -37,13 +52,22 @@ class GameStateModel: NSObject {
     }
     
     
-    // returns true if successfully invited player, false if error in inviting player
-    func invitePlayer(withUserID: String) -> Bool {
+    func invitePlayer(withUserID: String) {
         // TODO: fill out this logic
         // create new game session on server, store in local var
         
+        // set server handshake to "pending"
+        
         // listen to gameSessions.gameSessionID.handshake for response
-        return true
+        listenForInviteResponse()
+    }
+    
+    func listenForInviteResponse() {
+        
+        // when player accepts set gameState to inTheMiddleOfPlaying and remove database observer
+        
+        // stop server gameRequestsObserverID observer (initiated in fetchGameRequestsFromServer())
+        
     }
     
     // returns true if successfully invited game invite
@@ -60,6 +84,26 @@ class GameStateModel: NSObject {
     }
     
     func fetchGameRequestsFromServer() {
+        let myUserID = Auth.auth().currentUser?.uid
+        let requestsDBref = Database.database().reference().child("user_profile").child(myUserID!).child("requests")
+        
+        let _ = requestsDBref.observe(.childAdded, with: {
+            (Snapshot) in
+            // TODO: add all game requests to gameRequests array
+            
+            if let dictionary = Snapshot.value as? [String: AnyObject] {
+                var gameRequest = GameRequest()
+                // If you use this setter, app will crash if properties dont match with firebase
+                gameRequest.invitingPlayerName = dictionary["initiatingPlayerName"] as? String
+                //TODO: fix this line //gameRequest.gameSessionID = Snapshot.key
+                
+                self.gameRequests.append(gameRequest)
+                
+//                DispatchQueue.main.async(execute: {
+//                    self.tableView.reloadData()
+//                });
+            }
+        })
         // TODO: fetch gameRequests on the server and keep listening for additions
         
         // TODO: keep listening to deletions from the server, and update local gameRequests array

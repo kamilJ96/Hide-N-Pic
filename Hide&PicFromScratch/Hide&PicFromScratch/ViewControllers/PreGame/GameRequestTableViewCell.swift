@@ -12,10 +12,6 @@ class GameRequestTableViewCell: UITableViewCell {
 
     @IBOutlet weak var initiatingPlayerNameLabel: UILabel!
     
-    @IBAction func acceptButton(_ sender: Any) {
-        
-    }
-    
     var gameRequest: GameRequest? {
         didSet {
             initiatingPlayerNameLabel?.text = gameRequest!.invitingPlayerName

@@ -55,6 +55,7 @@ class MainGameViewController: UIViewController, GameStateModelDelegate {
 
     // MARK: - GameStateModel Delegate functions
     
+    // may do this via a different implementation where we observe gameStateModel.gameState
     func gameDidEnd() {
         // TODO:
     }

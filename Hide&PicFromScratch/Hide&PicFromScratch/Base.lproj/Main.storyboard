@@ -110,7 +110,7 @@
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="acceptButton:" destination="pC9-ig-L1t" eventType="touchUpInside" id="vuu-8H-3oW"/>
+                                                                <action selector="acceptButton:" destination="eBn-wb-gXz" eventType="touchUpInside" id="0PB-Ff-PIA"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2X-MN-3l8">

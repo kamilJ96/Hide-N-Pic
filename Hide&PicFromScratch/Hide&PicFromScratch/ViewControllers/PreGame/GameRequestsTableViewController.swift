@@ -20,27 +20,11 @@ class GameRequestsTableViewController: UITableViewController {
     var gameSessionID: DatabaseReference!
     
     
-    func fetchGameRequestsFromServer() {
-        let myUserID = Auth.auth().currentUser?.uid
-        let requestsDBref = Database.database().reference().child("user_profile").child(myUserID!).child("requests")
-        
-        let _ = requestsDBref.observe(.childAdded, with: {
-            (Snapshot) in
-            // TODO: add all game requests to gameRequests array
-            
-            if let dictionary = Snapshot.value as? [String: AnyObject] {
-                var gameRequest = GameRequest()
-                // If you use this setter, app will crash if properties dont match with firebase
-                gameRequest.invitingPlayerName = dictionary["initiatingPlayerName"] as? String
-                //TODO: fix this line //gameRequest.gameSessionID = Snapshot.key
-                
-                self.gameRequests.append(gameRequest)
-                
-                DispatchQueue.main.async(execute: {
-                    self.tableView.reloadData()
-                });
-            }
-        })
+    @IBAction func acceptButton(_ sender: UIButton) {
+        // from https://stackoverflow.com/questions/28659845/swift-how-to-get-the-indexpath-row-when-a-button-in-a-cell-is-tapped
+//        if let cell = sender.superview?.superview as? CellView {
+//            let indexPath = itemTable.indexPath(for: cell)
+//        }
     }
     
     
