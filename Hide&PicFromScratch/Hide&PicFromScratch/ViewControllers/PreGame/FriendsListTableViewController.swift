@@ -94,17 +94,6 @@ class FriendsListTableViewController: UITableViewController {
         //self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-//        let navVc = segue.destination as! UINavigationController
-//        let chatVc = navVc.viewControllers.first as! ChatViewController
-//        chatVc.senderId = current_user?.uid
-//        chatVc.senderDisplayName = self.current_user?.displayName
-//        chatVc.receiverId = self.receiver_id
-//        chatVc.receiverName = self.receiver_name
-    }
-
-    
 
     /*
     // Override to support conditional editing of the table view.
@@ -145,10 +134,15 @@ class FriendsListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     super.prepare(for: segue, sender: sender)
+     //        let navVc = segue.destination as! UINavigationController
+     //        let chatVc = navVc.viewControllers.first as! ChatViewController
+     //        chatVc.senderId = current_user?.uid
+     //        chatVc.senderDisplayName = self.current_user?.displayName
+     //        chatVc.receiverId = self.receiver_id
+     //        chatVc.receiverName = self.receiver_name
+     }
     */
 
 }

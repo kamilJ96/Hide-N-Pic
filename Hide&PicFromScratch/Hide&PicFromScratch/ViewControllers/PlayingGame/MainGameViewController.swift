@@ -13,7 +13,7 @@ import FirebaseDatabase
 class MainGameViewController: UIViewController, GameStateModelDelegate {
 
     var locationModel: LocationModel!
-    var myPlayerString: String = ""
+    var myPlayerString: String = "" // TODO: change this to a gameStateModel local var
     var gameSessionID: DatabaseReference!
     
     override func viewDidLoad() {
@@ -34,24 +34,18 @@ class MainGameViewController: UIViewController, GameStateModelDelegate {
     @IBAction func goBack(segue: UIStoryboardSegue) { }
     
     
+    // MARK: - Navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     /* Send locationModel to MapViewController */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         // works for both MapViewController that is embedded in a NavigationController, and not embedded
         if let mapVC = segue.destination.contents as? MapViewController {
                 mapVC.locationModel = locationModel
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - GameStateModel Delegate functions
     
