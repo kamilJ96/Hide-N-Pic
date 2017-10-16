@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDelegate {
+class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDelegate, GameStateModelObserver {
     
     var gameStateModel = GameStateModel()
     
@@ -17,6 +17,8 @@ class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDele
         // Do any additional setup after loading the view.
         
         self.delegate = self
+        
+        gameStateModel.gameRequestObservers.append(self)
         
         for viewController in viewControllers! {
             // pass reference to gameStateModel to sub view controllers
@@ -36,6 +38,9 @@ class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDele
         }
     }
     
+    func gameRequestsArrayDidUpdate() {
+        tabBar.items?[1].badgeValue = String(gameStateModel.gameRequests.count)
+    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         // pass reference to gameStateModel to sub view controllers

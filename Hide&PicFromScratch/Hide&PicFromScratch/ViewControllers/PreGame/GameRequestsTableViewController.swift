@@ -15,7 +15,7 @@ class GameRequestsTableViewController: UITableViewController, GameStateModelObse
     var gameStateModel: GameStateModel? {
         didSet {
             tableView.reloadData()
-            gameStateModel?.gameRequestObserver = self
+            gameStateModel?.gameRequestObservers.append(self)
         }
     }
     
@@ -28,7 +28,14 @@ class GameRequestsTableViewController: UITableViewController, GameStateModelObse
 //        if let cell = sender.superview?.superview as? CellView {
 //            let indexPath = itemTable.indexPath(for: cell)
 //        }
+        // TODO: call gameStateModel.acceptInvite()
     }
+    
+    @IBAction func declineButton(_ sender: UIButton) {
+        // TODO: call gameStateModel.declineInvite()
+        
+    }
+    
     
     
     override func viewDidLoad() {

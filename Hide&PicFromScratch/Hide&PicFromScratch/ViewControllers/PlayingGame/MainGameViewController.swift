@@ -12,15 +12,16 @@ import FirebaseDatabase
 
 class MainGameViewController: UIViewController, GameStateModelObserver {
 
+    var gameStateModel: GameStateModel!
     var locationModel: LocationModel!
-    var myPlayerString: String = "" // TODO: change this to a gameStateModel local var
+//    var myPlayerString: String = "" // TODO: change this to a gameStateModel local var
     var gameSessionID: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        locationModel = LocationModel(myPlayerString: myPlayerString)
+        locationModel = LocationModel(myPlayerID: gameStateModel.myPlayerID!)
         locationModel.gameSessionID = gameSessionID
     }
 

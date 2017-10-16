@@ -25,9 +25,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     let initiatingPlayerString = "initiatingPlayer"
     let invitedPlayerString = "invitedPlayer"
     
-    // TODO: make this an if else statement to change your string, depending on whether you initiated the game or accepted an invite to a game
     var myPlayerString: String
-    // TODO: change back to invitedPlayerString. temporarily use our own string to test retrieiving data
     var opponentPlayerString: String
     
     // Firebase database references
@@ -37,19 +35,15 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     var opponentsLocationsID: DatabaseReference!
     
     
-    public init(myPlayerString: String) {
-        switch myPlayerString {
-        case initiatingPlayerString:
-            self.myPlayerString = initiatingPlayerString
+    init(myPlayerID: GameStateModel.PlayerID) {
+        switch myPlayerID {
+        case .initiatingPlayer:
+            myPlayerString = initiatingPlayerString
             opponentPlayerString = invitedPlayerString
             
-        case invitedPlayerString:
-            self.myPlayerString = invitedPlayerString
+        case .invitedPlayer:
+            myPlayerString = invitedPlayerString
             opponentPlayerString = initiatingPlayerString
-        default:
-            // make default as I am the initiating player
-            self.myPlayerString = initiatingPlayerString
-            opponentPlayerString = invitedPlayerString
         }
         
         super.init()

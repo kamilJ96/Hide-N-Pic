@@ -15,15 +15,17 @@ import FirebaseAuth
 // if we are the ones initiating a game
 // Also listens for ending of game when user is inside main game view controller
 
-class GameStateModel: NSObject {
+public class GameStateModel: NSObject {
 
     // the gameSessionID of the game that we will be/are playing
     private(set) var gameSessionID: DatabaseReference!
     
-    var gameRequestObserver: GameStateModelObserver?
+    var gameRequestObservers: Array<GameStateModelObserver> = []
     var gameRequests: Array<GameRequest> = [] {
         didSet {
-            gameRequestObserver?.gameRequestsArrayDidUpdate?()
+            for observer in gameRequestObservers {
+                observer.gameRequestsArrayDidUpdate?()
+            }
         }
     }
     
@@ -117,9 +119,15 @@ class GameStateModel: NSObject {
         })
         
         
-        // TODO: fetch gameRequests on the server and keep listening for additions
-        
-        // TODO: keep listening to deletions from the server, and update local gameRequests array
+        // TODO: find out what Snapshot is returned first. Is it just the removedChild?
+        let _ = requestsDBref.observe(.childRemoved, with: {
+            (Snapshot) in
+            
+            if let dictionary = Snapshot.value as? NSDictionary {
+                print("\n.childRemoved: \(dictionary)")
+                
+            }
+        })
     }
     
 }
