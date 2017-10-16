@@ -20,14 +20,17 @@ class FriendsListTableViewController: UITableViewController {
     
     let onlineFriendCellID = "OnlineFriendTableCell"
     let offlineFriendCellID = "OfflineFriendTableCell"
-    var users: Array<User> = []
+    var users: Array<User> = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var receiver_name = String()
     var receiver_id = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: offlineFriendCellID)
         fetchUsersFromServer()
 
         // Uncomment the following line to preserve selection between presentations
@@ -44,20 +47,20 @@ class FriendsListTableViewController: UITableViewController {
             (Snapshot) in
             
             if let dictionary = Snapshot.value as? [String: AnyObject] {
-                let user = User()
-                // If you use this setter, app will crash if properties dont match with firebase
-                user.name = dictionary["name"] as? String
-                user.id = Snapshot.key
                 
-                // If current user's name equals a database user
-                if self.current_user?.displayName == user.name {
-                    // Do nothing
-                } else {
-                    self.users.append(user)
+                let user = User()
+                if let name = dictionary["name"] as? String,
+                    let email = dictionary["email"] as? String
+                {
+                    user.name = name; user.email = email; user.id = Snapshot.key;
+                    
+                    // If current user's name equals a database user
+                    if self.current_user?.displayName == user.name {
+                        // Do nothing
+                    } else {
+                        self.users.append(user)
+                    }
                 }
-                DispatchQueue.main.async(execute: {
-                    self.tableView.reloadData()
-                });
             }
         })
     }
@@ -81,7 +84,7 @@ class FriendsListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
-        let cell = tableView.dequeueReusableCell(withIdentifier: offlineFriendCellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: onlineFriendCellID, for: indexPath)
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name
         return cell
@@ -89,9 +92,12 @@ class FriendsListTableViewController: UITableViewController {
     
     // Handles the selection of a user in the DB
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.receiver_name = self.users[indexPath.row].name!
-        self.receiver_id = self.users[indexPath.row].id!
-        //self.performSegue(withIdentifier: "Chat", sender: self.users[indexPath.row])
+        if let userID = users[indexPath.row].id {
+            gameStateModel?.invitePlayer(userID)
+            performSegue(withIdentifier: "Friends List to Pending Acceptance screen", sender: self)
+        } else {
+            print("error: user was not found in our local array of users")
+        }
     }
     
 
@@ -130,19 +136,16 @@ class FriendsListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     super.prepare(for: segue, sender: sender)
-     //        let navVc = segue.destination as! UINavigationController
-     //        let chatVc = navVc.viewControllers.first as! ChatViewController
-     //        chatVc.senderId = current_user?.uid
-     //        chatVc.senderDisplayName = self.current_user?.displayName
-     //        chatVc.receiverId = self.receiver_id
-     //        chatVc.receiverName = self.receiver_name
+        super.prepare(for: segue, sender: sender)
+        if let pendingRequestVC = segue.destination.contents as? PendingRequestViewController {
+            pendingRequestVC.gameStateModel = gameStateModel
+        }
      }
-    */
+ 
 
 }

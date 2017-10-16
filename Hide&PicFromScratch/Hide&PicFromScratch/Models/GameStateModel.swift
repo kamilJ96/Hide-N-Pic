@@ -18,7 +18,10 @@ import FirebaseAuth
 public class GameStateModel: NSObject {
 
     // the gameSessionID of the game that we will be/are playing
-    private(set) var gameSessionID: DatabaseReference!
+    private(set) var gameSessionIDdbRef: DatabaseReference!
+    
+    var pendingGameRequestResponseObserver: GameStateModelObserver?
+    var newRequestIDdbRef: DatabaseReference! // the location to write a new game invite request, also the location to delete if you want to cancel
     
     var gameRequestObservers: Array<GameStateModelObserver> = []
     var gameRequests: Array<GameRequest> = [] {
@@ -32,16 +35,6 @@ public class GameStateModel: NSObject {
     var myUserID: String! = Auth.auth().currentUser?.uid
     lazy var gameRequestsDBRef: DatabaseReference! = Database.database().reference().child("user_profile").child(myUserID).child("requests")
     
-    public enum GameState {
-        case noGameExists
-        case pendingRequestResponse
-        case inTheMiddleOfPlaying
-        case gameEnded
-    }
-    
-    
-    // TODO: go through all scenarios and make sure you're updating this var correctly
-    var gameState: GameState = .noGameExists
     
     public enum PlayerID {
         case initiatingPlayer
@@ -63,32 +56,63 @@ public class GameStateModel: NSObject {
     }
     
     
-    func invitePlayer(withUserID: String) {
-        // TODO: fill out this logic
+    func invitePlayer(_ userID: String) -> Void {
         // create new game session on server, store in local var
+        let newGameSessionID = Database.database().reference().child("gameSessions").childByAutoId()
+        newGameSessionID.child("handshake").setValue("pending")
+        gameSessionIDdbRef = newGameSessionID
         
-        // set server handshake to "pending"
+        let myUserID = Auth.auth().currentUser?.uid
+        let myName = Auth.auth().currentUser?.displayName
         
-        // listen to gameSessions.gameSessionID.handshake for response
+        opponentPlayerUserID = userID
+        
+        newRequestIDdbRef = Database.database().reference().child("user_profile").child(userID).child("requests").childByAutoId()
+        newRequestIDdbRef.setValue(["gameSessionID":newGameSessionID.key, "userID": myUserID!, "initiatingPlayerName": myName!])
+        
         listenForInviteResponse()
     }
     
+    
     func listenForInviteResponse() {
-        
-        // when player accepts set gameState to inTheMiddleOfPlaying and remove database observer
-        
-        // stop server gameRequestsObserverID observer (initiated in fetchGameRequestsFromServer())
-        
+        let _ = gameSessionIDdbRef.child("handshake").observe(.value, with: { (snapshot) in
+            if let status = snapshot.value as? String {
+                switch status {
+                case "declined":
+                    self.gameSessionIDdbRef = nil
+                    self.opponentPlayerUserID = nil
+                    self.pendingGameRequestResponseObserver?.friendDidRespondToInvite!(with: status)
+                
+                case "accepted":
+                    // set up new game
+                    self.myPlayerID = .initiatingPlayer
+                    self.opponentPlayerID = .invitedPlayer
+                    self.pendingGameRequestResponseObserver?.friendDidRespondToInvite!(with: status)
+                
+                default:
+                    break
+                }
+            }
+            
+        })
     }
     
-    // returns true if successfully invited game invite
+    func cancelInvite() {
+        gameSessionIDdbRef.child("handshake").setValue("cancelled")
+        newRequestIDdbRef.removeValue()
+    }
+    
+    
     func acceptGameInvite(gameRequest: GameRequest) {
         myPlayerID = .invitedPlayer
         opponentPlayerID = .initiatingPlayer
-        gameSessionID = gameRequest.gameSessionID
-        //gameRequest.dbRef.removeValue()
+        gameSessionIDdbRef = gameRequest.gameSessionID
+        opponentPlayerUserID = gameRequest.initiatingPlayerUserID
         
-        gameSessionID.child("handshake").setValue("accepted")
+        // remove the invite / game request from the server
+        gameRequest.dbRef.removeValue()
+        
+        gameSessionIDdbRef.child("handshake").setValue("accepted")
     }
     
     func declineGameInvite(gameRequest: GameRequest) {
@@ -152,4 +176,5 @@ protocol GameStateModelObserver {
     // needs to be able to handle gameEnd message
     @objc optional func gameDidEnd() // might pass in an image with the ending image yknow
     @objc optional func gameRequestsArrayDidUpdate()
+    @objc optional func friendDidRespondToInvite(with response: String)
 }

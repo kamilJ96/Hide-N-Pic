@@ -38,21 +38,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q2S-Sy-CqC">
-                                <rect key="frame" x="177" y="323.5" width="20" height="20"/>
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for your friend to accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s50-I5-3ts">
-                                <rect key="frame" x="64" y="351.5" width="247" height="21"/>
+                                <rect key="frame" x="64" y="352" width="247" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQK-OQ-P9c">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="2EI-rB-Rxw">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jvZ-4f-BUC">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="SpX-3V-Rdh" id="Ycn-bJ-Dwu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q2S-Sy-CqC" firstAttribute="centerX" secondItem="6LZ-Ey-JB1" secondAttribute="centerX" id="VQd-Ri-Peh"/>
                             <constraint firstItem="s50-I5-3ts" firstAttribute="centerX" secondItem="6LZ-Ey-JB1" secondAttribute="centerX" id="aZo-tQ-3Gf"/>
+                            <constraint firstItem="hQK-OQ-P9c" firstAttribute="leading" secondItem="6LZ-Ey-JB1" secondAttribute="leading" id="enO-Hi-9yD"/>
+                            <constraint firstItem="hQK-OQ-P9c" firstAttribute="top" secondItem="sut-2b-OxI" secondAttribute="top" id="lOe-xv-viu"/>
                             <constraint firstItem="q2S-Sy-CqC" firstAttribute="centerY" secondItem="6LZ-Ey-JB1" secondAttribute="centerY" id="pRe-SI-Zdw"/>
                             <constraint firstItem="s50-I5-3ts" firstAttribute="top" secondItem="q2S-Sy-CqC" secondAttribute="bottom" constant="8" symbolic="YES" id="wIc-LU-zLa"/>
+                            <constraint firstItem="hQK-OQ-P9c" firstAttribute="trailing" secondItem="6LZ-Ey-JB1" secondAttribute="trailing" id="yGT-jj-uPF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sut-2b-OxI"/>
                     </view>
@@ -82,7 +97,7 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameRequestTableCell" rowHeight="96" id="pC9-ig-L1t" customClass="GameRequestTableViewCell" customModule="Hide_PicFromScratch" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="gameRequestTableCell" rowHeight="96" id="pC9-ig-L1t" customClass="GameRequestTableViewCell" customModule="Hide_PicFromScratch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pC9-ig-L1t" id="Gjp-7t-72Q">
@@ -344,9 +359,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="SpX-3V-Rdh" kind="show" id="czg-Sb-xgG"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OfflineFriendTableCell" textLabel="aZ8-99-DND" style="IBUITableViewCellStyleDefault" id="ngB-jZ-5Qk">
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
@@ -364,9 +376,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="SpX-3V-Rdh" kind="show" id="xjo-Mx-aoo"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -375,6 +384,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Friends" id="G0n-s8-eHW"/>
+                    <connections>
+                        <segue destination="SpX-3V-Rdh" kind="show" identifier="Friends List to Pending Acceptance screen" id="52I-pb-ldF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACh-dn-zVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -419,7 +431,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZvT-lD-KPb"/>
-        <segue reference="xjo-Mx-aoo"/>
+        <segue reference="YET-P8-gId"/>
     </inferredMetricsTieBreakers>
 </document>
