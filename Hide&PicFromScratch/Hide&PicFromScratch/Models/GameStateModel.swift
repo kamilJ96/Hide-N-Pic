@@ -82,16 +82,18 @@ public class GameStateModel: NSObject {
     }
     
     // returns true if successfully invited game invite
-    func acceptGameInvite(gameRequest: GameRequest) -> Bool {
-        // TODO: delete game request from server under myUserId->requests
-        // fetch gameSessionID, and other stuff, assign playerIDs etc
-        return true
+    func acceptGameInvite(gameRequest: GameRequest) {
+        myPlayerID = .invitedPlayer
+        opponentPlayerID = .initiatingPlayer
+        gameSessionID = gameRequest.gameSessionID
+        //gameRequest.dbRef.removeValue()
+        
+        gameSessionID.child("handshake").setValue("accepted")
     }
     
     func declineGameInvite(gameRequest: GameRequest) {
-        // TODO: set gameSessions->gameSessionID->handshake to declined
-        
-        // TODO: delete from server
+        gameRequest.gameSessionID.child("handshake").setValue("declined")
+        gameRequest.dbRef.removeValue()
     }
     
     func fetchGameRequestsFromServer() {
@@ -111,7 +113,7 @@ public class GameStateModel: NSObject {
                     gameRequest.initiatingPlayerName = initiatingPlayerName
                     gameRequest.gameSessionID = Database.database().reference().child("gameSessions").child(gameSessionIdString)
                     gameRequest.initiatingPlayerUserID = initiatingPlayerUserID
-                    gameRequest.dbRef = Database.database().reference().child(myUserID).child("requests").child(Snapshot.key)
+                    gameRequest.dbRef = Database.database().reference().child("user_profile").child(myUserID).child("requests").child(Snapshot.key)
                     
                     self.gameRequests.append(gameRequest)
                 }
@@ -119,13 +121,26 @@ public class GameStateModel: NSObject {
         })
         
         
-        // TODO: find out what Snapshot is returned first. Is it just the removedChild?
         let _ = requestsDBref.observe(.childRemoved, with: {
             (Snapshot) in
             
             if let dictionary = Snapshot.value as? NSDictionary {
-                print("\n.childRemoved: \(dictionary)")
                 
+                if let gameSessionIdString = dictionary["gameSessionID"] as? String,
+                    let initiatingPlayerName = dictionary["initiatingPlayerName"] as? String,
+                    let initiatingPlayerUserID = dictionary["userID"] as? String
+                {
+                    var gameRequest = GameRequest()
+                    gameRequest.initiatingPlayerName = initiatingPlayerName
+                    gameRequest.gameSessionID = Database.database().reference().child("gameSessions").child(gameSessionIdString)
+                    gameRequest.initiatingPlayerUserID = initiatingPlayerUserID
+                    gameRequest.dbRef = Database.database().reference().child("user_profile").child(myUserID).child("requests").child(Snapshot.key)
+                    
+                    // delete our local copy of gameRequest since it has been removed from the server
+                    if let indexOfGameRequestInArray = self.gameRequests.index(of: gameRequest) {
+                        self.gameRequests.remove(at: indexOfGameRequestInArray)
+                    }
+                }
             }
         })
     }

@@ -15,11 +15,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     
     let regionRadius: CLLocationDistance = 100 // the frame of the map view
 
-    var locationModel: LocationModel?
+    var locationModel: LocationModel? {
+        didSet {
+            locationModel?.addObserver(self)
+        }
+    }
     
     var prevLocationPin: CLLocation! = nil
-    
-    
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
         // TODO: check to see if this MapView is visible on screen before doing any UI stuff
@@ -78,7 +80,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     
     // when a map view is loaded for the first time, add all annotation pins that are younger than locationHintFadeTime
     func displayUnexpiredLocations() {
-        for location in (locationModel?.opponentsLocations)! {
+        if locationModel == nil { return }
+        
+        for location in locationModel!.opponentsLocations {
             if abs(location.timestamp.timeIntervalSinceNow) < DefaultValues.locationHintFadeTime {
                 mapView.addAnnotation(location)
             }
@@ -103,19 +107,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
 
         // Do any additional setup after loading the view.
         mapView.delegate = self
-        
-        locationModel?.addObserver(self)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // reframe region around player
-//        mapView.showAnnotations(mapView.annotations, animated: false)
-        let region = MKCoordinateRegionMakeWithDistance((locationModel?.playerLocation!.coordinate)!, regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(region, animated: false)
-        
+        // mapView.showAnnotations(mapView.annotations, animated: false) // alternative way to reframe
+        if let playerLocationCoordinate = locationModel?.playerLocation?.coordinate {
+            let region = MKCoordinateRegionMakeWithDistance(playerLocationCoordinate, regionRadius * 2.0, regionRadius * 2.0)
+            mapView.setRegion(region, animated: false)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // add all unexpired pins again (i.e. pins that are younger than DefaultValues.locationHintFadeTime
         displayUnexpiredLocations()
     }

@@ -19,23 +19,38 @@ import FirebaseDatabase
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     private var observers: Array<LocationModelObserver?> = []    
+
+    let locationManager: CLLocationManager! = CLLocationManager()
+    
+    var playerLocation: CLLocation? {
+        get {
+            return locationManager.location
+        }
+    }
+    
+    var opponentsLocations: Array<CLLocation> = [] {
+        didSet {
+            for observer in observers {
+                observer?.locationModelDidUpdate()
+            }
+        }
+    }
     
     // strings for accessing file path in database
     let gameSessionsString = "gameSessions"
     let initiatingPlayerString = "initiatingPlayer"
-    let invitedPlayerString = "invitedPlayer"
+    let invitedPlayerString = "initiatingPlayer" //TODO: change this back to "invitedPlayer"
     
     var myPlayerString: String
     var opponentPlayerString: String
     
     // Firebase database references
-    let ref: DatabaseReference! = Database.database().reference()
-    var gameSessionID: DatabaseReference!
-    var myLocationsID: DatabaseReference!
-    var opponentsLocationsID: DatabaseReference!
+    var gameSessionIDdbRef: DatabaseReference!
+    var myLocationsDbRef: DatabaseReference!
+    var opponentsLocationsDbRef: DatabaseReference!
     
     
-    init(myPlayerID: GameStateModel.PlayerID) {
+    init(gameSessionID: DatabaseReference, myPlayerID: GameStateModel.PlayerID) {
         switch myPlayerID {
         case .initiatingPlayer:
             myPlayerString = initiatingPlayerString
@@ -53,24 +68,11 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        // Create new game session in Firebase Database
-        gameSessionID = ref.child(gameSessionsString).childByAutoId()
-        
+        self.gameSessionIDdbRef = gameSessionID
         
         startGame()        
     }
-    
-    var playerLocation: CLLocation? {
-        return locationManager.location!
-    }
-    
-    var opponentsLocations: Array<CLLocation> = [] {
-        didSet {
-            for observer in observers {
-                observer?.locationModelDidUpdate()
-            }
-        }
-    }
+
     
     func addObserver(_ newObserver: LocationModelObserver) {
         observers.append(newObserver)
@@ -79,8 +81,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     public func startGame() {
         // DatabaseReference objects for accessing server
-        myLocationsID = gameSessionID.child(myPlayerString)
-        opponentsLocationsID = gameSessionID.child(opponentPlayerString)
+        myLocationsDbRef = gameSessionIDdbRef.child(myPlayerString)
+        opponentsLocationsDbRef = gameSessionIDdbRef.child(opponentPlayerString)
         
         // start continuously sending location to server
         Timer.scheduledTimer(withTimeInterval: DefaultValues.locationUpdateFrequency, repeats: true) { [weak self] timer in
@@ -88,7 +90,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         }
         
         // listen for when new locations are added to opponent's location list on server
-        let _ = opponentsLocationsID.observe(DataEventType.childAdded, with: { (snapshot) in
+        let _ = opponentsLocationsDbRef.observe(DataEventType.childAdded, with: { (snapshot) in
             if let locationDict = snapshot.value as? NSDictionary {
                 
                 if let latitude = locationDict["latitude"] as? CLLocationDegrees,
@@ -130,7 +132,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         let timestamp = currentLocation.timestamp
         
         // add to Firebase Database
-        myLocationsID.childByAutoId().setValue(
+        myLocationsDbRef.childByAutoId().setValue(
             [
                 "latitude"  : latitude,
                 "longitude" : longitude,
@@ -143,14 +145,13 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     // TODO: currently not working properly, when stopping running or closing app
     deinit {
         // delete data from server for recorded locations for game session
-        gameSessionID.removeValue()
+        gameSessionIDdbRef.removeValue()
         // remove listeners
-        opponentsLocationsID.removeAllObservers()
+        opponentsLocationsDbRef.removeAllObservers()
     }
     
     
     // MARK: - Location Manager object
-    let locationManager: CLLocationManager! = CLLocationManager()
     
     func checkLocation() {
         locationManager.delegate = self

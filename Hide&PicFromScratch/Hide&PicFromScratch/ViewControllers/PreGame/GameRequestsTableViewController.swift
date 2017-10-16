@@ -25,15 +25,16 @@ class GameRequestsTableViewController: UITableViewController, GameStateModelObse
     
     @IBAction func acceptButton(_ sender: UIButton) {
         // from https://stackoverflow.com/questions/28659845/swift-how-to-get-the-indexpath-row-when-a-button-in-a-cell-is-tapped
-//        if let cell = sender.superview?.superview as? CellView {
-//            let indexPath = itemTable.indexPath(for: cell)
-//        }
-        // TODO: call gameStateModel.acceptInvite()
+        if let cell = sender.superview?.superview as? GameRequestTableViewCell {
+            gameStateModel?.acceptGameInvite(gameRequest: cell.gameRequest!)
+            performSegue(withIdentifier: "AcceptInviteGoToGame", sender: self)
+        }
     }
     
     @IBAction func declineButton(_ sender: UIButton) {
-        // TODO: call gameStateModel.declineInvite()
-        
+        if let cell = sender.superview?.superview as? GameRequestTableViewCell {
+            gameStateModel?.declineGameInvite(gameRequest: cell.gameRequest!)
+        }
     }
     
     
@@ -50,7 +51,6 @@ class GameRequestsTableViewController: UITableViewController, GameStateModelObse
     
 
     func gameRequestsArrayDidUpdate() {
-//        print("\nGameRequestsTableViewController -> gameRequestsArrayDidUpdate()\n")
         tableView.reloadData()
     }
     
@@ -123,12 +123,14 @@ class GameRequestsTableViewController: UITableViewController, GameStateModelObse
 
     
     // MARK: - Navigation
-    /*
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+        if let mainGameVC = segue.destination.contents as? MainGameViewController {
+            mainGameVC.gameStateModel = gameStateModel
+        }
     }
-    */
+    
 
 }

@@ -14,16 +14,13 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
 
     var gameStateModel: GameStateModel!
     var locationModel: LocationModel!
-//    var myPlayerString: String = "" // TODO: change this to a gameStateModel local var
-    var gameSessionID: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        locationModel = LocationModel(myPlayerID: gameStateModel.myPlayerID!)
-        locationModel.gameSessionID = gameSessionID
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,9 +38,20 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
     /* Send locationModel to MapViewController */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        if locationModel == nil {
+            locationModel = LocationModel(gameSessionID: gameStateModel.gameSessionID, myPlayerID: gameStateModel.myPlayerID!)
+        }
+        
         // works for both MapViewController that is embedded in a NavigationController, and not embedded
         if let mapVC = segue.destination.contents as? MapViewController {
-                mapVC.locationModel = locationModel
+            mapVC.locationModel = locationModel
+            return
+        }
+        
+        // ERROR: in the future need to change casting to correct AR VC
+        if let arVC = segue.destination.contents as? ARKitViewController {
+            arVC.locationModel = locationModel
+            return
         }
     }
 

@@ -116,7 +116,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="declineButton:" destination="eBn-wb-gXz" eventType="touchUpInside" id="Cg8-fz-tHy"/>
+                                                <action selector="declineButton:" destination="eBn-wb-gXz" eventType="touchUpInside" id="GOS-Mk-9cS"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -242,7 +242,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30i-XL-96e">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30i-XL-96e">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                             </mapView>
                         </subviews>
@@ -256,7 +256,7 @@
                         <viewLayoutGuide key="safeArea" id="TKM-Kw-kaD"/>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="30i-XL-96e" id="J3M-mN-c1h"/>
+                        <outlet property="mapView" destination="30i-XL-96e" id="imG-qp-7Jv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46M-bv-TK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,7 +271,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-FL-r7n">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-FL-r7n">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                         </subviews>
@@ -292,7 +292,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="EYh-FL-r7n" id="FqO-iC-Svc"/>
+                        <outlet property="mapView" destination="EYh-FL-r7n" id="HOR-ap-2KP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u4M-ae-uoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

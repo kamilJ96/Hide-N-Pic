@@ -10,7 +10,14 @@ import Foundation
 import FirebaseDatabase
 
 // Class for storing game requests that we have received from another user
-struct GameRequest {
+struct GameRequest: Equatable {
+    static func ==(lhs: GameRequest, rhs: GameRequest) -> Bool {
+        if "\(lhs.dbRef)" == "\(rhs.dbRef)" {
+            return true
+        }
+        return false
+    }
+    
     var initiatingPlayerName: String!
     var gameSessionID: DatabaseReference!
     var initiatingPlayerUserID: String!
