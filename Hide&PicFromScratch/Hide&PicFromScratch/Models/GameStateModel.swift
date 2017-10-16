@@ -32,7 +32,8 @@ class GameStateModel: NSObject {
     var opponentPlayerUserID: String! // TODO: check chat view controller see how receiving_ID works etc. is it a string as well?
     
     override init() {
-        // TODO: initialise stuff lol
+        super.init()
+        fetchGameRequestsFromServer()
     }
     
     

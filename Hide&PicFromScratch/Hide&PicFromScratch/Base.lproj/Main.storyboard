@@ -380,7 +380,7 @@
         <!--Home Screen-->
         <scene sceneID="Cis-p2-mN3">
             <objects>
-                <tabBarController title="Home Screen" id="3Ux-B9-Ics" sceneMemberID="viewController">
+                <tabBarController title="Home Screen" id="3Ux-B9-Ics" customClass="HomeScreenTabBarViewController" customModule="Hide_PicFromScratch" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="5Ia-mf-eGx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
