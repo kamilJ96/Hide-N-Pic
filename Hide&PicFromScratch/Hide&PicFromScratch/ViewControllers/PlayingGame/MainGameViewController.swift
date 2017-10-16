@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 
-class MainGameViewController: UIViewController, GameStateModelDelegate {
+class MainGameViewController: UIViewController, GameStateModelObserver {
 
     var locationModel: LocationModel!
     var myPlayerString: String = "" // TODO: change this to a gameStateModel local var

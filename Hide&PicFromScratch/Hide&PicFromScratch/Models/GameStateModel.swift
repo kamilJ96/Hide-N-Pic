@@ -20,9 +20,10 @@ class GameStateModel: NSObject {
     // the gameSessionID of the game that we will be/are playing
     private(set) var gameSessionID: DatabaseReference!
     
+    var gameRequestObserver: GameStateModelObserver?
     var gameRequests: Array<GameRequest> = [] {
         didSet {
-            print("gameRequests didSet: \n\(gameRequests)")
+            gameRequestObserver?.gameRequestsArrayDidUpdate?()
         }
     }
     
@@ -123,7 +124,9 @@ class GameStateModel: NSObject {
     
 }
 
-protocol GameStateModelDelegate {
+@objc
+protocol GameStateModelObserver {
     // needs to be able to handle gameEnd message
-    func gameDidEnd() // might pass in an image with the ending image yknow
+    @objc optional func gameDidEnd() // might pass in an image with the ending image yknow
+    @objc optional func gameRequestsArrayDidUpdate()
 }

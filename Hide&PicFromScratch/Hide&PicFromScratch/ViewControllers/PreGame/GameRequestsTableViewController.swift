@@ -10,10 +10,14 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class GameRequestsTableViewController: UITableViewController {
+class GameRequestsTableViewController: UITableViewController, GameStateModelObserver {
     
-    var gameStateModel: GameStateModel?
-    // TODO: in this class, contantly listen to ref.child("myUserID").child("requests")
+    var gameStateModel: GameStateModel? {
+        didSet {
+            tableView.reloadData()
+            gameStateModel?.gameRequestObserver = self
+        }
+    }
     
     var gameRequestCellID = "gameRequestTableCell"
     var gameSessionID: DatabaseReference!
@@ -29,14 +33,20 @@ class GameRequestsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
+    func gameRequestsArrayDidUpdate() {
+//        print("\nGameRequestsTableViewController -> gameRequestsArrayDidUpdate()\n")
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,14 +8,50 @@
 
 import UIKit
 
-class HomeScreenTabBarViewController: UITabBarController {
+class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     var gameStateModel = GameStateModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        self.delegate = self
+        
+        for viewController in viewControllers! {
+            // pass reference to gameStateModel to sub view controllers
+            if let friendsVC = viewController as? FriendsListTableViewController {
+                if friendsVC.gameStateModel == nil {
+                    friendsVC.gameStateModel = gameStateModel
+                    return
+                }
+            }
+            
+            if let gameRequestsVC = viewController as? GameRequestsTableViewController {
+                if gameRequestsVC.gameStateModel == nil {
+                    gameRequestsVC.gameStateModel = gameStateModel
+                    return
+                }
+            }
+        }
+    }
+    
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        // pass reference to gameStateModel to sub view controllers
+        if let friendsVC = viewController as? FriendsListTableViewController {
+            if friendsVC.gameStateModel == nil {
+                friendsVC.gameStateModel = gameStateModel
+                return
+            }
+        }
+        
+        if let gameRequestsVC = viewController as? GameRequestsTableViewController {
+            if gameRequestsVC.gameStateModel == nil {
+                gameRequestsVC.gameStateModel = gameStateModel
+                return
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,20 +61,10 @@ class HomeScreenTabBarViewController: UITabBarController {
     
 
     // MARK: - Navigation
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        // pass reference to gameStateModel to sub views
-        if let friendsVC = segue.destination.contents as? FriendsListTableViewController {
-            friendsVC.gameStateModel = gameStateModel
-            return
-        }
-        
-        if let gameRequestsVC = segue.destination.contents as? GameRequestsTableViewController {
-            gameRequestsVC.gameStateModel = gameStateModel
-        }
     }
-    
-
+    */
 }
