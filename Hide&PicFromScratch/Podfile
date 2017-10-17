@@ -16,6 +16,7 @@ target 'Hide&PicFromScratch' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
 
+  pod 'ARCL'
 
   target 'Hide&PicFromScratchTests' do
     inherit! :search_paths
