@@ -62,10 +62,10 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
         
         if let chatVC = segue.destination.contents as? ChatViewController {
             let currentUser = Auth.auth().currentUser!
-            chatVc.senderId = currentUser.uid
-            chatVc.senderDisplayName = currentUser.displayName
-            chatVc.receiverId = gameStateModel.opponentPlayerID
-            chatVc.receiverName = gameStateModel.opponentPlayerName
+            chatVC.senderId = currentUser.uid
+            chatVC.senderDisplayName = currentUser.displayName
+            chatVC.receiverId = gameStateModel.opponentPlayerUserID
+            chatVC.receiverName = gameStateModel.opponentPlayerName
             return
         }
     }
