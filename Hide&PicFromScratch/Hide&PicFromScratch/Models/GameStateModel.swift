@@ -112,7 +112,7 @@ public class GameStateModel: NSObject {
         opponentPlayerUserID = gameRequest.initiatingPlayerUserID
         
         // remove the invite / game request from the server
-        gameRequest.dbRef.removeValue()
+        // gameRequest.dbRef.removeValue() TODO: uncomment later
         
         gameSessionIDdbRef.child("handshake").setValue("accepted")
     }
@@ -186,7 +186,7 @@ public class GameStateModel: NSObject {
 @objc
 protocol GameStateModelObserver {
     // needs to be able to handle gameEnd message
-    @objc optional func gameDidEnd() // might pass in an image with the ending image yknow
+    @objc optional func gameDidEnd(endGameImage: UIImage) // might pass in an image with the ending image yknow
     @objc optional func gameRequestsArrayDidUpdate()
     @objc optional func friendDidRespondToInvite(with response: String)
 }

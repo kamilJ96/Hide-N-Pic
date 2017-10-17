@@ -23,6 +23,7 @@
 		933BC2BD1F8CAC6A00F6023F /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */; };
 		933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E10491F94466A00C716EC /* GameStateModel.swift */; };
 		933E104F1F945FD400C716EC /* HomeScreenTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E104E1F945FD400C716EC /* HomeScreenTabBarViewController.swift */; };
+		93406CAA1F95BD5000728929 /* EndGameImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93406CA91F95BD5000728929 /* EndGameImageViewController.swift */; };
 		9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */; };
 		9351D1601F90EBC700BD367F /* GameRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */; };
 		9352813A1F95B21D008EE156 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935281391F95B21C008EE156 /* GoogleService-Info.plist */; };
@@ -79,6 +80,7 @@
 		933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
 		933E10491F94466A00C716EC /* GameStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateModel.swift; sourceTree = "<group>"; };
 		933E104E1F945FD400C716EC /* HomeScreenTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTabBarViewController.swift; sourceTree = "<group>"; };
+		93406CA91F95BD5000728929 /* EndGameImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameImageViewController.swift; sourceTree = "<group>"; };
 		9351D15D1F90EB9B00BD367F /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
 		9351D15F1F90EBC700BD367F /* GameRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequestsTableViewController.swift; sourceTree = "<group>"; };
 		935281391F95B21C008EE156 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */,
 				933BC2901F8CAC1800F6023F /* ARKitViewController.swift */,
 				935E64661F8D940B001F5631 /* MapViewController.swift */,
+				93406CA91F95BD5000728929 /* EndGameImageViewController.swift */,
 			);
 			path = PlayingGame;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,
 				933E104F1F945FD400C716EC /* HomeScreenTabBarViewController.swift in Sources */,
+				93406CAA1F95BD5000728929 /* EndGameImageViewController.swift in Sources */,
 				93217D161F90EF06001DBDA4 /* PendingRequestViewController.swift in Sources */,
 				935E64671F8D940B001F5631 /* MapViewController.swift in Sources */,
 				937ADD461F91BA68004D47A1 /* User.swift in Sources */,

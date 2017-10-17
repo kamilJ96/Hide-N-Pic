@@ -227,8 +227,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-MY-ITX" customClass="SceneLocationView" customModule="ARCL">
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-MY-ITX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Bpx-zM-ifH" appends="YES" id="QYa-5z-QDD"/>
+                                </connections>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -242,11 +246,46 @@
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="FoU-MY-ITX" id="aWK-AG-m8c"/>
+                        <segue destination="7pm-PG-Wyi" kind="show" identifier="from ARScene to EndGameImageVC" id="zgS-17-hUN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onc-ru-uWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="2" id="Bpx-zM-ifH">
+                    <connections>
+                        <action selector="handleLongPress:" destination="afO-qR-9Hx" id="lbH-bm-gR2"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="71" y="842"/>
+        </scene>
+        <!--End Game Image View Controller-->
+        <scene sceneID="an6-yv-Tjt">
+            <objects>
+                <viewController id="7pm-PG-Wyi" customClass="EndGameImageViewController" customModule="Hide_PicFromScratch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cSz-nL-e3u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-mg-ogJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="511"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="leading" secondItem="cSz-nL-e3u" secondAttribute="leading" id="ckL-nY-68A"/>
+                            <constraint firstAttribute="trailing" secondItem="Lpx-mg-ogJ" secondAttribute="trailing" id="g0o-EW-Xcf"/>
+                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="top" secondItem="5r1-Fn-YOd" secondAttribute="top" id="jDX-rC-CMr"/>
+                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="bottom" secondItem="5r1-Fn-YOd" secondAttribute="bottom" id="t7y-mr-zmW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5r1-Fn-YOd"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Lpx-mg-ogJ" id="MXJ-m8-k2W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8n-NY-LbM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855" y="842"/>
         </scene>
         <!--Small Map-->
         <scene sceneID="dYg-Eq-sbO">

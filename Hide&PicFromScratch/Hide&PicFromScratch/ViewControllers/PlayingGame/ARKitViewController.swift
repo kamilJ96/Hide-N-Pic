@@ -13,13 +13,28 @@ import ARCL
 
 class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObserver {
 
-    @IBOutlet var sceneView: SceneLocationView!
+    @IBOutlet var sceneView: ARSCNView!
+    var endGameImage: UIImage?
+    
+    @IBAction func handleLongPress(_ sender: Any) {
+        print("handleLongPress() -> sender = \(sender)")
+        if let longPressRecogniser = sender as? UILongPressGestureRecognizer {
+            switch longPressRecogniser.state {
+            case .began:
+                endGameImage = sceneView.snapshot()
+                performSegue(withIdentifier: "from ARScene to EndGameImageVC", sender: self)
+            default:
+                break
+            }
+        }
+    }
     
     var locationModel: LocationModel?
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
         // TODO: check to see if this ARView is visible on screen before doing any UI stuff
+        
     }
     
     
@@ -89,5 +104,13 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObs
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let endGameImageVC = segue.destination.contents as? EndGameImageViewController {
+            print("\n\tsegueing to endgameimage VC, sender = \(sender)\n")
+            endGameImageVC.endGameImage = endGameImage
+        }
     }
 }

@@ -44,7 +44,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     // strings for accessing file path in database
     let gameSessionsString = "gameSessions"
     let initiatingPlayerString = "initiatingPlayer"
-    let invitedPlayerString = "invitedPlayer"
+    let invitedPlayerString = "initiatingPlayer" // TODO: change this back "invitedPlayer"
     
     var myPlayerString: String
     var opponentPlayerString: String
@@ -98,13 +98,12 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         // listen for when new locations are added to opponent's location list on server
         let _ = opponentsLocationsDbRef.observe(DataEventType.childAdded, with: { (snapshot) in
             if let locationDict = snapshot.value as? NSDictionary {
-                print("LocationModel -> startGame() -> observing childAdded to opponentsLocationsDbRef, snapshot = \(locationDict)")
+                
                 if let latitude = locationDict["latitude"] as? CLLocationDegrees,
                     let longitude = locationDict["longitude"] as? CLLocationDegrees,
                     let timestampString = locationDict["timestamp"] as? String
                 {
                     // try convert timestampString to a Date
-                    print("LocationModel -> startGame() -> observing childAdded closure -> successfully passed first round of if lets")
                     let dateFormatter = DateFormatter()
                     // timestapString comes formated as "2017-10-11 08:32:36 +0000";
                     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
