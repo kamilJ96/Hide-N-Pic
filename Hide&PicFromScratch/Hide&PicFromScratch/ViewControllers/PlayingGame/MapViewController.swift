@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObserver {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let regionRadius: CLLocationDistance = 100 // the frame of the map view
@@ -23,7 +23,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     
     var prevLocationPin: CLLocation! = nil
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
-    func locationModelDidUpidate() {
+    
+    func locationModelDidUpdate() {
         print("MapViewController->locationModelDidUpdate()")
         // TODO: check to see if this MapView is visible on screen before doing any UI stuff
         // check if latest location is the same as the previous one

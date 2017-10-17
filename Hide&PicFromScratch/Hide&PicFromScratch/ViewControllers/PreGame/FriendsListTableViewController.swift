@@ -55,11 +55,11 @@ class FriendsListTableViewController: UITableViewController {
                     user.name = name; user.email = email; user.id = Snapshot.key;
                     
                     // If current user's name equals a database user
-//                    if self.current_user?.displayName == user.name {
-//                        // Do nothing
-//                    } else {
+                    if self.current_user?.displayName == user.name {
+                        // Do nothing
+                    } else {
                         self.users.append(user)
-//                    }
+                    }
                 } else {
                     print("error: FriendsListTableViewController->fetchUsersFromServer()->user dict did not have values as expected")
                 }

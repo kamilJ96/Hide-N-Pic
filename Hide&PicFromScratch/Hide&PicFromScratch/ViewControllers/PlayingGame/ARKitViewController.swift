@@ -9,10 +9,11 @@
 import UIKit
 import SceneKit
 import ARKit
+import ARCL
 
 class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObserver {
 
-    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var sceneView: SceneLocationView!
     
     var locationModel: LocationModel?
     

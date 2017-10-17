@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1016795528150-inks6htrt2alb4umqcbh41d7vuc23ag4.apps.googleusercontent.com</string>
+	<string>1016795528150-qjq67cvft0ni62v7j4kgcc3vn5630qgi.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1016795528150-inks6htrt2alb4umqcbh41d7vuc23ag4</string>
+	<string>com.googleusercontent.apps.1016795528150-qjq67cvft0ni62v7j4kgcc3vn5630qgi</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD7UOsDySuNQeS21CIWx47jDbk5jT8YFJo</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>VanillaThunder.Hide-PicFromScratch</string>
+	<string>kamil.VanillaThunder.Hide-PicFromScratch</string>
 	<key>PROJECT_ID</key>
 	<string>vanillathunder-ac0df</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1016795528150:ios:56ec3e2068a7490d</string>
+	<string>1:1016795528150:ios:3681d9f41cf4d435</string>
 	<key>DATABASE_URL</key>
 	<string>https://vanillathunder-ac0df.firebaseio.com</string>
 </dict>
