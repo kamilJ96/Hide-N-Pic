@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8ZC-tT-0Cr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8ZC-tT-0Cr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -92,7 +92,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Game Requests" id="oLS-9a-9eX">
-                                    <barButtonItem key="leftBarButtonItem" title="Logout" id="8TO-PX-zco"/>
+                                    <barButtonItem key="leftBarButtonItem" title="Logout" id="8TO-PX-zco">
+                                        <connections>
+                                            <action selector="logOutButton:" destination="eBn-wb-gXz" id="3Cg-y9-n3z"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -163,6 +167,7 @@
                     <tabBarItem key="tabBarItem" title="Game Requests" id="tRX-xA-qVF"/>
                     <connections>
                         <segue destination="Aaw-ZZ-gNr" kind="show" identifier="AcceptInviteGoToGame" id="ZvT-lD-KPb"/>
+                        <segue destination="8ZC-tT-0Cr" kind="show" identifier="fromGameRequestsBackToSignInScreen" id="xpO-hz-F1R"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq2-Ak-47j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -420,7 +425,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Friends" id="yGr-3g-MtP">
-                                    <barButtonItem key="leftBarButtonItem" title="Logout" id="ozm-Wp-Hh4"/>
+                                    <barButtonItem key="leftBarButtonItem" title="Logout" id="ozm-Wp-Hh4">
+                                        <connections>
+                                            <action selector="logoutButton:" destination="asY-L8-NzP" id="r1j-MM-Vnh"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -429,7 +438,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g3p-2P-3m0" id="4pH-BM-h9i">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Online Friend Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zQJ-FY-gAs">
@@ -446,7 +455,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ngB-jZ-5Qk" id="h9D-As-mZ0">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Offline Friend Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aZ8-99-DND">
@@ -468,6 +477,7 @@
                     <tabBarItem key="tabBarItem" title="Friends" id="G0n-s8-eHW"/>
                     <connections>
                         <segue destination="SpX-3V-Rdh" kind="show" identifier="Friends List to Pending Acceptance screen" id="52I-pb-ldF"/>
+                        <segue destination="8ZC-tT-0Cr" kind="show" identifier="fromFriendsListBackToSignInScreen" id="YQP-fi-hph"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACh-dn-zVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,6 +541,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YET-P8-gId"/>
+        <segue reference="ZvT-lD-KPb"/>
+        <segue reference="YQP-fi-hph"/>
     </inferredMetricsTieBreakers>
 </document>

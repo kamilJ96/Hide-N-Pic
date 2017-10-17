@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FBSDKCoreKit
 
 class GameRequestsTableViewController: UITableViewController, GameStateModelObserver {
     
@@ -37,6 +38,18 @@ class GameRequestsTableViewController: UITableViewController, GameStateModelObse
         }
     }
     
+    
+    @IBAction func logOutButton(_ sender: Any) {
+        // signs user out of firebase
+        try! Auth.auth().signOut()
+        //sign the user out of facebook too
+        FBSDKAccessToken.setCurrent(nil)
+        
+        let myConnectionsRef = Database.database().reference(withPath: "user_profile/\(self.user!.uid)/connections/\(self.deviceID!)")
+        myConnectionsRef.child("online").setValue(false)
+        
+        self.performSegue(withIdentifier: "fromGameRequestsBackToSignInScreen", sender: nil)
+    }
     
     
     override func viewDidLoad() {

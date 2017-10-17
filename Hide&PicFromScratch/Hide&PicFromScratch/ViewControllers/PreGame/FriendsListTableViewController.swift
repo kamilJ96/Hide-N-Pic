@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FBSDKCoreKit
 
 class FriendsListTableViewController: UITableViewController {
 
@@ -151,5 +152,16 @@ class FriendsListTableViewController: UITableViewController {
         }
      }
  
-
+    @IBAction func logoutButton(_ sender: Any) {
+        // signs user out of firebase
+        try! Auth.auth().signOut()
+        //sign the user out of facebook too
+        FBSDKAccessToken.setCurrent(nil)
+        
+        let myConnectionsRef = Database.database().reference(withPath: "user_profile/\(self.user!.uid)/connections/\(self.deviceID!)")
+        myConnectionsRef.child("online").setValue(false)
+        
+        self.performSegue(withIdentifier: "fromFriendsListBackToSignInScreen", sender: nil)
+    }
+    
 }
