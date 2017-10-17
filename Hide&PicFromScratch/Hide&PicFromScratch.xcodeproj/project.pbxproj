@@ -15,7 +15,6 @@
 		93217D161F90EF06001DBDA4 /* PendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93217D151F90EF06001DBDA4 /* PendingRequestViewController.swift */; };
 		933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC28C1F8CAC1800F6023F /* AppDelegate.swift */; };
 		933BC28F1F8CAC1800F6023F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 933BC28E1F8CAC1800F6023F /* art.scnassets */; };
-		933BC2911F8CAC1800F6023F /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933BC2901F8CAC1800F6023F /* ARKitViewController.swift */; };
 		933BC2941F8CAC1800F6023F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933BC2921F8CAC1800F6023F /* Main.storyboard */; };
 		933BC2961F8CAC1800F6023F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933BC2951F8CAC1800F6023F /* Assets.xcassets */; };
 		933BC2991F8CAC1800F6023F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933BC2971F8CAC1800F6023F /* LaunchScreen.storyboard */; };
@@ -69,7 +68,6 @@
 		933BC2891F8CAC1800F6023F /* Hide&PicFromScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hide&PicFromScratch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		933BC28C1F8CAC1800F6023F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		933BC28E1F8CAC1800F6023F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		933BC2901F8CAC1800F6023F /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		933BC2931F8CAC1800F6023F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		933BC2951F8CAC1800F6023F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		933BC2981F8CAC1800F6023F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -155,11 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				933BC2BC1F8CAC6A00F6023F /* MainGameViewController.swift */,
-				933BC2901F8CAC1800F6023F /* ARKitViewController.swift */,
-				935E64661F8D940B001F5631 /* MapViewController.swift */,
-				93406CA91F95BD5000728929 /* EndGameImageViewController.swift */,
-				36BEA1DE1F95C6C300776038 /* ChatViewController.swift */,
 				93E369EF1F9647BE007FF215 /* ARCLViewController.swift */,
+				935E64661F8D940B001F5631 /* MapViewController.swift */,
+				36BEA1DE1F95C6C300776038 /* ChatViewController.swift */,
+				93406CA91F95BD5000728929 /* EndGameImageViewController.swift */,
 			);
 			path = PlayingGame;
 			sourceTree = "<group>";
@@ -581,7 +578,6 @@
 				93E391C31F8DD7A700A87874 /* SignInViewController.swift in Sources */,
 				93176E9C1F905A77005F8755 /* DefaultValues.swift in Sources */,
 				937ADD4E1F91C27D004D47A1 /* GameRequest.swift in Sources */,
-				933BC2911F8CAC1800F6023F /* ARKitViewController.swift in Sources */,
 				9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */,
 				933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,

@@ -210,16 +210,16 @@
                                     <outletCollection property="gestureRecognizers" destination="XIn-o9-XES" appends="YES" id="xJo-9t-Xft"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-aw-Vbc">
-                                <rect key="frame" x="16" y="20" width="112" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-aw-Vbc" userLabel="Messages button">
+                                <rect key="frame" x="16" y="20" width="48" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="BCy-4u-wok"/>
-                                    <constraint firstAttribute="height" constant="50" id="ucz-Xg-id0"/>
+                                    <constraint firstAttribute="width" constant="48" id="BCy-4u-wok"/>
+                                    <constraint firstAttribute="height" constant="48" id="ucz-Xg-id0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Messages">
-                                    <color key="titleColor" red="0.027667584200000001" green="0.027667584200000001" blue="0.027667584200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="titleShadowOffset" width="8" height="8"/>
+                                <state key="normal" image="chat_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="messagesButton:" destination="Aaw-ZZ-gNr" eventType="touchUpInside" id="a0J-EC-npZ"/>
@@ -308,8 +308,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-mg-ogJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-mg-ogJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="552"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8n-NY-LbM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="233"/>
+            <point key="canvasLocation" x="188" y="232.53373313343329"/>
         </scene>
         <!--Small Map-->
         <scene sceneID="dYg-Eq-sbO">
@@ -533,6 +533,9 @@
             <point key="canvasLocation" x="-1175" y="1717"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chat_icon" width="640" height="640"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZvT-lD-KPb"/>
         <segue reference="YQP-fi-hph"/>

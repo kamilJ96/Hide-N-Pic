@@ -4,6 +4,7 @@
 //
 //  Created by Andrew Hart on 02/07/2017.
 //  Copyright © 2017 Project Dent. All rights reserved.
+//  Modified by Leonard Zou
 //
 
 import UIKit
@@ -35,7 +36,7 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
-        // TODO: check to see if this ARView is visible on screen before doing any UI stuff
+        print("\n\tARCLViewController locationModelDidUpdate()\n")
         
     }
     
@@ -90,24 +91,6 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         // Release any cached data, images, etc that aren't in use.
     }
     
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//
-//        if let touch = touches.first {
-//            if touch.view != nil {
-//                let location = touch.location(in: self.view)
-//
-//                if location.x <= 40 && adjustNorthByTappingSidesOfScreen {
-//                    print("left side of the screen")
-//                    sceneLocationView.moveSceneHeadingAntiClockwise()
-//                } else if location.x >= view.frame.size.width - 40 && adjustNorthByTappingSidesOfScreen {
-//                    print("right side of the screen")
-//                    sceneLocationView.moveSceneHeadingClockwise()
-//                }
-//            }
-//        }
-//    }
     
     //MARK: MKMapViewDelegate
     
