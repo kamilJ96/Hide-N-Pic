@@ -52,7 +52,11 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     ///When set to true, displays an axes node at the start of the scene
     public var showAxesNode = false
     
-    private(set) var locationNodes = [LocationNode]()
+    private(set) var locationNodes = [LocationNode]() {
+        didSet {
+            print("\nSceneLocationView -> locationNodes -> didSet: \(locationNodes)\n")
+        }
+    }
     
     private var sceneLocationEstimates = [SceneLocationEstimate]()
     
@@ -273,6 +277,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     ///location will not be modified, but taken as accurate.
     public func addLocationNodeWithConfirmedLocation(locationNode: LocationNode) {
         if locationNode.location == nil || locationNode.locationConfirmed == false {
+            print("SceneLocationView->addLocationNodeWithConfirmedLocation -> nil or not confirmed")
             return
         }
         

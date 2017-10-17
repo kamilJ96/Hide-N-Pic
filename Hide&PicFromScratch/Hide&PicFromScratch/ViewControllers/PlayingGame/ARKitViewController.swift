@@ -17,7 +17,6 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObs
     var endGameImage: UIImage?
     
     @IBAction func handleLongPress(_ sender: Any) {
-        print("handleLongPress() -> sender = \(sender)")
         if let longPressRecogniser = sender as? UILongPressGestureRecognizer {
             switch longPressRecogniser.state {
             case .began:

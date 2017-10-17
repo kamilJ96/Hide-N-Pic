@@ -248,37 +248,21 @@
         <!--Augmented Reality-->
         <scene sceneID="xOW-ZR-SFr">
             <objects>
-                <viewController title="Augmented Reality" id="afO-qR-9Hx" customClass="ARKitViewController" customModule="Hide_PicFromScratch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Augmented Reality" id="afO-qR-9Hx" customClass="ARCLViewController" customModule="Hide_PicFromScratch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p4w-XJ-0pu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-MY-ITX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Bpx-zM-ifH" appends="YES" id="QYa-5z-QDD"/>
-                                </connections>
-                            </arscnView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="FoU-MY-ITX" firstAttribute="leading" secondItem="p4w-XJ-0pu" secondAttribute="leading" id="0Tc-ak-vcW"/>
-                            <constraint firstItem="FoU-MY-ITX" firstAttribute="top" secondItem="p4w-XJ-0pu" secondAttribute="top" id="73D-Lt-Igb"/>
-                            <constraint firstAttribute="trailing" secondItem="FoU-MY-ITX" secondAttribute="trailing" id="b2M-Fv-HTv"/>
-                            <constraint firstAttribute="bottom" secondItem="FoU-MY-ITX" secondAttribute="bottom" id="qHL-M6-l1P"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VdU-1V-cBJ"/>
                     </view>
                     <connections>
-                        <outlet property="sceneView" destination="FoU-MY-ITX" id="aWK-AG-m8c"/>
                         <segue destination="7pm-PG-Wyi" kind="show" identifier="from ARScene to EndGameImageVC" id="zgS-17-hUN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onc-ru-uWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="2" id="Bpx-zM-ifH">
+                <pongPressGestureRecognizer cancelsTouchesInView="NO" allowableMovement="10" minimumPressDuration="2" id="Bpx-zM-ifH">
                     <connections>
-                        <action selector="handleLongPress:" destination="afO-qR-9Hx" id="lbH-bm-gR2"/>
+                        <action selector="handleLongPress:" destination="afO-qR-9Hx" id="9Yw-3D-3XG"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

@@ -44,7 +44,6 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if locationModel == nil {
-            print("\n\tmain game view controller -> prepare for segue, gameStateModel.myPlayerID = \(gameStateModel.myPlayerID!)\n")
             locationModel = LocationModel(gameStateModel)
         }
         

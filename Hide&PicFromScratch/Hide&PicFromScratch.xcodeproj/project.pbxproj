@@ -32,6 +32,7 @@
 		937ADD461F91BA68004D47A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937ADD451F91BA68004D47A1 /* User.swift */; };
 		937ADD4C1F91C113004D47A1 /* GameRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937ADD4B1F91C113004D47A1 /* GameRequestTableViewCell.swift */; };
 		937ADD4E1F91C27D004D47A1 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937ADD4D1F91C27D004D47A1 /* GameRequest.swift */; };
+		93E369F01F9647BE007FF215 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E369EF1F9647BE007FF215 /* ARCLViewController.swift */; };
 		93E391C31F8DD7A700A87874 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E391C21F8DD7A700A87874 /* SignInViewController.swift */; };
 		C620A653AB1ED22D283F1F8E /* Pods_Hide_PicFromScratchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF2E7EFAA505D2186943111 /* Pods_Hide_PicFromScratchUITests.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		937ADD451F91BA68004D47A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		937ADD4B1F91C113004D47A1 /* GameRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequestTableViewCell.swift; sourceTree = "<group>"; };
 		937ADD4D1F91C27D004D47A1 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
+		93E369EF1F9647BE007FF215 /* ARCLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
 		93E391C21F8DD7A700A87874 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D4C11BA2B45550EA11125B19 /* Pods_Hide_PicFromScratch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E995B60D2D631A5E2A54269E /* Pods-Hide&PicFromScratchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hide&PicFromScratchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hide&PicFromScratchTests/Pods-Hide&PicFromScratchTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				935E64661F8D940B001F5631 /* MapViewController.swift */,
 				93406CA91F95BD5000728929 /* EndGameImageViewController.swift */,
 				36BEA1DE1F95C6C300776038 /* ChatViewController.swift */,
+				93E369EF1F9647BE007FF215 /* ARCLViewController.swift */,
 			);
 			path = PlayingGame;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,
 				36BEA1DF1F95C6C300776038 /* ChatViewController.swift in Sources */,
+				93E369F01F9647BE007FF215 /* ARCLViewController.swift in Sources */,
 				933E104F1F945FD400C716EC /* HomeScreenTabBarViewController.swift in Sources */,
 				93406CAA1F95BD5000728929 /* EndGameImageViewController.swift in Sources */,
 				93217D161F90EF06001DBDA4 /* PendingRequestViewController.swift in Sources */,

@@ -22,7 +22,7 @@ open class LocationNode: SCNNode {
     ///Otherwise, this is false, and becomes true once the user moves 100m away from the node,
     ///except when the locationEstimateMethod is set to use Core Location data only,
     ///as then it becomes true immediately.
-    public var locationConfirmed = false
+    public var locationConfirmed = true
     
     ///Whether a node's position should be adjusted on an ongoing basis
     ///based on its' given location.
@@ -66,12 +66,12 @@ open class LocationAnnotationNode: LocationNode {
     ///Setting to true causes annotation nodes to scale like a regular node
     ///Scaling relative to distance may be useful with local navigation-based uses
     ///For landmarks in the distance, the default is correct
-    public var scaleRelativeToDistance = false
+    public var scaleRelativeToDistance = true
     
     public init(location: CLLocation?, image: UIImage) {
+        print("\n\tnew LocationAnnotationNode, location: \(String(describing: location))\n")
         self.image = image
-        
-        let plane = SCNPlane(width: image.size.width / 100, height: image.size.height / 100)
+        let plane = SCNPlane(width: image.size.width / 100 * 5, height: image.size.height / 100 * 5)
         plane.firstMaterial!.diffuse.contents = image
         plane.firstMaterial!.lightingModel = .constant
         

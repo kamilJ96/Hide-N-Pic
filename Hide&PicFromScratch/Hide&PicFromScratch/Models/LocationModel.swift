@@ -18,11 +18,7 @@ import FirebaseDatabase
 // initiating player is responsible for creating game session on server and deleting it afterwards
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
-    private var observers: Array<LocationModelObserver?> = [] {
-        didSet {
-            print("\nLocationModel->observers didSet: \(observers)")
-        }
-    }
+    private var observers: Array<LocationModelObserver?> = []
 
     let locationManager: CLLocationManager! = CLLocationManager()
     
@@ -34,7 +30,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     var opponentsLocations: Array<CLLocation> = [] {
         didSet {
-            print("LocationModel-> opponentsLocations didSet: notify observers that opponentsLocations did update")
             for observer in observers {
                 observer?.locationModelDidUpdate()
             }
@@ -109,7 +104,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
                     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
                     let timestamp = dateFormatter.date(from: timestampString)
                     if timestamp != nil {
-                        print("LocationModel -> startGame() -> observing childAdded closure -> successfully converted timestamp string into Date type")
                         // successfully converted timestamp string into Date type
                         // create new CLLocation, add it to user array
                         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
