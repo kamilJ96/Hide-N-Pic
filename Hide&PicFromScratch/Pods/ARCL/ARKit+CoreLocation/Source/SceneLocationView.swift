@@ -54,7 +54,11 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     private(set) var locationNodes = [LocationNode]() {
         didSet {
-            print("\nSceneLocationView -> locationNodes -> didSet: \(locationNodes)\n")
+            print("\nSceneLocationView -> locationNodes -> didSet:")
+            for locationNode in locationNodes {
+                print(locationNode.location)
+            }
+            
         }
     }
     
@@ -289,6 +293,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     public func removeLocationNode(locationNode: LocationNode) {
         if let index = locationNodes.index(of: locationNode) {
+            print("\n\tSceneLocationView -> removeLocationNode() -> found the location node you want to remove from ARScene: \(locationNode.location.coordinate)")
             locationNodes.remove(at: index)
         }
         

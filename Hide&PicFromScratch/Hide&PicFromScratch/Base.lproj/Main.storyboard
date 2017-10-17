@@ -308,16 +308,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-mg-ogJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="552"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-mg-ogJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="leading" secondItem="cSz-nL-e3u" secondAttribute="leading" id="ckL-nY-68A"/>
-                            <constraint firstAttribute="trailing" secondItem="Lpx-mg-ogJ" secondAttribute="trailing" id="g0o-EW-Xcf"/>
-                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="top" secondItem="5r1-Fn-YOd" secondAttribute="top" id="jDX-rC-CMr"/>
-                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="bottom" secondItem="5r1-Fn-YOd" secondAttribute="bottom" id="t7y-mr-zmW"/>
+                            <constraint firstAttribute="trailing" secondItem="Lpx-mg-ogJ" secondAttribute="trailing" id="5pT-KQ-yq5"/>
+                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="leading" secondItem="cSz-nL-e3u" secondAttribute="leading" id="VzL-A0-z9X"/>
+                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="top" secondItem="cSz-nL-e3u" secondAttribute="top" id="WBH-e0-Trb"/>
+                            <constraint firstItem="Lpx-mg-ogJ" firstAttribute="bottom" secondItem="5r1-Fn-YOd" secondAttribute="bottom" id="gF4-1J-KUm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5r1-Fn-YOd"/>
                     </view>

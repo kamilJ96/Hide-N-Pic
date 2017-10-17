@@ -16,6 +16,16 @@ import ARCL
 class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate, LocationModelObserver {
     let sceneLocationView = SceneLocationView()
     
+    var demoArray: Array<CLLocationCoordinate2D> = [
+        CLLocationCoordinate2DMake(-37.799634, 144.961783),
+        CLLocationCoordinate2DMake(-37.799846, 144.961971),
+        CLLocationCoordinate2DMake(-37.800003, 144.962384),
+        CLLocationCoordinate2DMake(-37.800126, 144.962990),
+        CLLocationCoordinate2DMake(-37.800049, 144.963521)
+    ]
+    
+    var annotationsOnScreen: Array<LocationNode> = []
+    
     var userAnnotation: MKPointAnnotation?
     var locationEstimateAnnotation: MKPointAnnotation?
     
@@ -36,8 +46,22 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
-        print("\n\tARCLViewController locationModelDidUpdate()\n")
+        /////////////////////////////////////////////////////////////////////////////////////
+        // test code, no need to keep this
+        if demoArray.count < 1 {return}
+        let nextLocation = demoArray.removeFirst()
+        annotationsOnScreen.append(addNewLocationAnnotationNodeToScene(latitude: nextLocation.latitude, longitude: nextLocation.longitude))
         
+        /////////////////////////////////////////////////////////////////////////////////////
+        // real code keep this for demo
+//        if let nextLocation = locationModel?.opponentsLocations.last {
+//            annotationsOnScreen.append(addNewLocationAnnotationNodeToScene(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude))
+//        }
+        
+        // magic number 3, because pins show up every five seconds are meant to disappear after 15 seconds
+        if annotationsOnScreen.count > 3 {
+            sceneLocationView.removeLocationNode(locationNode: annotationsOnScreen.removeFirst())
+        }
     }
     
     override func viewDidLoad() {
@@ -45,10 +69,10 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         
         //Set to true to display an arrow which points north.
         //Checkout the comments in the property description and on the readme on this.
-        sceneLocationView.orientToTrueNorth = true
+        sceneLocationView.orientToTrueNorth = false
         
 //        sceneLocationView.locationEstimateMethod = .coreLocationDataOnly
-        sceneLocationView.showAxesNode = false
+//        sceneLocationView.showAxesNode = false
         sceneLocationView.locationDelegate = self
         
         
@@ -60,6 +84,25 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
         
         view.addSubview(sceneLocationView)
+    }
+    
+    func addNewLocationAnnotationNodeToScene(
+        latitude: CLLocationDegrees, longitude: CLLocationDegrees,
+        altitude: CLLocationDistance = DefaultValues.altitude,
+        scaleRelativeToDistance: Bool = true)
+        -> LocationAnnotationNode
+    {
+        let image = UIImage(named: "pin")!
+        
+        let locationCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let location = CLLocation(coordinate: locationCoordinate, altitude: altitude)
+        
+        let annotationNode = LocationAnnotationNode(location: location, image: image)
+        annotationNode.scaleRelativeToDistance = scaleRelativeToDistance
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        print("Coordinate added: \(latitude), \(longitude)") // DEBUG
+        
+        return annotationNode
     }
     
     
