@@ -29,7 +29,12 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObs
         }
     }
     
-    var locationModel: LocationModel?
+    var locationModel: LocationModel? {
+        didSet {
+            // register as locationModel observer
+            locationModel?.addObserver(self)
+        }
+    }
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
@@ -45,14 +50,11 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObs
         // Set the view's delegate
         sceneView.delegate = self
         
-        // register as locationModel observer
-        locationModel?.addObserver(self)
-        
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+//        sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene

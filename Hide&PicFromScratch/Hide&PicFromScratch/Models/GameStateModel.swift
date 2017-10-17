@@ -114,7 +114,7 @@ public class GameStateModel: NSObject {
         opponentPlayerName = gameRequest.initiatingPlayerName
         
         // remove the invite / game request from the server
-        // gameRequest.dbRef.removeValue() TODO: uncomment later
+        //gameRequest.dbRef.removeValue()
         
         gameSessionIDdbRef.child("handshake").setValue("accepted")
     }
@@ -123,6 +123,7 @@ public class GameStateModel: NSObject {
         gameRequest.gameSessionID.child("handshake").setValue("declined")
         gameRequest.dbRef.removeValue()
     }
+    
     
     func fetchGameRequestsFromServer() {
         let myUserID = (Auth.auth().currentUser?.uid)!
