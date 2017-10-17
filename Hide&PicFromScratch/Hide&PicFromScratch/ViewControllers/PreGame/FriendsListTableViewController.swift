@@ -96,8 +96,8 @@ class FriendsListTableViewController: UITableViewController {
     
     // Handles the selection of a user in the DB
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let userID = users[indexPath.row].id {
-            gameStateModel?.invitePlayer(userID)
+        if let userID = users[indexPath.row].id, let userName = users[indexPath.row].name {
+            gameStateModel?.invitePlayer(userID, userName)
             performSegue(withIdentifier: "Friends List to Pending Acceptance screen", sender: self)
         } else {
             print("error: FriendsListTableViewController->didSelectRowAt()->user was not found in our local array of users")

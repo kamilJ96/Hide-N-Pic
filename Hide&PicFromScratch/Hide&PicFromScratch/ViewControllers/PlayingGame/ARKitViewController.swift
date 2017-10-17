@@ -108,8 +108,8 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, LocationModelObs
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if let endGameImageVC = segue.destination.contents as? EndGameImageViewController {
-            print("\n\tsegueing to endgameimage VC, sender = \(sender)\n")
             endGameImageVC.endGameImage = endGameImage
         }
     }

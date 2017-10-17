@@ -43,8 +43,8 @@ public class GameStateModel: NSObject {
     
     var myPlayerID: PlayerID?
     var opponentPlayerID: PlayerID?
-    
     var opponentPlayerUserID: String!
+    var opponentPlayerName: String!
     
     override init() {
         super.init()
@@ -56,7 +56,7 @@ public class GameStateModel: NSObject {
     }
     
     
-    func invitePlayer(_ userID: String) -> Void {
+    func invitePlayer(_ userID: String, _ userName: String) -> Void {
         // create new game session on server, store in local var
         let newGameSessionID = Database.database().reference().child("gameSessions").childByAutoId()
         newGameSessionID.child("handshake").setValue("pending")
@@ -66,6 +66,7 @@ public class GameStateModel: NSObject {
         let myName = Auth.auth().currentUser?.displayName
         
         opponentPlayerUserID = userID
+        opponentPlayerName = userName
         
         newRequestIDdbRef = Database.database().reference().child("user_profile").child(userID).child("requests").childByAutoId()
         newRequestIDdbRef.setValue(["gameSessionID":newGameSessionID.key, "userID": myUserID!, "initiatingPlayerName": myName!])
@@ -110,6 +111,7 @@ public class GameStateModel: NSObject {
         opponentPlayerID = .initiatingPlayer
         gameSessionIDdbRef = gameRequest.gameSessionID
         opponentPlayerUserID = gameRequest.initiatingPlayerUserID
+        opponentPlayerName = gameRequest.initiatingPlayerName
         
         // remove the invite / game request from the server
         // gameRequest.dbRef.removeValue() TODO: uncomment later

@@ -9,9 +9,11 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class MainGameViewController: UIViewController, GameStateModelObserver {
 
+    
     var gameStateModel: GameStateModel!
     var locationModel: LocationModel!
     
@@ -31,6 +33,9 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
     // unwind segue from expanded map view back to main game screen
     @IBAction func goBack(segue: UIStoryboardSegue) { }
     
+    @IBAction func messagesButton(_ sender: Any) {
+        performSegue(withIdentifier: "fromMainGameVCtoChatVC", sender: self)
+    }
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -49,9 +54,18 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
             return
         }
         
-        // ERROR: in the future need to change casting to correct AR VC
+        // TODO: in the future need to change casting to correct AR VC type
         if let arVC = segue.destination.contents as? ARKitViewController {
             arVC.locationModel = locationModel
+            return
+        }
+        
+        if let chatVC = segue.destination.contents as? ChatViewController {
+            let currentUser = Auth.auth().currentUser!
+            chatVc.senderId = currentUser.uid
+            chatVc.senderDisplayName = currentUser.displayName
+            chatVc.receiverId = gameStateModel.opponentPlayerID
+            chatVc.receiverName = gameStateModel.opponentPlayerName
             return
         }
     }

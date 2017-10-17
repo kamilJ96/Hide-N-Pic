@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36BEA1DF1F95C6C300776038 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BEA1DE1F95C6C300776038 /* ChatViewController.swift */; };
 		81BB0091F2750FF21B66C138 /* Pods_Hide_PicFromScratchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718A1342F89C8EB0E480DED1 /* Pods_Hide_PicFromScratchTests.framework */; };
 		8B4E11FF87A8A54AEAE10BDF /* Pods_Hide_PicFromScratch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C11BA2B45550EA11125B19 /* Pods_Hide_PicFromScratch.framework */; };
 		9314A35B1F8DA2EA003133C1 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314A35A1F8DA2EA003133C1 /* LocationModel.swift */; };
@@ -57,6 +58,7 @@
 		20EE69982FC659A5C1C8DF83 /* Pods-Hide&PicFromScratchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hide&PicFromScratchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hide&PicFromScratchUITests/Pods-Hide&PicFromScratchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		25AD829E2EB1CB3D8E9F27A7 /* Pods-Hide&PicFromScratch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hide&PicFromScratch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hide&PicFromScratch/Pods-Hide&PicFromScratch.release.xcconfig"; sourceTree = "<group>"; };
 		262F6133D130CDF42D27310E /* Pods-Hide&PicFromScratchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hide&PicFromScratchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hide&PicFromScratchUITests/Pods-Hide&PicFromScratchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		36BEA1DE1F95C6C300776038 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		454B15236685E89608F99289 /* Pods-Hide&PicFromScratch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hide&PicFromScratch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hide&PicFromScratch/Pods-Hide&PicFromScratch.debug.xcconfig"; sourceTree = "<group>"; };
 		4EF2E7EFAA505D2186943111 /* Pods_Hide_PicFromScratchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		718A1342F89C8EB0E480DED1 /* Pods_Hide_PicFromScratchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hide_PicFromScratchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				933BC2901F8CAC1800F6023F /* ARKitViewController.swift */,
 				935E64661F8D940B001F5631 /* MapViewController.swift */,
 				93406CA91F95BD5000728929 /* EndGameImageViewController.swift */,
+				36BEA1DE1F95C6C300776038 /* ChatViewController.swift */,
 			);
 			path = PlayingGame;
 			sourceTree = "<group>";
@@ -456,6 +459,8 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -468,6 +473,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -575,6 +582,7 @@
 				9351D15E1F90EB9B00BD367F /* FriendsListTableViewController.swift in Sources */,
 				933E104A1F94466A00C716EC /* GameStateModel.swift in Sources */,
 				933BC28D1F8CAC1800F6023F /* AppDelegate.swift in Sources */,
+				36BEA1DF1F95C6C300776038 /* ChatViewController.swift in Sources */,
 				933E104F1F945FD400C716EC /* HomeScreenTabBarViewController.swift in Sources */,
 				93406CAA1F95BD5000728929 /* EndGameImageViewController.swift in Sources */,
 				93217D161F90EF06001DBDA4 /* PendingRequestViewController.swift in Sources */,
@@ -747,7 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8EEBG55UCC;
+				DEVELOPMENT_TEAM = GGZ9WQLB24;
 				INFOPLIST_FILE = "Hide&PicFromScratch/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -764,7 +772,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8EEBG55UCC;
+				DEVELOPMENT_TEAM = GGZ9WQLB24;
 				INFOPLIST_FILE = "Hide&PicFromScratch/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

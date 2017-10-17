@@ -16,6 +16,8 @@ target 'Hide&PicFromScratch' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
 
+  pod 'JSQMessagesViewController'
+
   pod 'ARCL'
 
   target 'Hide&PicFromScratchTests' do
