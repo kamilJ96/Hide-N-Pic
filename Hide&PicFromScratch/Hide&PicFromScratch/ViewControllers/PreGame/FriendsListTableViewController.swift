@@ -55,12 +55,16 @@ class FriendsListTableViewController: UITableViewController {
                     user.name = name; user.email = email; user.id = Snapshot.key;
                     
                     // If current user's name equals a database user
-                    if self.current_user?.displayName == user.name {
-                        // Do nothing
-                    } else {
+//                    if self.current_user?.displayName == user.name {
+//                        // Do nothing
+//                    } else {
                         self.users.append(user)
-                    }
+//                    }
+                } else {
+                    print("error: FriendsListTableViewController->fetchUsersFromServer()->user dict did not have values as expected")
                 }
+            } else {
+                print("error: FriendsListTableViewController->fetchUsersFromServer()->snapshot was not dictionary as expected")
             }
         })
     }
@@ -96,7 +100,7 @@ class FriendsListTableViewController: UITableViewController {
             gameStateModel?.invitePlayer(userID)
             performSegue(withIdentifier: "Friends List to Pending Acceptance screen", sender: self)
         } else {
-            print("error: user was not found in our local array of users")
+            print("error: FriendsListTableViewController->didSelectRowAt()->user was not found in our local array of users")
         }
     }
     

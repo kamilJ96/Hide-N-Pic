@@ -23,15 +23,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     
     var prevLocationPin: CLLocation! = nil
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
-    func locationModelDidUpdate() {
+    func locationModelDidUpidate() {
+        print("MapViewController->locationModelDidUpdate()")
         // TODO: check to see if this MapView is visible on screen before doing any UI stuff
         // check if latest location is the same as the previous one
         let latestLocationPin = locationModel?.opponentsLocations.last
         if latestLocationPin == prevLocationPin { return }
         
         // create new location pin and display in map
+        print("MapViewController->create new location pin and dispay in map")
         prevLocationPin = latestLocationPin
         if latestLocationPin != nil {
+            print("MapViewController->latestLocationPin is not nil :)")
             mapView.addAnnotation(latestLocationPin!)
         }
     }
@@ -41,7 +44,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     
     // returns a standard pin view to use to display the annotation, and also animatesDrop
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
+        if annotation is MKUserLocation {
+            print("MapViewController->viewFor annotation, annotation is MKUserLocation")
+            return nil }
         
         let annotationView = MKPinAnnotationView()
         annotationView.animatesDrop = true
@@ -54,11 +59,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
         
         annotationView.alpha = alpha
         
+        print("MapViewController->viewFor annotation, annotationView = \(annotationView)")
+        
         return annotationView
     }
     
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        print("MapViewController->didAdd views")
         for annotationView in views {
             if annotationView == mapView.view(for: mapView.userLocation)  {
                 continue

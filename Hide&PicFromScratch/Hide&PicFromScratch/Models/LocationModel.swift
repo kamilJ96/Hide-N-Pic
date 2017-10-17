@@ -18,7 +18,11 @@ import FirebaseDatabase
 // initiating player is responsible for creating game session on server and deleting it afterwards
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
-    private var observers: Array<LocationModelObserver?> = []    
+    private var observers: Array<LocationModelObserver?> = [] {
+        didSet {
+            print("\nLocationModel->observers didSet: \(observers)")
+        }
+    }
 
     let locationManager: CLLocationManager! = CLLocationManager()
     
@@ -30,6 +34,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     var opponentsLocations: Array<CLLocation> = [] {
         didSet {
+            print("LocationModel-> opponentsLocations didSet: notify observers that opponentsLocations did update")
             for observer in observers {
                 observer?.locationModelDidUpdate()
             }
@@ -39,7 +44,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     // strings for accessing file path in database
     let gameSessionsString = "gameSessions"
     let initiatingPlayerString = "initiatingPlayer"
-    let invitedPlayerString = "initiatingPlayer" //TODO: change this back to "invitedPlayer"
+    let invitedPlayerString = "invitedPlayer"
     
     var myPlayerString: String
     var opponentPlayerString: String
@@ -50,8 +55,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     var opponentsLocationsDbRef: DatabaseReference!
     
     
-    init(gameSessionID: DatabaseReference, myPlayerID: GameStateModel.PlayerID) {
-        switch myPlayerID {
+    init(_ gameStateModel: GameStateModel) {
+        switch gameStateModel.myPlayerID! {
         case .initiatingPlayer:
             myPlayerString = initiatingPlayerString
             opponentPlayerString = invitedPlayerString
@@ -62,13 +67,14 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         }
         
         super.init()
+        
         checkLocation()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
         
-        self.gameSessionIDdbRef = gameSessionID
+        self.gameSessionIDdbRef = gameStateModel.gameSessionIDdbRef
         
         startGame()        
     }
@@ -92,17 +98,19 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         // listen for when new locations are added to opponent's location list on server
         let _ = opponentsLocationsDbRef.observe(DataEventType.childAdded, with: { (snapshot) in
             if let locationDict = snapshot.value as? NSDictionary {
-                
+                print("LocationModel -> startGame() -> observing childAdded to opponentsLocationsDbRef, snapshot = \(locationDict)")
                 if let latitude = locationDict["latitude"] as? CLLocationDegrees,
                     let longitude = locationDict["longitude"] as? CLLocationDegrees,
                     let timestampString = locationDict["timestamp"] as? String
                 {
                     // try convert timestampString to a Date
+                    print("LocationModel -> startGame() -> observing childAdded closure -> successfully passed first round of if lets")
                     let dateFormatter = DateFormatter()
                     // timestapString comes formated as "2017-10-11 08:32:36 +0000";
                     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
                     let timestamp = dateFormatter.date(from: timestampString)
                     if timestamp != nil {
+                        print("LocationModel -> startGame() -> observing childAdded closure -> successfully converted timestamp string into Date type")
                         // successfully converted timestamp string into Date type
                         // create new CLLocation, add it to user array
                         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -114,10 +122,14 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
                                        timestamp: timestamp!
                             )
                         )
+                    } else {
+                        print("error: LocationModel->startGame()->could not convert timestamp string into Date type")
                     }
+                } else {
+                    print("error: LocationModel->startGame()->snapshot dictionary did not have values as expected")
                 }
-                
-                
+            } else {
+                print("error: LocationModel->startGame()->snapshot was not dictionary as expected")
             }
         })
 

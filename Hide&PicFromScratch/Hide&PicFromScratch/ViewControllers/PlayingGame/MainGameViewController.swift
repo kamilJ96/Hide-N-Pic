@@ -39,7 +39,8 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if locationModel == nil {
-            locationModel = LocationModel(gameSessionID: gameStateModel.gameSessionIDdbRef, myPlayerID: gameStateModel.myPlayerID!)
+            print("\n\tmain game view controller -> prepare for segue, gameStateModel.myPlayerID = \(gameStateModel.myPlayerID!)\n")
+            locationModel = LocationModel(gameStateModel)
         }
         
         // works for both MapViewController that is embedded in a NavigationController, and not embedded

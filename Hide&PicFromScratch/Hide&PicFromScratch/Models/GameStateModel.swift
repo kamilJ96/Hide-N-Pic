@@ -92,6 +92,8 @@ public class GameStateModel: NSObject {
                 default:
                     break
                 }
+            } else {
+                print("error: GameStateModel->listenForInviteResponse()->snapshot was not handshake status as expected")
             }
             
         })
@@ -140,7 +142,11 @@ public class GameStateModel: NSObject {
                     gameRequest.dbRef = Database.database().reference().child("user_profile").child(myUserID).child("requests").child(Snapshot.key)
                     
                     self.gameRequests.append(gameRequest)
+                } else {
+                    print("error: GameStateModel->fetchGameRequestsFromServer()->childAdded snapshot dictionary did not have values as expected")
                 }
+            }  else {
+                print("error: GameStateModel->fetchGameRequestsFromServer()->childAdded snapshot was not NSDictionary as expected")
             }
         })
         
@@ -163,8 +169,14 @@ public class GameStateModel: NSObject {
                     // delete our local copy of gameRequest since it has been removed from the server
                     if let indexOfGameRequestInArray = self.gameRequests.index(of: gameRequest) {
                         self.gameRequests.remove(at: indexOfGameRequestInArray)
+                    } else {
+                        print("error: GameStateModel->fetchGameRequestsFromServer()->could not find childRemoved in our gameRequests array")
                     }
+                } else {
+                    print("error: GameStateModel->fetchGameRequestsFromServer()->childRemoved snapshot dictionary did not have values as expected")
                 }
+            } else {
+                print("error: GameStateModel->fetchGameRequestsFromServer()->childRemoved snapshot was not NSDictionary as expected")
             }
         })
     }
