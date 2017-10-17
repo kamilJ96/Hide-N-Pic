@@ -13,9 +13,10 @@ import FirebaseAuth
 
 class MainGameViewController: UIViewController, GameStateModelObserver {
 
-    
     var gameStateModel: GameStateModel!
     var locationModel: LocationModel!
+    
+    var augmentedRealityVC: ARCLViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,12 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
         performSegue(withIdentifier: "fromMainGameVCtoChatVC", sender: self)
     }
     
+    @IBAction func buttonToTakePhoto(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            performSegue(withIdentifier: "from MainGameVC to EndGameImage VC", sender: self)
+        }
+    }
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
@@ -54,8 +61,9 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
         }
         
         // TODO: in the future need to change casting to correct AR VC type
-        if let arVC = segue.destination.contents as? ARKitViewController {
+        if let arVC = segue.destination.contents as? ARCLViewController {
             arVC.locationModel = locationModel
+            self.augmentedRealityVC = arVC
             return
         }
         
@@ -67,9 +75,17 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
             chatVC.receiverName = gameStateModel.opponentPlayerName
             return
         }
+        
+        if let endGameVC = segue.destination.contents as? EndGameImageViewController {
+            if let arViewScreenShot = augmentedRealityVC?.sceneLocationView.snapshot() {
+                endGameVC.endGameImage = arViewScreenShot
+            }
+            return
+        }
     }
 
-
+   
+    
     // MARK: - GameStateModel Delegate functions
     
     // may do this via a different implementation where we observe gameStateModel.gameState

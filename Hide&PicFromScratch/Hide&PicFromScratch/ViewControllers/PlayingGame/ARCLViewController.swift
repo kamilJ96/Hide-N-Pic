@@ -12,13 +12,11 @@ import MapKit
 import ARCL
 
 @available(iOS 11.0, *)
-class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate {
+class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate, LocationModelObserver {
     let sceneLocationView = SceneLocationView()
     
     var userAnnotation: MKPointAnnotation?
     var locationEstimateAnnotation: MKPointAnnotation?
-    
-    var centerMapOnUserLocation: Bool = true
     
     ///Whether to display some debugging data
     ///This currently displays the coordinate of the best location estimate
@@ -26,6 +24,20 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     var displayDebugging = false
     
     var adjustNorthByTappingSidesOfScreen = true
+    
+    var locationModel: LocationModel? {
+        didSet {
+            // register as locationModel observer
+            locationModel?.addObserver(self)
+        }
+    }
+    
+    
+    // listens to when the model gets updated (i.e. when a new opponent's location is added)
+    func locationModelDidUpdate() {
+        // TODO: check to see if this ARView is visible on screen before doing any UI stuff
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,29 +59,6 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
         
         view.addSubview(sceneLocationView)
-    }
-    
-    
-    var endGameImage: UIImage?
-    
-    @IBAction func handleLongPress(_ sender: Any) {
-        print("ARCLViewController -> handleLongPress")
-        if let longPressRecogniser = sender as? UILongPressGestureRecognizer {
-            switch longPressRecogniser.state {
-            case .began:
-                endGameImage = sceneLocationView.snapshot()
-                performSegue(withIdentifier: "from ARScene to EndGameImageVC", sender: self)
-            default:
-                break
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if let endGameImageVC = segue.destination.contents as? EndGameImageViewController {
-            endGameImageVC.endGameImage = endGameImage
-        }
     }
     
     
@@ -102,23 +91,23 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     }
     
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-        if let touch = touches.first {
-            if touch.view != nil {
-                let location = touch.location(in: self.view)
-                
-                if location.x <= 40 && adjustNorthByTappingSidesOfScreen {
-                    print("left side of the screen")
-                    sceneLocationView.moveSceneHeadingAntiClockwise()
-                } else if location.x >= view.frame.size.width - 40 && adjustNorthByTappingSidesOfScreen {
-                    print("right side of the screen")
-                    sceneLocationView.moveSceneHeadingClockwise()
-                }
-            }
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//
+//        if let touch = touches.first {
+//            if touch.view != nil {
+//                let location = touch.location(in: self.view)
+//
+//                if location.x <= 40 && adjustNorthByTappingSidesOfScreen {
+//                    print("left side of the screen")
+//                    sceneLocationView.moveSceneHeadingAntiClockwise()
+//                } else if location.x >= view.frame.size.width - 40 && adjustNorthByTappingSidesOfScreen {
+//                    print("right side of the screen")
+//                    sceneLocationView.moveSceneHeadingClockwise()
+//                }
+//            }
+//        }
+//    }
     
     //MARK: MKMapViewDelegate
     

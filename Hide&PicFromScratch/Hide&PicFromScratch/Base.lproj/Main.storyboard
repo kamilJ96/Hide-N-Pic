@@ -192,15 +192,22 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-gX-br2" userLabel="AR Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
                                 <connections>
                                     <segue destination="afO-qR-9Hx" kind="embed" id="9kD-UQ-ong"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zS-hJ-uy9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zS-hJ-uy9" userLabel="ButtonToBigMap">
                                 <rect key="frame" x="0.0" y="539" width="375" height="128"/>
                                 <connections>
                                     <segue destination="bYS-il-MlS" kind="show" id="Oth-LV-5Xq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epW-1G-Rbo" userLabel="ButtonToTakePhoto">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XIn-o9-XES" appends="YES" id="xJo-9t-Xft"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-aw-Vbc">
@@ -226,22 +233,32 @@
                             <constraint firstItem="sh6-gX-br2" firstAttribute="top" secondItem="Bls-yk-PSx" secondAttribute="top" id="8LR-ac-NFD"/>
                             <constraint firstItem="zaA-aw-Vbc" firstAttribute="leading" secondItem="Bls-yk-PSx" secondAttribute="leadingMargin" id="Dja-jS-dPt"/>
                             <constraint firstItem="9WE-6n-kfm" firstAttribute="bottom" secondItem="Bls-yk-PSx" secondAttribute="bottom" id="GAe-Em-E2h"/>
+                            <constraint firstItem="epW-1G-Rbo" firstAttribute="top" secondItem="sh6-gX-br2" secondAttribute="top" id="Iv1-sx-NT2"/>
+                            <constraint firstItem="epW-1G-Rbo" firstAttribute="trailing" secondItem="sh6-gX-br2" secondAttribute="trailing" id="Jch-iy-OXu"/>
                             <constraint firstItem="sh6-gX-br2" firstAttribute="leading" secondItem="Bls-yk-PSx" secondAttribute="leading" id="JvE-DG-AAq"/>
                             <constraint firstItem="sh6-gX-br2" firstAttribute="trailing" secondItem="Bls-yk-PSx" secondAttribute="trailing" id="Thp-Hb-bcm"/>
+                            <constraint firstItem="epW-1G-Rbo" firstAttribute="bottom" secondItem="sh6-gX-br2" secondAttribute="bottom" id="VPq-AH-D1K"/>
                             <constraint firstItem="5zS-hJ-uy9" firstAttribute="top" secondItem="9WE-6n-kfm" secondAttribute="top" id="gPS-GW-rnf"/>
                             <constraint firstItem="9WE-6n-kfm" firstAttribute="leading" secondItem="Bls-yk-PSx" secondAttribute="leading" id="i8D-PD-nst"/>
                             <constraint firstItem="zaA-aw-Vbc" firstAttribute="top" secondItem="u6V-8b-MsI" secondAttribute="top" id="pek-Jt-b8L"/>
+                            <constraint firstItem="epW-1G-Rbo" firstAttribute="leading" secondItem="sh6-gX-br2" secondAttribute="leading" id="qzY-kW-79U"/>
                             <constraint firstItem="5zS-hJ-uy9" firstAttribute="bottom" secondItem="9WE-6n-kfm" secondAttribute="bottom" id="vIX-tr-Ejz"/>
-                            <constraint firstItem="9WE-6n-kfm" firstAttribute="top" secondItem="sh6-gX-br2" secondAttribute="bottom" constant="8" symbolic="YES" id="vti-9Y-EsU"/>
+                            <constraint firstItem="sh6-gX-br2" firstAttribute="bottom" secondItem="9WE-6n-kfm" secondAttribute="top" constant="8" symbolic="YES" id="vti-9Y-EsU"/>
                             <constraint firstItem="5zS-hJ-uy9" firstAttribute="leading" secondItem="9WE-6n-kfm" secondAttribute="leading" id="zSh-f9-Tdf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u6V-8b-MsI"/>
                     </view>
                     <connections>
                         <segue destination="ppJ-Ku-DwT" kind="show" identifier="fromMainGameVCtoChatVC" id="V1t-V0-3sq"/>
+                        <segue destination="7pm-PG-Wyi" kind="show" identifier="from MainGameVC to EndGameImage VC" id="ctf-bi-8tI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HFO-TA-JwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="2" id="XIn-o9-XES">
+                    <connections>
+                        <action selector="buttonToTakePhoto:" destination="Aaw-ZZ-gNr" id="YpO-Eo-s29"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-690.39999999999998" y="937.78110944527748"/>
         </scene>
@@ -250,23 +267,15 @@
             <objects>
                 <viewController title="Augmented Reality" id="afO-qR-9Hx" customClass="ARCLViewController" customModule="Hide_PicFromScratch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p4w-XJ-0pu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VdU-1V-cBJ"/>
                     </view>
-                    <connections>
-                        <segue destination="7pm-PG-Wyi" kind="show" identifier="from ARScene to EndGameImageVC" id="zgS-17-hUN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onc-ru-uWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer cancelsTouchesInView="NO" allowableMovement="10" minimumPressDuration="2" id="Bpx-zM-ifH">
-                    <connections>
-                        <action selector="handleLongPress:" destination="afO-qR-9Hx" id="9Yw-3D-3XG"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="71" y="842"/>
+            <point key="canvasLocation" x="188" y="851"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="rYe-8s-0X1">
@@ -296,11 +305,11 @@
             <objects>
                 <viewController id="7pm-PG-Wyi" customClass="EndGameImageViewController" customModule="Hide_PicFromScratch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cSz-nL-e3u">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-mg-ogJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="511"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -318,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8n-NY-LbM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855" y="842"/>
+            <point key="canvasLocation" x="188" y="233"/>
         </scene>
         <!--Small Map-->
         <scene sceneID="dYg-Eq-sbO">
