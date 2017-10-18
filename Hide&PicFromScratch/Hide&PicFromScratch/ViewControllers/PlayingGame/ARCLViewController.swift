@@ -24,8 +24,6 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         CLLocationCoordinate2DMake(-37.800049, 144.963521)
     ]
     
-    var annotationsOnScreen: Array<LocationNode> = []
-    
     var userAnnotation: MKPointAnnotation?
     var locationEstimateAnnotation: MKPointAnnotation?
     
@@ -48,20 +46,45 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     func locationModelDidUpdate() {
         /////////////////////////////////////////////////////////////////////////////////////
         // test code, no need to keep this
-        if demoArray.count < 1 {return}
-        let nextLocation = demoArray.removeFirst()
-        annotationsOnScreen.append(addNewLocationAnnotationNodeToScene(latitude: nextLocation.latitude, longitude: nextLocation.longitude))
+//        if demoArray.count < 1 {return}
+//        let nextLocation = demoArray.removeFirst()
+//        addNewLocationAnnotationNodeToScene(latitude: nextLocation.latitude, longitude: nextLocation.longitude)
         
         /////////////////////////////////////////////////////////////////////////////////////
         // real code keep this for demo
-//        if let nextLocation = locationModel?.opponentsLocations.last {
-//            annotationsOnScreen.append(addNewLocationAnnotationNodeToScene(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude))
-//        }
+        if let nextLocation = locationModel?.opponentsLocations.last {
+            addNewLocationAnnotationNodeToScene(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude)
+        }
         
         // magic number 3, because pins show up every five seconds are meant to disappear after 15 seconds
-        if annotationsOnScreen.count > 3 {
-            sceneLocationView.removeLocationNode(locationNode: annotationsOnScreen.removeFirst())
+        if sceneLocationView.locationNodes.count > 3 {
+            sceneLocationView.locationNodes.first?.removeFromParentNode()
+            sceneLocationView.locationNodes.removeFirst()
         }
+//        // create new array of LocationNodes with faded images for old pins
+//        var tempArray: Array<LocationAnnotationNode> = []
+//        for locationNode in sceneLocationView.locationNodes {
+//            if let locationAnnotationNode = locationNode as? LocationAnnotationNode {
+//                let location = locationAnnotationNode.location
+//                let image = UIImage(named: "pin")!
+//                let alpha = locationAnnotationNode.alpha - 0.25
+//                let annotationNode = LocationAnnotationNode(location: location, image: image, alpha: alpha)
+//                tempArray.append(annotationNode)
+//            }
+//        }
+//
+//        // clear the existing pins
+//        for locationNode in sceneLocationView.locationNodes {
+//            locationNode.removeFromParentNode()
+//        }
+//        sceneLocationView.locationNodes.removeAll(keepingCapacity: true)
+//
+//        print("\n\tsceneLocationView.locationNodes: \(sceneLocationView.locationNodes)\n")
+//
+//        // add the new pins with new fade out alpha value
+//        for locationAnnotationNode in tempArray {
+//            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: locationAnnotationNode)
+//        }
     }
     
     override func viewDidLoad() {
@@ -90,7 +113,6 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         latitude: CLLocationDegrees, longitude: CLLocationDegrees,
         altitude: CLLocationDistance = DefaultValues.altitude,
         scaleRelativeToDistance: Bool = true)
-        -> LocationAnnotationNode
     {
         let image = UIImage(named: "pin")!
         
@@ -101,8 +123,6 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         annotationNode.scaleRelativeToDistance = scaleRelativeToDistance
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         print("Coordinate added: \(latitude), \(longitude)") // DEBUG
-        
-        return annotationNode
     }
     
     

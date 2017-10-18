@@ -6,6 +6,7 @@
 //  Copyright © 2017 VanillaThunder. All rights reserved.
 //
 
+
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
@@ -114,7 +115,7 @@ public class GameStateModel: NSObject {
         opponentPlayerName = gameRequest.initiatingPlayerName
         
         // remove the invite / game request from the server
-        //gameRequest.dbRef.removeValue()
+        gameRequest.dbRef.removeValue()
         
         gameSessionIDdbRef.child("handshake").setValue("accepted")
     }

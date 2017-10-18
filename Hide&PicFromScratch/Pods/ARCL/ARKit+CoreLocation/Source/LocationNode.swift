@@ -55,7 +55,8 @@ open class LocationAnnotationNode: LocationNode {
     ///An image to use for the annotation
     ///When viewed from a distance, the annotation will be seen at the size provided
     ///e.g. if the size is 100x100px, the annotation will take up approx 100x100 points on screen.
-    public let image: UIImage
+    public var image: UIImage
+    public var alpha: CGFloat
     
     ///Subnodes and adjustments should be applied to this subnode
     ///Required to allow scaling at the same time as having a 2D 'billboard' appearance
@@ -68,10 +69,11 @@ open class LocationAnnotationNode: LocationNode {
     ///For landmarks in the distance, the default is correct
     public var scaleRelativeToDistance = true
     
-    public init(location: CLLocation?, image: UIImage) {
+    public init(location: CLLocation?, image: UIImage, alpha: CGFloat = 1.0) {
         print("\n\tnew LocationAnnotationNode, location: \(String(describing: location))\n")
+        self.alpha = alpha
         self.image = image
-        let plane = SCNPlane(width: image.size.width / 100 * 5, height: image.size.height / 100 * 5)
+        let plane = SCNPlane(width: image.size.width / 100 * 3, height: image.size.height / 100 * 3)
         plane.firstMaterial!.diffuse.contents = image
         plane.firstMaterial!.lightingModel = .constant
         
@@ -89,5 +91,16 @@ open class LocationAnnotationNode: LocationNode {
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UIImage {
+    
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
 }

@@ -39,7 +39,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     // strings for accessing file path in database
     let gameSessionsString = "gameSessions"
     let initiatingPlayerString = "initiatingPlayer"
-    let invitedPlayerString = "initiatingPlayer"//"invitedPlayer"
+    let invitedPlayerString = "invitedPlayer"
     
     var myPlayerString: String
     var opponentPlayerString: String
