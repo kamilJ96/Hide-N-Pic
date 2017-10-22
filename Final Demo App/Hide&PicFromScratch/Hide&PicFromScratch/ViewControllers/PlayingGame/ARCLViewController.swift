@@ -16,8 +16,6 @@ import ARCL
 class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate, LocationModelObserver {
     let sceneLocationView = SceneLocationView()
     
-    s
-    
     var userAnnotation: MKPointAnnotation?
     var locationEstimateAnnotation: MKPointAnnotation?
     
