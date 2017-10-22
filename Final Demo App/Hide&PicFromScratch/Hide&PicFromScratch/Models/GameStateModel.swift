@@ -12,8 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 // This class constantly listens for game requests from the server
-// Also responsible for creating a game session on the server, and then listening for response
-// if we are the ones initiating a game
+// Also responsible for initiating a new game logic e.g. creating a game session on the server, and then listening for response
 // Also listens for ending of game when user is inside main game view controller
 
 public class GameStateModel: NSObject {
@@ -22,7 +21,7 @@ public class GameStateModel: NSObject {
     private(set) var gameSessionIDdbRef: DatabaseReference!
     
     var pendingGameRequestResponseObserver: GameStateModelObserver?
-    var newRequestIDdbRef: DatabaseReference! // the location to write a new game invite request, also the location to delete if you want to cancel
+    var newRequestIDdbRef: DatabaseReference! // the location to write a new game invite request, also the location to delete if you want to cancel the invite
     
     var gameRequestObservers: Array<GameStateModelObserver> = []
     var gameRequests: Array<GameRequest> = [] {
@@ -126,6 +125,7 @@ public class GameStateModel: NSObject {
     }
     
     
+    // constantly observes server for new game requests and for when game requests are deleted
     func fetchGameRequestsFromServer() {
         let myUserID = (Auth.auth().currentUser?.uid)!
         let requestsDBref = Database.database().reference().child("user_profile").child(myUserID).child("requests")
@@ -189,8 +189,7 @@ public class GameStateModel: NSObject {
 
 @objc
 protocol GameStateModelObserver {
-    // needs to be able to handle gameEnd message
-    @objc optional func gameDidEnd(endGameImage: UIImage) // might pass in an image with the ending image yknow
+    @objc optional func gameDidEnd(endGameImage: UIImage)
     @objc optional func gameRequestsArrayDidUpdate()
     @objc optional func friendDidRespondToInvite(with response: String)
 }

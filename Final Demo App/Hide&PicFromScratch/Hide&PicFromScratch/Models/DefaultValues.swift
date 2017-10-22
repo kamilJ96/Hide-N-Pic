@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 
+// class to remove magic numbers from across the app
 public struct DefaultValues {
     // for pins
     static let locationUpdateFrequency: TimeInterval = 5 // seconds
