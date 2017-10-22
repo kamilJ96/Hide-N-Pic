@@ -204,7 +204,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epW-1G-Rbo" userLabel="ButtonToTakePhoto">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
+                                <rect key="frame" x="50" y="0.0" width="275" height="547"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="XIn-o9-XES" appends="YES" id="xJo-9t-Xft"/>
@@ -234,14 +234,14 @@
                             <constraint firstItem="zaA-aw-Vbc" firstAttribute="leading" secondItem="Bls-yk-PSx" secondAttribute="leadingMargin" id="Dja-jS-dPt"/>
                             <constraint firstItem="9WE-6n-kfm" firstAttribute="bottom" secondItem="Bls-yk-PSx" secondAttribute="bottom" id="GAe-Em-E2h"/>
                             <constraint firstItem="epW-1G-Rbo" firstAttribute="top" secondItem="sh6-gX-br2" secondAttribute="top" id="Iv1-sx-NT2"/>
-                            <constraint firstItem="epW-1G-Rbo" firstAttribute="trailing" secondItem="sh6-gX-br2" secondAttribute="trailing" id="Jch-iy-OXu"/>
+                            <constraint firstItem="epW-1G-Rbo" firstAttribute="trailing" secondItem="sh6-gX-br2" secondAttribute="trailing" constant="-50" id="Jch-iy-OXu"/>
                             <constraint firstItem="sh6-gX-br2" firstAttribute="leading" secondItem="Bls-yk-PSx" secondAttribute="leading" id="JvE-DG-AAq"/>
                             <constraint firstItem="sh6-gX-br2" firstAttribute="trailing" secondItem="Bls-yk-PSx" secondAttribute="trailing" id="Thp-Hb-bcm"/>
                             <constraint firstItem="epW-1G-Rbo" firstAttribute="bottom" secondItem="sh6-gX-br2" secondAttribute="bottom" id="VPq-AH-D1K"/>
                             <constraint firstItem="5zS-hJ-uy9" firstAttribute="top" secondItem="9WE-6n-kfm" secondAttribute="top" id="gPS-GW-rnf"/>
                             <constraint firstItem="9WE-6n-kfm" firstAttribute="leading" secondItem="Bls-yk-PSx" secondAttribute="leading" id="i8D-PD-nst"/>
                             <constraint firstItem="zaA-aw-Vbc" firstAttribute="top" secondItem="u6V-8b-MsI" secondAttribute="top" id="pek-Jt-b8L"/>
-                            <constraint firstItem="epW-1G-Rbo" firstAttribute="leading" secondItem="sh6-gX-br2" secondAttribute="leading" id="qzY-kW-79U"/>
+                            <constraint firstItem="epW-1G-Rbo" firstAttribute="leading" secondItem="sh6-gX-br2" secondAttribute="leading" constant="50" id="qzY-kW-79U"/>
                             <constraint firstItem="5zS-hJ-uy9" firstAttribute="bottom" secondItem="9WE-6n-kfm" secondAttribute="bottom" id="vIX-tr-Ejz"/>
                             <constraint firstItem="sh6-gX-br2" firstAttribute="bottom" secondItem="9WE-6n-kfm" secondAttribute="top" constant="8" symbolic="YES" id="vti-9Y-EsU"/>
                             <constraint firstItem="5zS-hJ-uy9" firstAttribute="leading" secondItem="9WE-6n-kfm" secondAttribute="leading" id="zSh-f9-Tdf"/>

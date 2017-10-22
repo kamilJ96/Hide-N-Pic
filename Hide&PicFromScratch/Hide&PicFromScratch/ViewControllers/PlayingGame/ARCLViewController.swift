@@ -16,13 +16,7 @@ import ARCL
 class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate, LocationModelObserver {
     let sceneLocationView = SceneLocationView()
     
-    var demoArray: Array<CLLocationCoordinate2D> = [
-        CLLocationCoordinate2DMake(-37.799634, 144.961783),
-        CLLocationCoordinate2DMake(-37.799846, 144.961971),
-        CLLocationCoordinate2DMake(-37.800003, 144.962384),
-        CLLocationCoordinate2DMake(-37.800126, 144.962990),
-        CLLocationCoordinate2DMake(-37.800049, 144.963521)
-    ]
+    s
     
     var userAnnotation: MKPointAnnotation?
     var locationEstimateAnnotation: MKPointAnnotation?
@@ -152,6 +146,23 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        if let touch = touches.first {
+            let location = touch.location(in: self.view)
+            
+            if location.x <= 40 && adjustNorthByTappingSidesOfScreen {
+                print("left side of the screen")
+                sceneLocationView.moveSceneHeadingAntiClockwise()
+            } else if location.x >= view.frame.size.width - 40 && adjustNorthByTappingSidesOfScreen {
+                print("right side of the screen")
+                sceneLocationView.moveSceneHeadingClockwise()
+            }
+        }
     }
     
     
