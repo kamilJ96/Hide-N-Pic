@@ -30,10 +30,10 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let user = user {
                 // User is still signed in
                 print("user is still signed in")
-                // sends them to the logged in page
+                // Sends them to the logged in page
                 self.performSegue(withIdentifier: self.HOME_SEGUE, sender: nil)
             } else {
-                // user is not logged in
+                // User is not logged in
                 // present log in button and unhide it
                 self.loginButton.frame = CGRect(x: 16, y:50, width: self.view.frame.width - 32, height: 50)
                 self.loginButton.readPermissions = ["email", "public_profile", "user_friends"]
@@ -65,47 +65,17 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let credentials = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
         Auth.auth().signIn(with: credentials, completion: { (user, error) in
             
-            // when the user logs in for the first time, we'll store the users name and the users email on their profile page
-            // also store the small version of their profile pic in the database in the storage
-            
+            // When the user logs in for the first time, we'll store the users name and the users email on their profile page
             if error != nil {
                 print("something went wrong with our fb user: ", error)
                 return
             } else {
-                let storage = Storage.storage()
-                let storageRef = storage.reference(forURL: "gs://vanillathunder-ac0df.appspot.com/")
-                let profilePicRef = storageRef.child(user!.uid+"/profile_pic_small.jpg")
-                
-                // store the userID
-                let userID = user?.uid
-                
                 let databaseRef = Database.database().reference()
-                databaseRef.child("user_profile").child(userID!).child("profile_pic_small").observeSingleEvent(of: .value, with: { (snapshot) in
-                    let profile_pic = snapshot.value as? String?
-                    
-                    if(profile_pic == nil) {
-                        if let imageData = NSData(contentsOf: user!.photoURL!) {
-                            let uploadTask = profilePicRef.putData(imageData as Data, metadata:nil) {
-                                metadata, error in
-                                if(error == nil) {
-                                    let downloadURL = metadata?.downloadURL
-                                    // creating profile picture nodes
-                                    databaseRef.child("user_profile").child("\(user!.uid)/profile_pic_small").setValue(downloadURL!()?.absoluteString)
-                                } else {
-                                    print("error downloading image")
-                                }
-                            }
-                        }
-                        // creating name and email references for user in DB from facebook
-                        databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
-                        databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
-                        databaseRef.child("user_profile").child("\(user!.uid)/online").setValue(true)
-                        
-                    } else {
-                        print("user has logged in earlier ")
-                    }
-                    
-                })
+                // Creating name and email references for user in DB from facebook
+                // And setting them to be online
+                databaseRef.child("user_profile").child("\(user!.uid)/name").setValue(user?.displayName)
+                databaseRef.child("user_profile").child("\(user!.uid)/email").setValue(user?.email)
+                databaseRef.child("user_profile").child("\(user!.uid)/online").setValue(true)
             }
             print("user logged into firebase ", user)
         })

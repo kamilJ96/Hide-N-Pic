@@ -10,12 +10,15 @@ import UIKit
 import JSQMessagesViewController
 import FirebaseDatabase
 
+// Taken from this tutorial: https://www.raywenderlich.com/140836/firebase-tutorial-real-time-chat-2
+
 class ChatViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
+    // Reference to Firebase
     var rootRef = Database.database().reference()
     var convoId = String()
     var receiverName = String()
@@ -29,8 +32,8 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         let receiverIdFive = String(self.receiverId.characters.prefix(5))
-        
         let senderIdFive = String(senderId.characters.prefix(5))
+        
         
         if(senderIdFive > receiverIdFive) {
             self.convoId = senderIdFive + receiverIdFive
@@ -74,11 +77,14 @@ class ChatViewController: JSQMessagesViewController {
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
+    // Sets the message cell as a jsqmessenger cell and displays the message
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages[indexPath.item] // 1
-        if message.senderId == senderId { // 2
+        let message = messages[indexPath.item]
+        
+        // If the sender ID of the message equals the current users sender ID, display as outgoing
+        if message.senderId == senderId {
             return outgoingBubbleImageView
-        } else { // 3
+        } else {
             return incomingBubbleImageView
         }
     }
@@ -110,40 +116,28 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
         let itemRef = rootRef.child("messages").child("\(self.convoId)").childByAutoId()
-        let messageItem = [ // 2
+        let messageItem = [
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
             ]
-        
-        itemRef.setValue(messageItem) // 3
-        
-        JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
-        
-        finishSendingMessage() // 5
+        itemRef.setValue(messageItem)
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        finishSendingMessage()
     }
     
+    // Listens to the DB for when a new message is added
     private func observeMessages() {
-        // 1.
-      //  let messageQuery = messageRef.queryLimited(toLast:25)
-        
         let messageQuery = rootRef.child("messages/\(self.convoId)").queryLimited(toLast: 25)
-        
         messageQuery.observe(.childAdded, with: {
             snapshot in
-
             let messageData = snapshot.value as! Dictionary<String, String>
-            
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
-                // 4
                 self.addMessage(withId: id, name: name, text: text)
-                
-                // 5
                 self.finishReceivingMessage()
             } else {
-                print("Error! Could not decode message data")
+                print("Error! Couldnt decode")
             }
         })
     }
