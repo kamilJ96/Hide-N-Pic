@@ -34,7 +34,7 @@ class ChatViewController: JSQMessagesViewController {
         let receiverIdFive = String(self.receiverId.characters.prefix(5))
         let senderIdFive = String(senderId.characters.prefix(5))
         
-        
+        // To ensure the order of messaging is constant
         if(senderIdFive > receiverIdFive) {
             self.convoId = senderIdFive + receiverIdFive
         } else {
@@ -115,6 +115,7 @@ class ChatViewController: JSQMessagesViewController {
         return
     }
     
+    // Stores the sent message to the database of the current user
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let itemRef = rootRef.child("messages").child("\(self.convoId)").childByAutoId()
         let messageItem = [
@@ -127,7 +128,7 @@ class ChatViewController: JSQMessagesViewController {
         finishSendingMessage()
     }
     
-    // Listens to the DB for when a new message is added
+    // Listens to the DB for when a new message is added and adds it to a local messages array
     private func observeMessages() {
         let messageQuery = rootRef.child("messages/\(self.convoId)").queryLimited(toLast: 25)
         messageQuery.observe(.childAdded, with: {
