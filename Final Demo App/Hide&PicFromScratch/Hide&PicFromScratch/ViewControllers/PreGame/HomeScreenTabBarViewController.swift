@@ -39,6 +39,7 @@ class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDele
     }
     
     func gameRequestsArrayDidUpdate() {
+        // update little red badge for GameRequests tab item to notify user that a new game request has come in
         tabBar.items?[1].badgeValue = String(gameStateModel.gameRequests.count)
     }
     

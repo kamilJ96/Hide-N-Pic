@@ -22,8 +22,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     }
     
     var prevLocationPin: CLLocation! = nil
-    // listens to when the model gets updated (i.e. when a new opponent's location is added)
     
+    // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
         // TODO: check to see if this MapView is visible on screen before doing any UI stuff
         // check if latest location is the same as the previous one
@@ -134,7 +134,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationModelObser
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        mapView.delegate = nil // for some reason adding this line of code messes up the original bottom small mapView when returning from the big mapView
     }
 
     /*

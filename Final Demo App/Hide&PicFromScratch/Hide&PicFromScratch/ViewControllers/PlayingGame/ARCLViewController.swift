@@ -12,6 +12,8 @@ import SceneKit
 import MapKit
 import ARCL
 
+
+// code from https://github.com/ProjectDent/ARKit-CoreLocation/blob/master/ARKit%2BCoreLocation/ViewController.swift
 @available(iOS 11.0, *)
 class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate, LocationModelObserver {
     let sceneLocationView = SceneLocationView()
@@ -83,12 +85,12 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
         sceneLocationView.locationDelegate = self
         
         
-        // add a pin to AR view
-        let pinCoordinate = CLLocationCoordinate2D(latitude: -37.788468, longitude: 145.138788)
-        let pinLocation = CLLocation(coordinate: pinCoordinate, altitude: 100)
-        let pinImage = UIImage(named: "pin")!
-        let pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
+//        // add a pin to AR view
+//        let pinCoordinate = CLLocationCoordinate2D(latitude: -37.788468, longitude: 145.138788)
+//        let pinLocation = CLLocation(coordinate: pinCoordinate, altitude: 100)
+//        let pinImage = UIImage(named: "pin")!
+//        let pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage)
+//        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
         
         view.addSubview(sceneLocationView)
     }

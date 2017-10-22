@@ -15,8 +15,6 @@ class FriendsListTableViewController: UITableViewController {
 
     var gameStateModel: GameStateModel?
     
-    // TODO: in this class, have the logic for initiating a new game, when tapping on a friend's name
-    
     var current_user = Auth.auth().currentUser
     
     let onlineFriendCellID = "OnlineFriendTableCell"
