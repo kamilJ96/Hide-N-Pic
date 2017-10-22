@@ -1,6 +1,6 @@
 # VanillaThunder
 
-![](hideNpic_logo.png =249x250)
+![](hideNpic_logo.png width="249" height="250")
 
 IT Project 2017 Semester 2 Augmented reality mobile app (iOS)
 
