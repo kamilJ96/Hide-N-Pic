@@ -10,7 +10,7 @@ import UIKit
 
 class HomeScreenTabBarViewController: UITabBarController, UITabBarControllerDelegate, GameStateModelObserver {
     
-    var gameStateModel = GameStateModel()
+    var gameStateModel = GameStateModel() // shared by subviews "FriendsList" and "GameRequests"
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,9 +13,8 @@ import CoreLocation
 import Firebase
 import FirebaseDatabase
 
-// LocationModel class for constantly fetching user location, storing it in the cloud
+// LocationModel class for constantly fetching user location, storing it in the cloud server
 // and constantly retrieving opponent's locations from the cloud
-// initiating player is responsible for creating game session on server and deleting it afterwards
 public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     private var observers: Array<LocationModelObserver?> = []
@@ -157,7 +156,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     
     // MARK: - Location Manager object
-    
+    // initialises LocaitonManager object and checks if we have authorisation to access user's location
     func checkLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation

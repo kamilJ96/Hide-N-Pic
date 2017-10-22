@@ -36,19 +36,11 @@ class ARCLViewController: UIViewController, MKMapViewDelegate, SceneLocationView
     
     // listens to when the model gets updated (i.e. when a new opponent's location is added)
     func locationModelDidUpdate() {
-        /////////////////////////////////////////////////////////////////////////////////////
-        // test code, no need to keep this
-//        if demoArray.count < 1 {return}
-//        let nextLocation = demoArray.removeFirst()
-//        addNewLocationAnnotationNodeToScene(latitude: nextLocation.latitude, longitude: nextLocation.longitude)
-        
-        /////////////////////////////////////////////////////////////////////////////////////
-        // real code keep this for demo
         if let nextLocation = locationModel?.opponentsLocations.last {
             addNewLocationAnnotationNodeToScene(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude)
         }
         
-        // magic number 3, because pins show up every five seconds are meant to disappear after 15 seconds
+        // magic number 3, because pins show up every five seconds are meant to disappear after 15 seconds (and 15 / 5 = 3)
         if sceneLocationView.locationNodes.count > 3 {
             sceneLocationView.locationNodes.first?.removeFromParentNode()
             sceneLocationView.locationNodes.removeFirst()

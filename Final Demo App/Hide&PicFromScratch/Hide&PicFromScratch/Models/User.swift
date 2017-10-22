@@ -8,6 +8,7 @@
 
 import UIKit
 
+// class for storing User details
 class User: NSObject {
     var name: String?
     var email: String?
