@@ -8,6 +8,7 @@
 
 import UIKit
 
+// displays the image taken by the user from the AR View
 class EndGameImageViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!

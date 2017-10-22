@@ -11,6 +11,7 @@ import MapKit
 import FirebaseDatabase
 import FirebaseAuth
 
+// this view controller contains as subviews: the AR view, the small map view, the messages button, and hold down for photo button
 class MainGameViewController: UIViewController, GameStateModelObserver {
 
     var gameStateModel: GameStateModel!
@@ -60,7 +61,6 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
             return
         }
         
-        // TODO: in the future need to change casting to correct AR VC type
         if let arVC = segue.destination.contents as? ARCLViewController {
             arVC.locationModel = locationModel
             self.augmentedRealityVC = arVC
@@ -88,12 +88,12 @@ class MainGameViewController: UIViewController, GameStateModelObserver {
     
     // MARK: - GameStateModel Delegate functions
     
-    // may do this via a different implementation where we observe gameStateModel.gameState
     func gameDidEnd() {
-        // TODO:
+        // TODO: clean up server, remove observers etc
     }
 }
 
+// code from Stanford CS193P Lecture 7 https://web.stanford.edu/class/cs193p/cgi-bin/drupal/
 extension UIViewController
 {
     // a friendly var we've added to UIViewController
